@@ -28,7 +28,7 @@ const Login = () => {
               selectedRole === "HR" && "border-2 border-gray-700" // Selected state outline
             }`}
           >
-            Amin
+            Admin
           </button>
 
           <button
