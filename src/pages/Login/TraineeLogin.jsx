@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
-const EmployeeLogin = () => {
-  const [username, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  
+const TraineeLogin = () => {
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
- 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8001/empapi/token/', {
-        username,
-        password
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        "http://127.0.0.1:8001/empapi/token/",
+        {
+          username,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log(response);
-      localStorage.setItem('Emp-token',response.data.token)
+      localStorage.setItem("Emp-token", response.data.token);
 
-      
-      if(response.status === 200){
-        
+      if (response.status === 200) {
         Swal.fire({
-          icon: 'success',
-          title: 'Login Successful',
-          text: 'You have successfully logged in.',
+          icon: "success",
+          title: "Login Successful",
+          text: "You have successfully logged in.",
         }).then(() => {
-          navigate('/emp-home');
-          localStorage.setItem("userData", JSON.stringify(response.data))
+          navigate("/emp-home");
+          localStorage.setItem("userData", JSON.stringify(response.data));
         });
       }
-    
     } catch (error) {
-      console.error('Error occurred:', error);
+      console.error("Error occurred:", error);
       if (error.response) {
         const { data } = error.response;
         if (data && data.non_field_errors && data.non_field_errors.length > 0) {
           alert(data.non_field_errors[0]);
         } else {
-          alert('Invalid username or password. Please try again.');
+          alert("Invalid username or password. Please try again.");
         }
       } else if (error.request) {
-        console.error('No response received:', error.request);
-        alert('No response received from the server. Please try again later.');
+        console.error("No response received:", error.request);
+        alert("No response received from the server. Please try again later.");
       } else {
-        console.error('Error setting up request:', error.message);
-        alert('An error occurred while logging in. Please try again later.');
+        console.error("Error setting up request:", error.message);
+        alert("An error occurred while logging in. Please try again later.");
       }
     }
   };
@@ -59,10 +59,17 @@ const EmployeeLogin = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg overflow-hidden">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center">Sign in to your account</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-4">
+          Sign in to your account
+        </h2>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">User Name</label>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
+              User Name
+            </label>
             <input
               id="username"
               name="username"
@@ -76,7 +83,12 @@ const EmployeeLogin = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               id="password"
               name="password"
@@ -103,4 +115,4 @@ const EmployeeLogin = () => {
   );
 };
 
-export default EmployeeLogin;
+export default TraineeLogin;

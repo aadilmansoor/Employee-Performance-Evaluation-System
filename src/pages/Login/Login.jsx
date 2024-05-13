@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -7,12 +7,14 @@ const Login = () => {
 
   const handleButtonClick = (role) => {
     setSelectedRole(role);
-    if (role === "HR") {
-      navigate("/hr-login");
-    } else if (role === "Team Lead") {
-      navigate("/tl-login");
-    } else if (role === "Employee") {
-      navigate("/emp-login");
+    if (role === "admin") {
+      navigate("/admin/login");
+    } else if (role === "manager") {
+      navigate("/manager/login");
+    } else if (role === "team-lead") {
+      navigate("/team-lead/login");
+    } else if (role === "trainee") {
+      navigate("/trainee/login");
     }
   };
 
@@ -23,36 +25,34 @@ const Login = () => {
 
         <div className="space-y-4">
           <button
-            onClick={() => handleButtonClick("HR")}
-            className={`w-full p-4 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 border border-gray-300 hover:border-gray-500  ${
-              selectedRole === "HR" && "border-2 border-gray-700" // Selected state outline
-            }`}
+            onClick={() => handleButtonClick("admin")}
+            className="w-full p-4 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 border border-gray-300 hover:border-2 hover:border-gray-700"
           >
-            Amin
+            Admin
           </button>
 
           <button
-            onClick={() => handleButtonClick("Team Lead")}
+            onClick={() => handleButtonClick("manager")}
             className={`w-full p-4 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 border border-gray-300 hover:border-gray-500  ${
-              selectedRole === "Team Lead" && "border-2 border-gray-700" // Selected state outline
+              selectedRole === "manager" && "border-2 border-gray-700" // Selected state outline
             }`}
           >
             Manager
           </button>
 
           <button
-            onClick={() => handleButtonClick("Employee")}
+            onClick={() => handleButtonClick("team-lead")}
             className={`w-full p-4 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 border border-gray-300 hover:border-gray-500  ${
-              selectedRole === "Employee" && "border-2 border-gray-700" // Selected state outline
+              selectedRole === "team-lead" && "border-2 border-gray-700" // Selected state outline
             }`}
           >
             Team Lead
           </button>
 
           <button
-            onClick={() => handleButtonClick("Employee")}
+            onClick={() => handleButtonClick("trainee")}
             className={`w-full p-4 rounded-md font-semibold text-gray-500 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 border border-gray-300 hover:border-gray-500  ${
-              selectedRole === "Employee" && "border-2 border-gray-700" // Selected state outline
+              selectedRole === "trainee" && "border-2 border-gray-700" // Selected state outline
             }`}
           >
             Trainee

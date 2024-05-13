@@ -4,7 +4,6 @@ import Navbar from "./components/Header/Navbar";
 import HrHome from "./pages/Hr-Home/HrHome";
 import HrRegisterPage from "./pages/Register/HRRegisterPage";
 import TLRegisterPage from "./pages/Register/TLRegisterPage";
-import HRLoginPage from "./pages/Login/HRLoginPage";
 import TeamLeadHome from "./pages/TL-Home/TeamLeadHome";
 import EmployeeHome from "./pages/Emp-Home/EmployeeHome";
 import HrProfile from "./pages/Hr-Profile/HrProfile";
@@ -14,8 +13,6 @@ import ProjectRegister from "./pages/Register/ProjectRegister";
 import HrProjectDetails from "./pages/Project/HrProjectDetails";
 import TLProjectDetails from "./pages/Project/TLProjectDetails";
 import Login from "./pages/Login/Login";
-import TLLoginPage from "./pages/Login/TLLoginPage";
-import EmployeeLogin from "./pages/Login/EmployeeLogin";
 import TeamCreation from "./pages/TL-Home/TeamCreation";
 import ViewEmployees from "./pages/TL-Home/ViewEmployees";
 import ViewTeam from "./pages/TL-Home/ViewTeam";
@@ -26,13 +23,17 @@ import HrInbox from "./pages/Hr-Home/HrInbox";
 import AssignedProjects from "./pages/Hr-Home/AssignedProjects";
 import ProjectOfTeams from "./pages/Emp-Home/ProjectOfTeams";
 import EmpTeam from "./pages/Emp-Home/EmpTeam";
-import TaskUpdateLists from "./pages/Emp-Home/TaskUpdateLists";
+// import TaskUpdateLists from "./pages/Emp-Home/TaskUpdateLists";
 import UpdateTask from "./pages/Emp-Home/UpdateTask";
 import TaskChart from "./pages/Emp-Home/TaskChart";
 import AssignedProject from "./pages/TL-Home/AssignedProject";
 import Performance from "./pages/Hr-Home/Performance";
 import PerformanceLists from "./pages/Hr-Home/PerformanceLists";
 import TaskChartList from "./pages/TL-Home/TaskChartList";
+import AdminLogin from "./pages/Login/AdminLogin";
+import ManagerLogin from "./pages/Login/ManagerLogin";
+import TeamLeadLogin from "./pages/Login/TeamLead";
+import TraineeLogin from "./pages/Login/TraineeLogin";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -50,18 +51,19 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/hr-login" element={<HRLoginPage />} />
-          <Route path="/tl-login" element={<TLLoginPage />} />
-          <Route path="/emp-login" element={<EmployeeLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/manager/login" element={<ManagerLogin />} />
+          <Route path="/team-lead/login" element={<TeamLeadLogin />} />
+          <Route path="/trainee/login" element={<TraineeLogin />} />
 
           <Route path="/hr-register" element={<HrRegisterPage />} />
           <Route path="/tl-register" element={<TLRegisterPage />} />
+          <Route path="/emp-register" element={<EmpRegister />} />
           <Route path="/hr-home" element={<HrHome />} />
           <Route path="/tl-home" element={<TeamLeadHome />} />
           <Route path="/emp-home" element={<EmployeeHome />} />
           <Route path="/hr-profile" element={<HrProfile />} />
           <Route path="/tl-profile" element={<TeamLeadProfile />} />
-          <Route path="/emp-register" element={<EmpRegister />} />
           <Route
             path="/register-project"
             element={
