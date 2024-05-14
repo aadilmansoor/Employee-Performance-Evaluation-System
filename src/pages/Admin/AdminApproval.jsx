@@ -2,7 +2,6 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ApprovalTable from "../../components/ApprovalTable";
 import ApprovalTableTrainee from "../../components/ApprovalTableTrainee";
-import axios from "axios";
 import {
   getManagersForApprovalAPI,
   getTeamLeadsForApprovalAPI,
@@ -12,33 +11,6 @@ import {
 function CustomTabPanel(props) {
   // eslint-disable-next-line react/prop-types
   const { children, value, index, ...other } = props;
-
-  const getManagerList = async () => {
-    const token = localStorage.getItem("adminToken");
-
-    const result = await getManagersForApprovalAPI(token);
-    console.log(result);
-  };
-
-  const getTeamLeadList = async () => {
-    const token = localStorage.getItem("adminToken");
-
-    const result = await getTeamLeadsForApprovalAPI(token);
-    console.log(result);
-  };
-
-  const getTraineeList = async () => {
-    const token = localStorage.getItem("adminToken");
-
-    const result = await getTraineesForApprovalAPI(token);
-    console.log(result);
-  };
-
-  useEffect(() => {
-    getManagerList();
-    getTeamLeadList();
-    getTraineeList();
-  }, []);
 
   return (
     <div
@@ -64,7 +36,39 @@ function a11yProps(index) {
   };
 }
 
+const token = localStorage.getItem("adminToken");
+
 const AdminApproval = () => {
+  const [managerList, setManagerList] = useState([]);
+  const [teamLeadList, setTeamLeadList] = useState([]);
+  const [traineeList, setTraineeList] = useState([]);
+
+  const getManagerList = async () => {
+    const result = await getManagersForApprovalAPI(token);
+    if (result.status === 200) {
+      setManagerList(result.data);
+    }
+  };
+
+  const getTeamLeadList = async () => {
+    const result = await getTeamLeadsForApprovalAPI(token);
+    if (result.status === 200) {
+      setTeamLeadList(result.data);
+    }
+  };
+
+  const getTraineeList = async () => {
+    const result = await getTraineesForApprovalAPI(token);
+    if (result.status === 200) {
+      setTraineeList(result.data);
+    }
+  };
+
+  useEffect(() => {
+    getManagerList();
+    getTeamLeadList();
+    getTraineeList();
+  }, []);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -85,13 +89,13 @@ const AdminApproval = () => {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ApprovalTable />
+        <ApprovalTable data={managerList} getManagerList={getManagerList} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ApprovalTable />
+        <ApprovalTable data={teamLeadList} getTeamLeadList={getTeamLeadList} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <ApprovalTableTrainee />
+        <ApprovalTableTrainee data={traineeList} />
       </CustomTabPanel>
     </Box>
   );

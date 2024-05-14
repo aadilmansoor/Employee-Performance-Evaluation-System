@@ -34,8 +34,8 @@ const AdminHome = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("HRtoken");
-    navigate("/tl-login");
+    localStorage.removeItem("adminToken");
+    navigate("/");
   };
 
   return (

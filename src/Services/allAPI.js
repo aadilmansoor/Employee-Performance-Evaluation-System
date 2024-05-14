@@ -8,16 +8,37 @@ export const getManagersForApprovalAPI = async (token) => {
   });
 };
 
+//get list of team lead to approve
 export const getTeamLeadsForApprovalAPI = async (token) => {
-  return await commonAPI("GET", `${base_URL}adminapi/teamlead/`, "", {
+  return await commonAPI("GET", `${base_URL}/adminapi/teamlead/`, "", {
     Authorization: "Token " + token,
   });
 };
 
+//get list of trainee to approve
 export const getTraineesForApprovalAPI = async (token) => {
-  return await commonAPI("GET", `${base_URL}adminapi/employee/ `, "", {
+  return await commonAPI("GET", `${base_URL}/adminapi/employee/ `, "", {
     Authorization: "Token " + token,
   });
+};
+
+//approve manager
+export const approveManagerAPI = async (id, token) => {
+  return await commonAPI("POST", `${base_URL}/adminapi/hr/${id}/approve/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+
+//approve manager
+export const approveTeamLeadAPI = async (id, token) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/adminapi/teamlead/${id}/approve/`,
+    "",
+    {
+      Authorization: "Token " + token,
+    }
+  );
 };
 
 // //register user
