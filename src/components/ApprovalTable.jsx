@@ -1,7 +1,5 @@
 import {
-    Box,
   Button,
-  Modal,
   Paper,
   Table,
   TableBody,
@@ -9,11 +7,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   styled,
   tableCellClasses,
 } from "@mui/material";
-import { useState } from "react";
+import PropTypes from "prop-types";
+import { approveManagerAPI, approveTeamLeadAPI } from "../Services/allAPI";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,22 +34,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-    p: 4,
+const ApprovalTable = ({ data, getManagerList, getTeamLeadList }) => {
+  console.log({ getTeamLeadList });
+  const handleAccept = async (id, user) => {
+    const token = localStorage.getItem("adminToken");
+    if (user === "hr") {
+      const result = await approveManagerAPI(id, token);
+      console.log(result);
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Approved",
+          text: "You have successfully approved the manager",
+        });
+        getManagerList();
+      }
+    } else if (user === "teamlead") {
+      const result = await approveTeamLeadAPI(id, token);
+      console.log(result);
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Approved",
+          text: "You have successfully approved the team lead.",
+        });
+        getTeamLeadList();
+      }
+    }
   };
 
-const ApprovalTable = () => {
-    const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-      
   return (
     <div>
       <TableContainer component={Paper}>
@@ -58,58 +70,57 @@ const ApprovalTable = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell>Full Name</StyledTableCell>
-              <StyledTableCell align="right">Username</StyledTableCell>
               <StyledTableCell align="right">Email address</StyledTableCell>
               <StyledTableCell align="right">Phone Number</StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                Fawas
-              </StyledTableCell>
-              <StyledTableCell align="right">Fawas</StyledTableCell>
-              <StyledTableCell align="right">azxaz@gmail.com</StyledTableCell>
-              <StyledTableCell align="right" className="h-full">
-                123456789
-              </StyledTableCell>
-              <StyledTableCell align="right" className="h-full">
-                <div className="flex gap-4 justify-end">
-                  <Button  size="small" variant="contained" color="success">
-                    Accept
-                  </Button>
-                  <Button onClick={handleOpen} size="small" variant="outlined" color="error">
-                    Reject
-                  </Button>
-                </div>
-              </StyledTableCell>
-            </StyledTableRow>
+            {data.map((row) => {
+              return (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.name}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.email_address}
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className="h-full">
+                    {row.phoneno}
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className="h-full">
+                    <Button
+                      size="small"
+                      variant="contained"
+                      color="success"
+                      onClick={() => handleAccept(row.id, row.user_type)}
+                    >
+                      Approve
+                    </Button>
+                  </StyledTableCell>
+                </StyledTableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography   id="modal-modal-title" variant="h6" component="h2">
-            <p className="text-center">Are you sure you want to reject?</p>
-          </Typography>
-          <div className="flex gap-4 justify-center mt-6">
-                  <Button  size="small" variant="contained" color="success">
-                    Accept
-                  </Button>
-                  <Button onClick={handleClose} size="small" variant="outlined" color="error">
-                    Reject
-                  </Button>
-                </div>
-        </Box>
-      </Modal>
     </div>
   );
+};
+
+ApprovalTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      email_address: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      is_adminapproved: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+      phoneno: PropTypes.number.isRequired,
+      user_type: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  getManagerList: PropTypes.func,
+  getTeamLeadList: PropTypes.func,
 };
 
 export default ApprovalTable;
