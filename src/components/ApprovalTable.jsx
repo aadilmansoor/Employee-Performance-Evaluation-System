@@ -62,6 +62,7 @@ const ApprovalTable = ({ data, getManagerList, getTeamLeadList }) => {
       }
     }
   };
+
   return (
     <div>
       <TableContainer component={Paper}>
