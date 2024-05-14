@@ -2,13 +2,10 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import HrHome from "./pages/Hr-Home/HrHome";
-import HrRegisterPage from "./pages/Register/HRRegisterPage";
-import TLRegisterPage from "./pages/Register/TLRegisterPage";
 import TeamLeadHome from "./pages/TL-Home/TeamLeadHome";
 import EmployeeHome from "./pages/Emp-Home/EmployeeHome";
 import HrProfile from "./pages/Hr-Profile/HrProfile";
 import TeamLeadProfile from "./pages/TL-Profile/TeamLeadProfile";
-import EmpRegister from "./pages/Register/EmpRegister";
 import ProjectRegister from "./pages/Register/ProjectRegister";
 import HrProjectDetails from "./pages/Project/HrProjectDetails";
 import TLProjectDetails from "./pages/Project/TLProjectDetails";
@@ -36,6 +33,9 @@ import TeamLeadLogin from "./pages/Login/TeamLead";
 import TraineeLogin from "./pages/Login/TraineeLogin";
 import AdminHome from "./pages/Admin/AdminHome";
 import AdminApproval from "./pages/Admin/AdminApproval";
+import ManagerRegister from "./pages/Register/ManagerRegister";
+import TraineeRegister from "./pages/Register/TraineeRegister";
+import TeamLeadRegister from "./pages/Register/TeamLeadRegister";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -65,9 +65,9 @@ const App = () => {
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/trainee/login" element={<TraineeLogin />} />
 
-          <Route path="/hr-register" element={<HrRegisterPage />} />
-          <Route path="/tl-register" element={<TLRegisterPage />} />
-          <Route path="/emp-register" element={<EmpRegister />} />
+          <Route path="manager/register" element={<ManagerRegister />} />
+          <Route path="/team-lead/register" element={<TeamLeadRegister />} />
+          <Route path="/trainee/register" element={<TraineeRegister />} />
           <Route path="/hr-home" element={<HrHome />} />
           <Route path="/tl-home" element={<TeamLeadHome />} />
           <Route path="/emp-home" element={<EmployeeHome />} />
