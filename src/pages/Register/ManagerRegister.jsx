@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
-import axios from 'axios'; 
+import axios from "axios";
 
-const HrRegisterPage = () => {
+const ManagerRegister = () => {
   const [name, setName] = useState("");
   const [email_address, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -16,16 +16,22 @@ const HrRegisterPage = () => {
 
   const registerUser = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8001/hrapi/register/", {
-        name,
-        email_address,
-        phoneno,
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8001/hrapi/register/",
+        {
+          name,
+          email_address,
+          phoneno,
+          username,
+          password,
+        }
+      );
 
       if (response.status !== 200) {
-        if (response.data.name && response.data.name[0] === "A user with that username already exists.") {
+        if (
+          response.data.name &&
+          response.data.name[0] === "A user with that username already exists."
+        ) {
           setErrorMessage("A user with that username already exists.");
         } else if (response.data.message) {
           throw new Error(response.data.message);
@@ -49,7 +55,7 @@ const HrRegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); 
+    setErrorMessage("");
     await registerUser();
   };
 
@@ -61,7 +67,10 @@ const HrRegisterPage = () => {
         </h2>
         <form onSubmit={handleRegister} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-900"
+            >
               Full name
             </label>
             <input
@@ -73,7 +82,10 @@ const HrRegisterPage = () => {
             />
           </div>
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-900"
+            >
               User Name
             </label>
             <input
@@ -85,7 +97,10 @@ const HrRegisterPage = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-900"
+            >
               Email address
             </label>
             <input
@@ -97,7 +112,10 @@ const HrRegisterPage = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-900 relative">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-900 relative"
+            >
               Password
               <input
                 value={password}
@@ -115,8 +133,11 @@ const HrRegisterPage = () => {
             </label>
           </div>
           <div>
-            <label htmlFor="phoneno" className="block text-sm font-medium text-gray-900">
-             Phone Number
+            <label
+              htmlFor="phoneno"
+              className="block text-sm font-medium text-gray-900"
+            >
+              Phone Number
             </label>
             <input
               value={phoneno}
@@ -129,7 +150,7 @@ const HrRegisterPage = () => {
               <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
             )}
           </div>
-          
+
           <div>
             <button
               type="submit"
@@ -153,4 +174,4 @@ const HrRegisterPage = () => {
   );
 };
 
-export default HrRegisterPage;
+export default ManagerRegister;
