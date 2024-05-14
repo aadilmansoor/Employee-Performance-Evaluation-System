@@ -34,6 +34,8 @@ import AdminLogin from "./pages/Login/AdminLogin";
 import ManagerLogin from "./pages/Login/ManagerLogin";
 import TeamLeadLogin from "./pages/Login/TeamLead";
 import TraineeLogin from "./pages/Login/TraineeLogin";
+import AdminHome from "./pages/Admin/AdminHome";
+import AdminApproval from "./pages/Admin/AdminApproval";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -49,9 +51,16 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Login />} />
+        <Routes>\
+          {/* admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminHome />} />
+          <Route path="/admin/approval" element={<AdminApproval />} />
+
+
+
+
+          <Route path="/" element={<Login />} />
           <Route path="/manager/login" element={<ManagerLogin />} />
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/trainee/login" element={<TraineeLogin />} />
@@ -104,6 +113,7 @@ const App = () => {
           <Route path="/performance-lists" element={<PerformanceLists />} />
           <Route path="/task-chart-list" element={<TaskChartList />} />
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
+          
         </Routes>
       </BrowserRouter>
     </div>
