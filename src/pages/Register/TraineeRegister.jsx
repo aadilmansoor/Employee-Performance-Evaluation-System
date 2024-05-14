@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const EmpRegister = () => {
+const TraineeRegister = () => {
   const [Firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email_address, setEmailAddress] = useState("");
@@ -138,4 +138,4 @@ const EmpRegister = () => {
   );
 };
 
-export default EmpRegister;
+export default TraineeRegister;
