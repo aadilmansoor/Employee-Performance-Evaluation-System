@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -20,21 +20,17 @@ const Navbar = ({ isLoggedIn }) => {
     }
   }, [isLoggedIn]);
 
-
   return (
     <nav className="sticky top-0 bg-white dark:bg-gray-900 z-20 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href=""
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+        <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
             src="https://cdn3.iconfinder.com/data/icons/gradient-general-pack/512/checkmark-01-1024.png"
             className="h-8"
             alt="Flowbite Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Performance Tracker
+            Talent Trove
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

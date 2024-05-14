@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
@@ -89,7 +89,7 @@ const AdminHome = () => {
               <ListItemPrefix>
                 <EyeIcon className="h-5 w-5" />
               </ListItemPrefix>
-             Task Chart Lists
+              Task Chart Lists
             </ListItem>
           </Link>
 
@@ -125,7 +125,7 @@ const AdminHome = () => {
         </div>
         <div className="flex justify-start items-start h-5/6 px-6">
           {/* Cards container */}
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-4">
             {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6">
@@ -169,10 +169,10 @@ const AdminHome = () => {
                   Approvals
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                  Here, You can Approve Manager,Teamleader and Trainee  
+                  Here, You can Approve Manager,Team leader and Trainee
                 </p>
 
-                <Link to="/view-team">
+                <Link to="/admin/approval">
                   <button
                     type="button"
                     className="mt-4 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"
@@ -208,7 +208,9 @@ const AdminHome = () => {
                   Attend Meeting/Schedule Meeting
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-              Scheduling ,attending and effectively conducting meetings within the organization               </p>
+                  Scheduling ,attending and effectively conducting meetings
+                  within the organization{" "}
+                </p>
                 <Link to="/tl-project-details">
                   <button
                     type="button"
@@ -270,11 +272,8 @@ const AdminHome = () => {
                     </svg>
                   </button>
                 </Link>
-                
               </div>
             </div>
-
-         
           </div>
         </div>
       </div>

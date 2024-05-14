@@ -13,7 +13,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8001/hrapi/token/",
+        "http://127.0.0.1:8000/adminapi/token/",
         {
           username,
           password,
@@ -25,8 +25,7 @@ const AdminLogin = () => {
         }
       );
       console.log(response);
-      localStorage.setItem("HRtoken", response.data.token);
-      console.log(response.data.token);
+      localStorage.setItem("adminToken", response.data.token);
 
       if (response.status === 200) {
         Swal.fire({
@@ -34,7 +33,7 @@ const AdminLogin = () => {
           title: "Login Successful",
           text: "You have successfully logged in.",
         }).then(() => {
-          navigate("/hr-home");
+          navigate("/admin");
         });
       }
     } catch (error) {
