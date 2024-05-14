@@ -114,7 +114,7 @@ const ManagerLogin = () => {
         <p className="text-center text-sm font-medium text-gray-500 mt-4">
           Not a member?{" "}
           <Link
-            to={"/hr-register"}
+            to={"/manager/register"}
             className="text-indigo-600 hover:text-indigo-500"
           >
             Register

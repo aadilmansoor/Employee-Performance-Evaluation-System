@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -110,6 +110,15 @@ const TraineeLogin = () => {
             </button>
           </div>
         </form>
+        <p className="text-center text-sm font-medium text-gray-500 mt-4">
+          Not a member?{" "}
+          <Link
+            to={"/trainee/register"}
+            className="text-indigo-600 hover:text-indigo-500"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

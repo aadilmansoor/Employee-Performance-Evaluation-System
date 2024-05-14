@@ -112,7 +112,7 @@ const TeamLeadLogin = () => {
         <p className="text-center text-sm font-medium text-gray-500 mt-4">
           Not a member?{" "}
           <Link
-            to={"/tl-register"}
+            to={"/team-lead/register"}
             className="text-indigo-600 hover:text-indigo-500"
           >
             Register

@@ -17,7 +17,7 @@ const ManagerRegister = () => {
   const registerUser = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8001/hrapi/register/",
+        "http://127.0.0.1:8000/hrapi/register/",
         {
           name,
           email_address,
@@ -26,11 +26,13 @@ const ManagerRegister = () => {
           password,
         }
       );
+      console.log("{ result: response.response }");
 
       if (response.status !== 200) {
         if (
-          response.data.name &&
-          response.data.name[0] === "A user with that username already exists."
+          response.data.username &&
+          response.data.username[0] ===
+            "A user with that username already exists."
         ) {
           setErrorMessage("A user with that username already exists.");
         } else if (response.data.message) {
@@ -44,12 +46,13 @@ const ManagerRegister = () => {
           title: "Registration Successful",
           text: "You have successfully registered.",
         }).then(() => {
-          navigate("/hr-login");
+          navigate("/manager/login");
         });
       }
     } catch (error) {
+      console.log({ error });
       console.error("Registration error:", error);
-      setErrorMessage(error.message || "Registration failed");
+      setErrorMessage(error.response.data.username[0] || "Registration failed");
     }
   };
 

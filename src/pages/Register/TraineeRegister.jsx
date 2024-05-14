@@ -20,7 +20,7 @@ const TraineeRegister = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8001/empapi/register/",
+        "http://127.0.0.1:8000/empapi/register/",
         {
           Firstname,
           lastname,
@@ -38,14 +38,14 @@ const TraineeRegister = () => {
           title: "Registration Successful",
           text: "You have successfully registered.",
         }).then(() => {
-          navigate("/hr-home");
+          navigate("/trainee/login");
         });
       } else {
         setErrorMessage("Registration failed");
       }
     } catch (error) {
       console.error("Registration error:", error);
-      setErrorMessage(error.response.data.message || "Registration failed");
+      setErrorMessage(error.response.data.username[0] || "Registration failed");
     }
   };
 
@@ -126,6 +126,9 @@ const TraineeRegister = () => {
               className="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
+          {errorMessage && (
+            <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
+          )}
           <button
             type="submit"
             className="w-full mt-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

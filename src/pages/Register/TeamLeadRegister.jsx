@@ -17,7 +17,7 @@ const TeamLeadRegister = () => {
   const registerUser = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8001/teamleadapi/register/",
+        "http://127.0.0.1:8000/teamleadapi/register/",
         {
           name,
           email_address,
@@ -44,12 +44,12 @@ const TeamLeadRegister = () => {
           title: "Registration Successful",
           text: "You have successfully registered.",
         }).then(() => {
-          navigate("/tl-login");
+          navigate("/team-lead/login");
         });
       }
     } catch (error) {
       console.error("Registration error:", error);
-      setErrorMessage(error.message || "Registration failed");
+      setErrorMessage(error.response.data.username[0] || "Registration failed");
     }
   };
 
