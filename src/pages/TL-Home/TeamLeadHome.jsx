@@ -92,6 +92,7 @@ const TeamLeadHome = () => {
              Task Chart Lists
             </ListItem>
           </Link>
+         
 
           <Link
             to="/assigned-project"
@@ -102,6 +103,15 @@ const TeamLeadHome = () => {
                 <EyeIcon className="h-5 w-5" />
               </ListItemPrefix>
               Assigned Project
+            </ListItem>
+          </Link>
+
+          <Link to="/team-lead/profile">
+            <ListItem className="hover:bg-blue-100 transition-colors">
+              <ListItemPrefix>
+                <EyeIcon className="h-5 w-5" />
+              </ListItemPrefix>
+             TeamLead Profile
             </ListItem>
           </Link>
 
@@ -271,7 +281,7 @@ const TeamLeadHome = () => {
                     </svg>
                   </button>
                 </Link>
-                
+              
               </div>
             </div>
 

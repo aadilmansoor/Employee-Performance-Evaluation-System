@@ -68,7 +68,6 @@ const App = () => {
           <Route path="/tl-home" element={<TeamLeadHome />} />
           <Route path="/emp-home" element={<EmployeeHome />} />
           <Route path="/hr-profile" element={<HrProfile />} />
-          <Route path="/tl-profile" element={<TeamLeadProfile />} />
           <Route
             path="/register-project"
             element={
@@ -83,6 +82,10 @@ const App = () => {
           <Route
             path="/hr-home/hr-inbox"
             element={<HrInbox updateRequests={updateRequests} />}
+          />
+          <Route
+            path="/team-lead/profile"
+            element={<TeamLeadProfile/>}
           />
           <Route
             path="/tl-project-details"
