@@ -46,21 +46,21 @@ const AdminApproval = () => {
   const getManagerList = async () => {
     const result = await getManagersForApprovalAPI(token);
     if (result.status === 200) {
-      // setManagerList(result.data);
+      setManagerList(result.data);
     }
   };
 
   const getTeamLeadList = async () => {
     const result = await getTeamLeadsForApprovalAPI(token);
     if (result.status === 200) {
-      // setTeamLeadList(result.data);
+      setTeamLeadList(result.data);
     }
   };
 
   const getTraineeList = async () => {
     const result = await getTraineesForApprovalAPI(token);
     if (result.status === 200) {
-      // setTraineeList(result.data);
+      setTraineeList(result.data);
     }
   };
 
