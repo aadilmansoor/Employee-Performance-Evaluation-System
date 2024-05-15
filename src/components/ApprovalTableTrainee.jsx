@@ -1,4 +1,3 @@
-import { Style } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -16,6 +15,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { approveTraineeAPI } from "../Services/allAPI";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,65 +49,78 @@ const style = {
   p: 4,
 };
 
-const ApprovalTableTrainee = ({ data }) => {
+const ApprovalTableTrainee = ({ data, getManagerList }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleAccept = async (id) => {
+    const token = localStorage.getItem("adminToken");
+    const result = await approveTraineeAPI(id, token);
+    if (result.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Approved",
+        text: "You have successfully approved the manager",
+      });
+      getManagerList();
+    }
+  };
   return (
     <div>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Full Name</StyledTableCell>
-              <StyledTableCell align="right">Email address</StyledTableCell>
-              <StyledTableCell align="right">Phone Number</StyledTableCell>
-              <StyledTableCell align="right">Position</StyledTableCell>
+      {data?.length === 0 ? (
+        <p className="mt-6 text-center">No request Available</p>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Full Name</StyledTableCell>
+                <StyledTableCell align="right">Email address</StyledTableCell>
+                <StyledTableCell align="right">Phone Number</StyledTableCell>
+                <StyledTableCell align="right">Position</StyledTableCell>
 
-              <StyledTableCell align="right">Action</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => {
-              return (
-                <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
-                    <span className="capitalize">
-                      {row.Firstname + " " + row.lastname}
-                    </span>
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.email_address}
-                  </StyledTableCell>
+                <StyledTableCell align="right">Action</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((row) => {
+                return (
+                  <StyledTableRow key={row.id}>
+                    <StyledTableCell component="th" scope="row">
+                      <span className="capitalize">
+                        {row.Firstname + " " + row.lastname}
+                      </span>
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.email_address}
+                    </StyledTableCell>
 
-                  <StyledTableCell align="right" className="h-full">
-                    {row.phoneno}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.position}
-                  </StyledTableCell>
+                    <StyledTableCell align="right" className="h-full">
+                      {row.phoneno}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.position}
+                    </StyledTableCell>
 
-                  <StyledTableCell align="right" className="h-full">
-                    <div className="flex gap-4 justify-end">
-                      <Button size="small" variant="contained" color="success">
-                        Accept
-                      </Button>
-                      <Button
-                        onClick={handleOpen}
-                        size="small"
-                        variant="outlined"
-                        color="error"
-                      >
-                        Reject
-                      </Button>
-                    </div>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                    <StyledTableCell align="right" className="h-full">
+                      <div className="flex gap-4 justify-end">
+                        <Button
+                          size="small"
+                          variant="contained"
+                          color="success"
+                          onClick={() => handleAccept(row.id)}
+                        >
+                          Approve
+                        </Button>
+                      </div>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
       <Modal
         open={open}
         onClose={handleClose}
@@ -150,6 +164,7 @@ ApprovalTableTrainee.propTypes = {
       user_type: PropTypes.string,
     })
   ),
+  getTeamLeadList: PropTypes.func,
 };
 
 export default ApprovalTableTrainee;

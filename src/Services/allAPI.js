@@ -41,6 +41,18 @@ export const approveTeamLeadAPI = async (id, token) => {
   );
 };
 
+//approve trainee
+export const approveTraineeAPI = async (id, token) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/adminapi/employee/${id}/approve/ `,
+    "",
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};
+
 // //register user
 // export const registerAPI = async (reqBody) => {
 //   return await commonAPI(

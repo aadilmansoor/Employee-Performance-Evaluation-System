@@ -65,45 +65,49 @@ const ApprovalTable = ({ data, getManagerList, getTeamLeadList }) => {
 
   return (
     <div>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Full Name</StyledTableCell>
-              <StyledTableCell align="right">Email address</StyledTableCell>
-              <StyledTableCell align="right">Phone Number</StyledTableCell>
-              <StyledTableCell align="right">Action</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => {
-              return (
-                <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.email_address}
-                  </StyledTableCell>
-                  <StyledTableCell align="right" className="h-full">
-                    {row.phoneno}
-                  </StyledTableCell>
-                  <StyledTableCell align="right" className="h-full">
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="success"
-                      onClick={() => handleAccept(row.id, row.user_type)}
-                    >
-                      Approve
-                    </Button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {data?.length === 0 ? (
+        <p className="mt-6 text-center">No request Available</p>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Full Name</StyledTableCell>
+                <StyledTableCell align="right">Email address</StyledTableCell>
+                <StyledTableCell align="right">Phone Number</StyledTableCell>
+                <StyledTableCell align="right">Action</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((row) => {
+                return (
+                  <StyledTableRow key={row.id}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.email_address}
+                    </StyledTableCell>
+                    <StyledTableCell align="right" className="h-full">
+                      {row.phoneno}
+                    </StyledTableCell>
+                    <StyledTableCell align="right" className="h-full">
+                      <Button
+                        size="small"
+                        variant="contained"
+                        color="success"
+                        onClick={() => handleAccept(row.id, row.user_type)}
+                      >
+                        Approve
+                      </Button>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };
