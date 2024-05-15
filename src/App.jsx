@@ -36,6 +36,7 @@ import AdminApproval from "./pages/Admin/AdminApproval";
 import ManagerRegister from "./pages/Register/ManagerRegister";
 import TraineeRegister from "./pages/Register/TraineeRegister";
 import TeamLeadRegister from "./pages/Register/TeamLeadRegister";
+import Skills from "./components/Skills";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -108,6 +109,12 @@ const App = () => {
           <Route path="/performance-lists" element={<PerformanceLists />} />
           <Route path="/task-chart-list" element={<TaskChartList />} />
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
+
+          {/* Trainee */}
+          <Route path="/trainee/technologies" element={<Skills />} />
+
+
+          
         </Routes>
       </BrowserRouter>
     </div>
