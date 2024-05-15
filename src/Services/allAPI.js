@@ -53,6 +53,18 @@ export const approveTraineeAPI = async (id, token) => {
   );
 };
 
+//assign project
+export const assignProject = async (id, token) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/teamleadapi/projects/${id}/project_assign/ `,
+    "",
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};
+
 // //register user
 // export const registerAPI = async (reqBody) => {
 //   return await commonAPI(

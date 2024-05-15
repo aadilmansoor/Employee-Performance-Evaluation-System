@@ -29,7 +29,7 @@ const HrHome = () => {
   }, []);
 
   const handleRegisterClick = () => {
-    navigate("/emp-register");
+    navigate("/trainee/register");
   };
 
   const toggleSidebar = () => {
@@ -74,7 +74,6 @@ const HrHome = () => {
           </Typography>
         </div>
         <List>
-         
           <Link
             to="/hr-project-details"
             className="hover:bg-blue-100 transition-colors"
@@ -166,7 +165,7 @@ const HrHome = () => {
                   Register Project
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here, you have the option to enroll a project
+                  Here, you have the option to enroll a project
                 </p>
                 <Link to="/register-project">
                   <button
@@ -200,7 +199,7 @@ const HrHome = () => {
                   Register an Employee
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                You have the ability to enroll a new employee into our system
+                  You have the ability to enroll a new employee into our system
                 </p>
                 <button
                   type="button"
@@ -232,7 +231,7 @@ const HrHome = () => {
                   View Performance
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                Here, you have access to monitor employee performance.
+                  Here, you have access to monitor employee performance.
                 </p>
                 <Link to="/performance">
                   <button

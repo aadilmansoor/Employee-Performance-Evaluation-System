@@ -51,24 +51,19 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Navbar />
-        <Routes>\
-          {/* admin */}
+        <Routes>
+          \{/* admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/approval" element={<AdminApproval />} />
-
-
-
-
           <Route path="/" element={<Login />} />
           <Route path="/manager/login" element={<ManagerLogin />} />
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/trainee/login" element={<TraineeLogin />} />
-
           <Route path="manager/register" element={<ManagerRegister />} />
           <Route path="/team-lead/register" element={<TeamLeadRegister />} />
           <Route path="/trainee/register" element={<TraineeRegister />} />
-          <Route path="/hr-home" element={<HrHome />} />
+          <Route path="/manager" element={<HrHome />} />
           <Route path="/tl-home" element={<TeamLeadHome />} />
           <Route path="/emp-home" element={<EmployeeHome />} />
           <Route path="/hr-profile" element={<HrProfile />} />
@@ -113,7 +108,6 @@ const App = () => {
           <Route path="/performance-lists" element={<PerformanceLists />} />
           <Route path="/task-chart-list" element={<TaskChartList />} />
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
-          
         </Routes>
       </BrowserRouter>
     </div>
