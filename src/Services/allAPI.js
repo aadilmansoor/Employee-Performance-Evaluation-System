@@ -65,6 +65,33 @@ export const assignProject = async (id, token) => {
   );
 };
 
+// get manager profile 
+export const updateManagerAPI = async (token) => {
+  return await commonAPI(
+    "GET",
+    `${base_URL}/hrapi/profile/`,
+    "",
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};
+
+// edit manager profile 
+export const editManagerAPI = async (token,body) => {
+  return await commonAPI(
+    "PUT",
+    `${base_URL}/hrapi/profile/`,
+    body,
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};
+
+
+
+
 // //register user
 // export const registerAPI = async (reqBody) => {
 //   return await commonAPI(

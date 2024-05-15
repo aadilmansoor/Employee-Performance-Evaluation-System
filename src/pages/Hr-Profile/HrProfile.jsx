@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { editManagerAPI, updateManagerAPI } from "../../Services/allAPI";
+import Swal from "sweetalert2";
 
 const HrProfile = () => {
-  const [username, setUsername] = useState(
-    localStorage.getItem("userName") || ""
-  );
-  const [email, setEmail] = useState(localStorage.getItem("email") || "");
-  const [password, setPassword] = useState(
-    localStorage.getItem("password") || ""
-  );
+
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
+
+  const [managerDetails, setManagerDetails] = useState({
+    name:"",
+    email_address:"",
+    phoneno:"",
+  });
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,13 +19,17 @@ const HrProfile = () => {
     setIsLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+     const token =localStorage.getItem("HRtoken")
+     const result=await editManagerAPI(token,managerDetails);
+     if(result.status===200){
+      Swal.fire({
+        icon:"success",
+        title:"Updated",
+        text:"Profile updated succesfully"
 
-      localStorage.setItem("userName", username);
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
 
-      setSuccessMessage("Profile updated successfully!");
+      })
+     }
     } catch (error) {
       console.error("Error updating profile:", error);
     } finally {
@@ -31,27 +37,19 @@ const HrProfile = () => {
     }
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   // Update values in local storage
-  //   localStorage.setItem("userName", username);
-  //   localStorage.setItem("email", email);
-  //   localStorage.setItem("password", password);
-  //   // Show success message or perform any other action
-  //   console.log("Profile updated successfully!");
-  // }
 
-  function handleChange(e) {
-    const { id, value } = e.target;
+  const getManagerDetails=async() =>{
+    const token=localStorage.getItem("HRtoken");
+    const result=await updateManagerAPI(token);
+   if(result.status===200){
+    setManagerDetails(result?.data);
+   }
 
-    if (id === "username") {
-      setUsername(value);
-    } else if (id === "email") {
-      setEmail(value);
-    } else if (id === "password") {
-      setPassword(value);
-    }
+
   }
+  useEffect(()=>{
+    getManagerDetails();
+  },[]);
 
   return (
     <div>
@@ -66,31 +64,51 @@ const HrProfile = () => {
             className="rounded-full h-[170px] w-[170px] object-contain cursor-pointer self-center"
           />
 
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
-            placeholder="Username"
-            id="username"
-            defaultValue={username}
-            className="border p-3 rounded-lg"
-            onChange={handleChange}
+            placeholder="name"
+            id="name"
+            value={managerDetails.name}
+            className="border  p-3 rounded-lg"
+            onChange={(e)=>
+              setManagerDetails({
+                ...managerDetails,
+                name:e.target.value
+              })
+            }
           />
 
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             placeholder="Email"
             id="email"
-            defaultValue={email}
+            value={managerDetails.email_address}
             className="border p-3 rounded-lg"
-            onChange={handleChange}
+            onChange={(e)=>
+              setManagerDetails({
+                ...managerDetails,
+                email_address:e.target.value
+              })
+            }
           />
 
+         <label htmlFor="phonenumber">Phonenumber:</label>
+
           <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            defaultValue={password}
+            type="number"
+            placeholder="Phonenumber"
+            id="phonenumber"
+            value={managerDetails.phoneno}
             className="border p-3 rounded-lg"
-            onChange={handleChange}
+            onChange={(e)=>
+              setManagerDetails({
+                ...managerDetails,
+                phoneno:e.target.value
+
+              })
+            }
           />
 
           <button
@@ -101,22 +119,7 @@ const HrProfile = () => {
             Update
           </button>
         </form>
-
-        {/* Success message */}
-        {successMessage && (
-          <span className="text-green-500 mt-2">{successMessage}</span>
-        )}
-
-        <div className="flex justify-between mt-5">
-          {/* ... (other elements) ... */}
-        </div>
-
-        <div className="flex justify-between mt-5">
-          {/* Delete account link */}
-          <span className="text-red-700 cursor-pointer">Delete account</span>
-          {/* Sign out link */}
-          <span className="text-red-700 cursor-pointer">Sign out</span>
-        </div>
+      
       </div>
     </div>
   );

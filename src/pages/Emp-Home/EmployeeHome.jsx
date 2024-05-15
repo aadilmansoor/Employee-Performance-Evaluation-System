@@ -18,6 +18,9 @@ const EmployeeHome = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
 
+  const handleTechnologies =()=>{
+    navigate("/trainee/technologies")
+  }
   const handleRegisterClick = () => {
     navigate("");
   };
@@ -121,7 +124,7 @@ const EmployeeHome = () => {
             </Link>
             <ListItem
               className="hover:bg-blue-100 transition-colors"
-              onClick={handleLogout}
+              onClick={handleTechnologies}
             >
               <ListItemPrefix>
                 <LaptopChromebookIcon />
