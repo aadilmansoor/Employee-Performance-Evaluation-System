@@ -20,7 +20,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
     const fetchProjectDetails = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/teamleadapi/projects/",
+          "http://127.0.0.1:8000/teamleadapi/projects/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -39,7 +39,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/teamleadapi/projects/${formData.id}/project_assign/`,
+        `http://127.0.0.1:8000/teamleadapi/projects/${formData.id}/project_assign/`,
         {},
         {
           headers: {

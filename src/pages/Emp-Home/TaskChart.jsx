@@ -20,7 +20,7 @@ const TaskChart = () => {
     const fetchTaskChart = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/empapi/taskchart/",
+          "http://127.0.0.1:8000/empapi/taskchart/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -41,7 +41,7 @@ const TaskChart = () => {
   // const updateTask = async () => {
   //   try {
   //     const response = await axios.post(
-  //       `http://127.0.0.1:8001/empapi/taskchart/${id}/taskupdates_add/`,
+  //       `http://127.0.0.1:8000/empapi/taskchart/${id}/taskupdates_add/`,
   //       {
   //         name,
   //         members
@@ -104,7 +104,6 @@ const TaskChart = () => {
             <tbody>
               {taskChart.map((task, index) => (
                 <tr key={index}>
-                  
                   <td className="border border-gray-300 px-4 py-2">
                     {task.id}
                   </td>
@@ -140,7 +139,7 @@ const TaskChart = () => {
         <p className="mt-4">No Tasks.</p>
       )}
 
-      <TaskUpdateLists/>
+      <TaskUpdateLists />
     </div>
   );
 };

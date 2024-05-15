@@ -26,7 +26,7 @@ const Performance = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://127.0.0.1:8001/hrapi/performancetrack/",
+        "http://127.0.0.1:8000/hrapi/performancetrack/",
         { employee },
         { headers: { Authorization: `Token ${token}` } }
       );
@@ -99,22 +99,30 @@ const Performance = () => {
               </div>
             </div>
           )}
-         <Dialog open={open} onClose={handleClose} className="w-3/4 mx-auto my-auto">
-  <DialogTitle>Analyze Performance</DialogTitle>
-  <DialogContent>
-    {performanceData && (
-      <DialogContentText>
-        ID: {performanceData.id}<br />
-        HR: {performanceData.hr}<br />
-        Performance: {performanceData.performance}<br />
-        Employee: {performanceData.employee}<br />
-      </DialogContentText>
-    )}
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={handleClose}>Close</Button>
-  </DialogActions>
-</Dialog>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            className="w-3/4 mx-auto my-auto"
+          >
+            <DialogTitle>Analyze Performance</DialogTitle>
+            <DialogContent>
+              {performanceData && (
+                <DialogContentText>
+                  ID: {performanceData.id}
+                  <br />
+                  HR: {performanceData.hr}
+                  <br />
+                  Performance: {performanceData.performance}
+                  <br />
+                  Employee: {performanceData.employee}
+                  <br />
+                </DialogContentText>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Close</Button>
+            </DialogActions>
+          </Dialog>
           <Button type="submit" variant="contained" color="primary" fullWidth>
             {isLoading ? "Loading..." : "Track"}
           </Button>

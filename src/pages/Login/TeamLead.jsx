@@ -12,7 +12,7 @@ const TeamLeadLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8001/teamleadapi/token/",
+        "http://127.0.0.1:8000/teamleadapi/token/",
         {
           username,
           password,

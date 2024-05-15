@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
 const AssignedProject = () => {
-  
   const [assignedProject, setAssignedProject] = useState([]);
-  const token = localStorage.getItem('TlToken');
+  const token = localStorage.getItem("TlToken");
 
   useEffect(() => {
     const fetchAssignedProjectDetail = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/teamleadapi/assignedprojects/",
+          "http://127.0.0.1:8000/teamleadapi/assignedprojects/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -31,7 +29,7 @@ const AssignedProject = () => {
   const handleAssignToEmp = async (projectId) => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/teamleadapi/assignedprojects/${projectId}/project_completed/`,
+        `http://127.0.0.1:8000/teamleadapi/assignedprojects/${projectId}/project_completed/`,
         {},
         {
           headers: {
@@ -42,9 +40,9 @@ const AssignedProject = () => {
 
       if (response.status === 200) {
         alert("Assignment marked as complete");
-        const updatedProjects = assignedProject.map(project => {
+        const updatedProjects = assignedProject.map((project) => {
           if (project.id === projectId) {
-            return { ...project, status: 'completed' };
+            return { ...project, status: "completed" };
           }
           return project;
         });
@@ -56,8 +54,8 @@ const AssignedProject = () => {
   };
 
   const isCompleted = (projectId) => {
-    const project = assignedProject.find(p => p.id === projectId);
-    return project && project.status === 'completed';
+    const project = assignedProject.find((p) => p.id === projectId);
+    return project && project.status === "completed";
   };
 
   console.log(assignedProject);
@@ -73,28 +71,40 @@ const AssignedProject = () => {
               <tr>
                 <th className="py-3 px-4 border-b border-gray-300">Id</th>
                 <th className="py-3 px-4 border-b border-gray-300">Project</th>
-                <th className="py-3 px-4 border-b border-gray-300">Team Lead</th>
-                <th className="py-3 px-4 border-b border-gray-300">Team Name</th>
-                <th className="py-3 px-4 border-b border-gray-300">Assigned to Employees</th>
+                <th className="py-3 px-4 border-b border-gray-300">
+                  Team Lead
+                </th>
+                <th className="py-3 px-4 border-b border-gray-300">
+                  Team Name
+                </th>
+                <th className="py-3 px-4 border-b border-gray-300">
+                  Assigned to Employees
+                </th>
                 <th className="py-3 px-4 border-b border-gray-300">Status</th>
-              
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {assignedProject.map((assigned, index) => (
                 <tr key={index}>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.id}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.project}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.teamlead}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.team}</td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.id}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.project}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.teamlead}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.team}
+                  </td>
                   <td>
-                  <Link to={`/assign-to-emp/${assigned.id}`}>
-  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Assign to Employees
-  </button>
-
-</Link>
-</td>
+                    <Link to={`/assign-to-emp/${assigned.id}`}>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Assign to Employees
+                      </button>
+                    </Link>
+                  </td>
                   <td className="py-3 px-4 border whitespace-nowrap">
                     {isCompleted(assigned.id) ? (
                       <span className="text-green-600">Completed</span>
