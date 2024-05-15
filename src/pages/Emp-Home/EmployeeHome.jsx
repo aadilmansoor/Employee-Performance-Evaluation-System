@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
 import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
@@ -123,10 +124,22 @@ const EmployeeHome = () => {
               onClick={handleLogout}
             >
               <ListItemPrefix>
+                <LaptopChromebookIcon />
+              </ListItemPrefix>
+              Technologies
+            </ListItem>
+
+            <ListItem
+              className="hover:bg-blue-100 transition-colors"
+              onClick={handleLogout}
+            >
+              <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />
               </ListItemPrefix>
               Log Out
             </ListItem>
+
+            
           </List>
         </Card>
       </div>
