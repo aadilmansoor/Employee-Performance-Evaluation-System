@@ -18,7 +18,7 @@ const ProjectOfTeams = () => {
     const fetchTeamProjects = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/empapi/assignedprojects/",
+          "http://127.0.0.1:8000/empapi/assignedprojects/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -36,25 +36,24 @@ const ProjectOfTeams = () => {
   }, []);
 
   const handleCreateButtonClick = (detailId) => {
-    console.log("Detail ID:", detailId); 
+    console.log("Detail ID:", detailId);
     setFormData({ id: detailId });
-    console.log("FormData:", formData); 
+    console.log("FormData:", formData);
     handleCreate();
   };
-  
 
   const handleCreate = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/empapi/projectdetail/${formData.id}/taskchart_add/`,
-        formData, 
+        `http://127.0.0.1:8000/empapi/projectdetail/${formData.id}/taskchart_add/`,
+        formData,
         {
           headers: {
             Authorization: `Token ${token}`,
           },
         }
       );
-      alert("Task Chart Created")
+      alert("Task Chart Created");
       console.log("API Response:", response.data);
     } catch (error) {
       console.error("Error creating project task:", error);

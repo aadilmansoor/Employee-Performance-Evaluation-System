@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 function UpdateTask() {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [performance_level, setPerformance] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [performance_level, setPerformance] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const token = localStorage.getItem('Emp-token');
-  const { id } = useParams(); 
+  const token = localStorage.getItem("Emp-token");
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8001/empapi/taskchart/${id}`); 
-        const { name, description, performance_level } = response.data; 
+        const response = await axios.get(
+          `http://127.0.0.1:8000/empapi/taskchart/${id}`
+        );
+        const { name, description, performance_level } = response.data;
         setName(name);
         setDescription(description);
         setPerformance(performance_level);
       } catch (error) {
-        console.error('Failed to fetch task details:', error);
+        console.error("Failed to fetch task details:", error);
       }
     };
 
@@ -31,11 +33,11 @@ function UpdateTask() {
   const taskUpdate = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/empapi/taskchart/${id}/taskupdates_add/`,
+        `http://127.0.0.1:8000/empapi/taskchart/${id}/taskupdates_add/`,
         {
           name,
           description,
-          performance_level
+          performance_level,
         },
         {
           headers: {
@@ -46,34 +48,39 @@ function UpdateTask() {
 
       if (response.status === 200) {
         Swal.fire({
-          icon: 'success',
-          title: 'Updated Successfully',
-          text: 'You have successfully updated the task.',
+          icon: "success",
+          title: "Updated Successfully",
+          text: "You have successfully updated the task.",
         }).then(() => {
-          navigate('/task-chart');
+          navigate("/task-chart");
         });
       } else {
-        setErrorMessage('Update failed');
+        setErrorMessage("Update failed");
       }
     } catch (error) {
-      console.error('Update error:', error);
-      setErrorMessage(error.message || 'Update failed');
+      console.error("Update error:", error);
+      setErrorMessage(error.message || "Update failed");
     }
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     await taskUpdate();
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">Update Task</h2>
+        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
+          Update Task
+        </h2>
         <form onSubmit={handleUpdate} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-900"
+            >
               Name
             </label>
             <input
@@ -85,7 +92,10 @@ function UpdateTask() {
             />
           </div>
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-900"
+            >
               Description
             </label>
             <input
@@ -97,7 +107,10 @@ function UpdateTask() {
             />
           </div>
           <div>
-            <label htmlFor="performance_level" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="performance_level"
+              className="block text-sm font-medium text-gray-900"
+            >
               Performance Level
             </label>
             <input

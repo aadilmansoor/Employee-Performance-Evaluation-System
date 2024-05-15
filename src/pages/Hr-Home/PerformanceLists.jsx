@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell } from "recharts";
 import { Paper, Typography, IconButton } from "@mui/material";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const PerformanceLists = () => {
   const [performanceData, setPerformanceData] = useState([]);
@@ -13,7 +13,7 @@ const PerformanceLists = () => {
     const fetchPerformanceDetails = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/hrapi/Performance/",
+          "http://127.0.0.1:8000/hrapi/Performance/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -34,15 +34,14 @@ const PerformanceLists = () => {
   const handleDeletePerformance = async (id) => {
     try {
       const token = localStorage.getItem("HRtoken");
-      await axios.delete(
-        `http://127.0.0.1:8001/hrapi/Performance/${id}/`,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
+      await axios.delete(`http://127.0.0.1:8000/hrapi/Performance/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setPerformanceData(
+        performanceData.filter((performance) => performance.id !== id)
       );
-      setPerformanceData(performanceData.filter(performance => performance.id !== id));
     } catch (error) {
       console.error("Failed to delete performance:", error);
     }
@@ -56,7 +55,7 @@ const PerformanceLists = () => {
               className="absolute top-2 right-2"
               onClick={() => handleDeletePerformance(performance.id)}
             >
-              <DeleteIcon style={{ color: 'red' }} />
+              <DeleteIcon style={{ color: "red" }} />
             </IconButton>
             <div className="p-4">
               <Typography variant="h6" gutterBottom>
@@ -88,12 +87,11 @@ const PerformanceLists = () => {
                     fill="#8884d8"
                     label
                   >
-                    {[
-                      { fill: "#FF6384" },
-                      { fill: "#36A2EB" },
-                    ].map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.fill} />
-                    ))}
+                    {[{ fill: "#FF6384" }, { fill: "#36A2EB" }].map(
+                      (entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                      )
+                    )}
                   </Pie>
                 </PieChart>
               </div>

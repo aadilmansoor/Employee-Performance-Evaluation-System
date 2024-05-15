@@ -10,7 +10,7 @@ const ViewEmployees = () => {
     const fetchEmployeeDetails = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/teamleadapi/employee/",
+          "http://127.0.0.1:8000/teamleadapi/employee/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -51,7 +51,6 @@ const ViewEmployees = () => {
                   <th className="py-3 px-4 border-b border-gray-300">
                     In Team
                   </th>
-                
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -75,7 +74,6 @@ const ViewEmployees = () => {
                     <td className="py-3 px-4 border whitespace-nowrap">
                       {employee.in_team ? "Yes" : "No"}
                     </td>
-                   
                   </tr>
                 ))}
               </tbody>

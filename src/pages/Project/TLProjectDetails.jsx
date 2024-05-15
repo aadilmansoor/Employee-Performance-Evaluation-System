@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { assignProject } from "../../Services/allAPI";
 
 const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   const token = localStorage.getItem("TlToken");
@@ -16,30 +17,30 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
     return localStorage.getItem("selectedProject") || null;
   });
 
-  useEffect(() => {
-    const fetchProjectDetails = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:8001/teamleadapi/projects/",
-          {
-            headers: {
-              Authorization: `Token ${token}`,
-            },
-          }
-        );
-        setProjectData(response.data);
-      } catch (error) {
-        console.error("Failed to fetch project details:", error);
-      }
-    };
+  const fetchProjectDetails = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8000/teamleadapi/projects/",
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      setProjectData(response.data);
+    } catch (error) {
+      console.error("Failed to fetch project details:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchProjectDetails();
   }, [token]);
 
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/teamleadapi/projects/${formData.id}/project_assign/`,
+        `http://127.0.0.1:8000/teamleadapi/projects/${formData.id}/project_assign/`,
         {},
         {
           headers: {
@@ -81,8 +82,12 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   //   console.log(`Request for project ${projectId} sent to HR inbox by ${teamLeadName}`);
   // };
 
-  const handleAssign = (projectId) => {
-    setFormData({ id: projectId });
+  const handleAssign = async (projectId) => {
+    const token = localStorage.getItem("TlToken");
+    const result = await assignProject(projectId, token);
+    if (result.status === 200) {
+      fetchProjectDetails();
+    }
   };
 
   return (

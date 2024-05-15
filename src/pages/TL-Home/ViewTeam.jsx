@@ -9,14 +9,16 @@ const ViewTeam = () => {
   useEffect(() => {
     const fetchTeamDetails = async () => {
       try {
-        
-        const response = await axios.get('http://127.0.0.1:8001/teamleadapi/team/', {
-          headers: {
-            'Authorization': `Token ${token}`, 
+        const response = await axios.get(
+          "http://127.0.0.1:8000/teamleadapi/team/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
           }
-        });
+        );
         setTeamData([response.data]);
-        setError(null); 
+        setError(null);
       } catch (error) {
         console.error("Failed to fetch team details:", error);
         setError("Failed to fetch team details. Please try again.");
@@ -39,20 +41,38 @@ const ViewTeam = () => {
               <thead className="bg-gray-200 sticky top-0">
                 <tr>
                   <th className="py-3 px-4 border-b border-gray-300">Id</th>
-                  <th className="py-3 px-4 border-b border-gray-300">Team Lead Name</th>
-                  <th className="py-3 px-4 border-b border-gray-300">Team Name</th>
-                  <th className="py-3 px-4 border-b border-gray-300">Is Approved</th>
-                  <th className="py-3 px-4 border-b border-gray-300">Members</th>
+                  <th className="py-3 px-4 border-b border-gray-300">
+                    Team Lead Name
+                  </th>
+                  <th className="py-3 px-4 border-b border-gray-300">
+                    Team Name
+                  </th>
+                  <th className="py-3 px-4 border-b border-gray-300">
+                    Is Approved
+                  </th>
+                  <th className="py-3 px-4 border-b border-gray-300">
+                    Members
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {teamData.map((team, index) => (
                   <tr key={index}>
-                    <td className="py-3 px-4 border whitespace-nowrap">{team.id}</td>
-                    <td className="py-3 px-4 border whitespace-nowrap">{team.teamlead}</td>
-                    <td className="py-3 px-4 border whitespace-nowrap">{team.name}</td>
-                    <td className="py-3 px-4 border whitespace-nowrap">{team.is_approved ? 'Yes' : 'No'}</td>   
-                    <td className="py-3 px-4 border whitespace-nowrap">{team.members.join(', ')}</td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      {team.id}
+                    </td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      {team.teamlead}
+                    </td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      {team.name}
+                    </td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      {team.is_approved ? "Yes" : "No"}
+                    </td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      {team.members.join(", ")}
+                    </td>
                   </tr>
                 ))}
               </tbody>

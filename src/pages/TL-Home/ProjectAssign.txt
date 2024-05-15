@@ -17,7 +17,7 @@ function ProjectAssign() {
   const createTeam = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8001/teamleadapi/projects/${projectId}/project_assign/`, // Use projectId in the URL
+        `http://127.0.0.1:8000/teamleadapi/projects/${projectId}/project_assign/`, // Use projectId in the URL
         {
           project,
           teamlead,

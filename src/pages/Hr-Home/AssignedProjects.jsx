@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const AssignedProjects = ( ) => {
-  
+const AssignedProjects = () => {
   const [assignedProjectData, setAssignedProjectData] = useState([]);
-  const token = localStorage.getItem('HRtoken')
-
-  
-
+  const token = localStorage.getItem("HRtoken");
 
   useEffect(() => {
     const fetchAssignedProjectDetails = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8001/hrapi/assignedprojects/",
+          "http://127.0.0.1:8000/hrapi/assignedprojects/",
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -40,18 +36,29 @@ const AssignedProjects = ( ) => {
               <tr>
                 <th className="py-3 px-4 border-b border-gray-300">Id</th>
                 <th className="py-3 px-4 border-b border-gray-300">Project</th>
-                <th className="py-3 px-4 border-b border-gray-300">Team Lead</th>
-                <th className="py-3 px-4 border-b border-gray-300">Team Name</th>
+                <th className="py-3 px-4 border-b border-gray-300">
+                  Team Lead
+                </th>
+                <th className="py-3 px-4 border-b border-gray-300">
+                  Team Name
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {assignedProjectData.map((assigned, index) => (
                 <tr key={index}>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.id}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.project}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.teamlead}</td>
-                  <td className="py-3 px-4 border whitespace-nowrap">{assigned.team}</td>
-                 
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.id}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.project}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.teamlead}
+                  </td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
+                    {assigned.team}
+                  </td>
                 </tr>
               ))}
             </tbody>
