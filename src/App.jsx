@@ -37,6 +37,8 @@ import ManagerRegister from "./pages/Register/ManagerRegister";
 import TraineeRegister from "./pages/Register/TraineeRegister";
 import TeamLeadRegister from "./pages/Register/TeamLeadRegister";
 import Skills from "./components/Skills";
+import TraineeProfile from "./pages/TraineeProfile/TraineeProfile";
+import ManagerLayout from "./layout/ManagerLayout";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -51,7 +53,7 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           \{/* admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -109,12 +111,11 @@ const App = () => {
           <Route path="/performance-lists" element={<PerformanceLists />} />
           <Route path="/task-chart-list" element={<TaskChartList />} />
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
-
           {/* Trainee */}
           <Route path="/trainee/technologies" element={<Skills />} />
-
-
-          
+          <Route element={<ManagerLayout />}>
+            <Route path="/trainee/profile" element={<TraineeProfile />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

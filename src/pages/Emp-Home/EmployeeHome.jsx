@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
@@ -56,7 +56,7 @@ const EmployeeHome = () => {
         <Card className="h-full w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300">
           <div className="mb-2 p-4">
             <Typography variant="h5" color="blue-gray">
-              Employee's Dashboard
+              Trainee Dashboard
             </Typography>
           </div>
           <List>
@@ -138,43 +138,40 @@ const EmployeeHome = () => {
               </ListItemPrefix>
               Log Out
             </ListItem>
-
-            
           </List>
         </Card>
       </div>
 
       <div className="max-w-sm mt-16 ml-6">
-  <Link to="/emp-team">
-    <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          My Team
-        </Typography>
-        <Typography>View my team created by Team Lead</Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button className="text-blue-500">View</Button>
-      </CardFooter>
-    </Card>
-  </Link>
-</div>
-<div className="max-w-sm mt-16 ml-6">
-  <Link to="/project-of-teams">
-    <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          Projects of Team
-        </Typography>
-        <Typography>Here, View the Projects of the team</Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button className="text-blue-500">View</Button>
-      </CardFooter>
-    </Card>
-  </Link>
-</div>
-
+        <Link to="/emp-team">
+          <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+            <CardBody>
+              <Typography variant="h5" color="blue-gray" className="mb-2">
+                My Team
+              </Typography>
+              <Typography>View my team created by Team Lead</Typography>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <Button className="text-blue-500">View</Button>
+            </CardFooter>
+          </Card>
+        </Link>
+      </div>
+      <div className="max-w-sm mt-16 ml-6">
+        <Link to="/project-of-teams">
+          <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+            <CardBody>
+              <Typography variant="h5" color="blue-gray" className="mb-2">
+                Projects of Team
+              </Typography>
+              <Typography>Here, View the Projects of the team</Typography>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <Button className="text-blue-500">View</Button>
+            </CardFooter>
+          </Card>
+        </Link>
+      </div>
     </div>
   );
 };

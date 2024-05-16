@@ -45,7 +45,15 @@ const TraineeRegister = () => {
       }
     } catch (error) {
       console.error("Registration error:", error);
-      setErrorMessage(error.response.data.username[0] || "Registration failed");
+      setErrorMessage(() => {
+        if (error?.response?.data?.username) {
+          return error?.response?.data?.username[0];
+        } else if (error?.response?.data?.email_address) {
+          return error?.response?.data?.email_address[0];
+        } else {
+          ("Registration failed");
+        }
+      });
     }
   };
 

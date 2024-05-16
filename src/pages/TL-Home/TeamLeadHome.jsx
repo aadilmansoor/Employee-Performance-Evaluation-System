@@ -69,7 +69,7 @@ const TeamLeadHome = () => {
       >
         <div className="mb-2 p-4">
           <Typography variant="h5" color="blue-gray">
-            Team Lead's Dashboard
+            Team Lead Dashboard
           </Typography>
         </div>
         <List>
@@ -89,7 +89,7 @@ const TeamLeadHome = () => {
               <ListItemPrefix>
                 <EyeIcon className="h-5 w-5" />
               </ListItemPrefix>
-             Task Chart Lists
+              Task Chart Lists
             </ListItem>
           </Link>
 
@@ -125,7 +125,7 @@ const TeamLeadHome = () => {
         </div>
         <div className="flex justify-start items-start h-5/6 px-6">
           {/* Cards container */}
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-4">
             {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6">
@@ -271,11 +271,8 @@ const TeamLeadHome = () => {
                     </svg>
                   </button>
                 </Link>
-                
               </div>
             </div>
-
-         
           </div>
         </div>
       </div>

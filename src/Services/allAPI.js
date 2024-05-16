@@ -65,6 +65,20 @@ export const assignProject = async (id, token) => {
   );
 };
 
+//get trainee details
+export const getTraineeDetailsAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/empapi/profile/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+
+//edit trainee details
+export const editTraineeDetailsAPI = async (token, body) => {
+  return await commonAPI("PUT", `${base_URL}/empapi/profile/`, body, {
+    Authorization: "Token " + token,
+  });
+};
+
 // //register user
 // export const registerAPI = async (reqBody) => {
 //   return await commonAPI(
