@@ -53,7 +53,7 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           \{/* admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -85,10 +85,7 @@ const App = () => {
             path="/hr-home/hr-inbox"
             element={<HrInbox updateRequests={updateRequests} />}
           />
-          <Route
-            path="/team-lead/profile"
-            element={<TeamLeadProfile/>}
-          />
+          <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
           <Route
             path="/tl-project-details"
             element={<TLProjectDetails updateRequests={updateRequests} />}
@@ -116,9 +113,9 @@ const App = () => {
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
           {/* Trainee */}
           <Route path="/trainee/technologies" element={<Skills />} />
-          <Route element={<ManagerLayout />}>
-            <Route path="/trainee/profile" element={<TraineeProfile />} />
-          </Route>
+          {/* <Route element={<ManagerLayout />}> */}
+          <Route path="/trainee/profile" element={<TraineeProfile />} />
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </div>
