@@ -105,6 +105,15 @@ const TeamLeadHome = () => {
             </ListItem>
           </Link>
 
+          <Link to="/team-lead/profile">
+            <ListItem className="hover:bg-blue-100 transition-colors">
+              <ListItemPrefix>
+                <EyeIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              TeamLead Profile
+            </ListItem>
+          </Link>
+
           <ListItem
             className="hover:bg-blue-100 transition-colors"
             onClick={handleLogout}

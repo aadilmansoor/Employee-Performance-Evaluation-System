@@ -1,107 +1,148 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const TeamLeadProfile = () => {
-  const [username, setUsername] = useState(
-    localStorage.getItem("userName") || ""
-  );
-  const [email, setEmail] = useState(localStorage.getItem("email") || "");
-  const [password, setPassword] = useState(
-    localStorage.getItem("password") || ""
-  );
-  const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
+  const [TeamleadData, setTeamleadData] = useState({
+    name:"",
+    username: "",
+    email_address: "",
+    phoneno: ""
+  });
+  console.log(TeamleadData);
 
-  async function handleSubmit(e) {
+  const token = localStorage.getItem("TlToken");
+
+  // to fetch the data
+  useEffect(() => {
+    const GetTeamleaddata = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/teamleadapi/profile/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
+        // to view data in input form
+        if (response.status === 200) {
+          setTeamleadData(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch team lead details:", error);
+      }
+    };
+
+    if (token) {
+      GetTeamleaddata();
+    }
+  }, [token]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { name,username, email_address, phoneno } = TeamleadData;
+    if (!name || !username || !email_address || !phoneno) {
+      Swal.fire({
+        title: "Incomplete Form!",
+        text: "Please fill in the form",
+        icon: "error",
+      });
+    } else {
+      const reqBody = new FormData();
+      reqBody.append("username", username);
+      reqBody.append("email_address", email_address);
+      reqBody.append("phoneno", phoneno);
+      reqBody.append("name", name);
 
-    setIsLoading(true);
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      localStorage.setItem("userName", username);
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-
-      setSuccessMessage("Profile updated successfully!");
-    } catch (error) {
-      console.error("Error updating profile:", error);
-    } finally {
-      setIsLoading(false);
+      try {
+        const result = await axios.put(
+          "http://127.0.0.1:8000/teamleadapi/profile/",
+          reqBody,
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
+        if (result.status === 200) {
+          console.log(result);
+          Swal.fire({
+            title: "Profile Updated Successfully",
+            text: "Your profile has been updated.",
+            icon: "success",
+          });
+          // Update local storage with the new data
+          localStorage.setItem("TeamleadData", JSON.stringify(result.data));
+        }
+      } catch (error) {
+        console.error("Failed to update profile:", error);
+        Swal.fire({
+          title: "Update Failed",
+          text: "An error occurred while updating your profile. Please try again.",
+          icon: "error",
+        });
+      }
     }
-  }
-  function handleChange(e) {
-    const { id, value } = e.target;
-
-    if (id === "username") {
-      setUsername(value);
-    } else if (id === "email") {
-      setEmail(value);
-    } else if (id === "password") {
-      setPassword(value);
-    }
-  }
+  };
 
   return (
     <div>
-      {/* Profile */}
       <div className="p-6 max-w-lg mx-auto">
         <h1 className="text-3xl font-semibold text-center my-12">Profile</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input type="file" hidden accept="image/*" />
           <img
             src="https://www.366icons.com/media/01/profile-avatar-account-icon-16699.png"
             alt="profile"
             className="rounded-full h-[170px] w-[170px] object-contain cursor-pointer self-center"
           />
+          <Link to={'/tl-home'} className="text-center">/back to home</Link>
 
+          <input
+            type="text"
+            placeholder="name"
+            id="username"
+            className="border p-3 rounded-lg"
+            value={TeamleadData.name}
+            onChange={(e) => setTeamleadData({ ...TeamleadData, name: e.target.value })}
+          />
           <input
             type="text"
             placeholder="Username"
             id="username"
-            defaultValue={username}
             className="border p-3 rounded-lg"
-            onChange={handleChange}
+            value={TeamleadData.username}
+            onChange={(e) => setTeamleadData({ ...TeamleadData, username: e.target.value })}
+            disabled
           />
-
           <input
             type="email"
             placeholder="Email"
             id="email"
-            defaultValue={email}
+            value={TeamleadData.email_address}
+            onChange={(e) => setTeamleadData({ ...TeamleadData, email_address: e.target.value })}
             className="border p-3 rounded-lg"
-            onChange={handleChange}
           />
-
           <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            defaultValue={password}
+            type="text"
+            placeholder="Phonenumber"
+            id="phoneno"
+            value={TeamleadData.phoneno}
+            onChange={(e) => setTeamleadData({ ...TeamleadData, phoneno: e.target.value })}
             className="border p-3 rounded-lg"
-            onChange={handleChange}
           />
-
           <button
             type="submit"
             className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
-            disabled={isLoading}
+            onClick={handleSubmit}
           >
             Update
+            
           </button>
         </form>
-
-        {successMessage && (
-          <span className="text-green-500 mt-2">{successMessage}</span>
-        )}
-
-        <div className="flex justify-between mt-5"></div>
-
-        <div className="flex justify-between mt-5">
-          <span className="text-red-700 cursor-pointer">Delete account</span>
-
-          <span className="text-red-700 cursor-pointer">Sign out</span>
-        </div>
       </div>
     </div>
   );
