@@ -107,6 +107,18 @@ const HrHome = () => {
               Assigned Projects
             </ListItem>
           </Link>
+
+          <Link
+            to="/view-meeting"
+            className="hover:bg-blue-100 transition-colors"
+          >
+            <ListItem>
+              <ListItemPrefix>
+                <EyeIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Meeting
+            </ListItem>
+          </Link>
           <Link
             to="/performance-lists"
             className="hover:bg-blue-100 transition-colors"

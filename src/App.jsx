@@ -39,6 +39,8 @@ import TeamLeadRegister from "./pages/Register/TeamLeadRegister";
 import Skills from "./components/Skills";
 import TraineeProfile from "./pages/TraineeProfile/TraineeProfile";
 import ManagerLayout from "./layout/ManagerLayout";
+import Viewmeeting from "./components/Viewmeeting";
+import Dailytask from "./pages/TL-Home/Dailytask";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -72,6 +74,9 @@ const App = () => {
           <Route path="/manager/profile" element={<HrProfile />} />
           <Route path="/tl-profile" element={<TeamLeadProfile />} />
           <Route path="/hr-profile" element={<HrProfile />} />
+          {/* new */}
+          <Route path="/view-meeting" element={<Viewmeeting/>}/>
+          <Route path="/daily-task" element={<Dailytask/>}/>
           <Route
             path="/register-project"
             element={
