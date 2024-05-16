@@ -65,6 +65,7 @@ export const assignProject = async (id, token) => {
   );
 };
 
+
 // get manager profile 
 export const updateManagerAPI = async (token) => {
   return await commonAPI(
@@ -77,7 +78,7 @@ export const updateManagerAPI = async (token) => {
   );
 };
 
-// edit manager profile 
+
 export const editManagerAPI = async (token,body) => {
   return await commonAPI(
     "PUT",
@@ -90,6 +91,22 @@ export const editManagerAPI = async (token,body) => {
 };
 
 
+
+
+
+//get trainee details
+export const getTraineeDetailsAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/empapi/profile/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+
+//edit trainee details
+export const editTraineeDetailsAPI = async (token, body) => {
+  return await commonAPI("PUT", `${base_URL}/empapi/profile/`, body, {
+    Authorization: "Token " + token,
+  });
+};
 
 
 // //register user
