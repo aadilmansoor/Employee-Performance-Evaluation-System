@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .flex-center {
+        @apply flex items-center justify-center
+    }
+
+    .wrapper {
+        @apply max-w-[90rem] xl:mx-auto p-5 md:px-10 lg:px-11 w-full;
+    }
+
+}

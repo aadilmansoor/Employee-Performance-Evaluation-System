@@ -152,7 +152,7 @@ const EmployeeHome = () => {
               <Typography>View my team created by Team Lead</Typography>
             </CardBody>
             <CardFooter className="pt-0">
-              <Button className="text-blue-500">View</Button>
+              <Button className="bg-white text-blue-500">View</Button>
             </CardFooter>
           </Card>
         </Link>
@@ -167,7 +167,7 @@ const EmployeeHome = () => {
               <Typography>Here, View the Projects of the team</Typography>
             </CardBody>
             <CardFooter className="pt-0">
-              <Button className="text-blue-500">View</Button>
+              <Button className="bg-white text-blue-500 shadow-lg">View</Button>
             </CardFooter>
           </Card>
         </Link>

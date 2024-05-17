@@ -159,12 +159,12 @@ const HrHome = () => {
         <div className="flex justify-center items-start h-5/6 px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-4">
             {/* Card 1 */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Register Project
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here, you have the option to enroll a project
                 </p>
                 <Link to="/register-project">
@@ -193,12 +193,12 @@ const HrHome = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm  rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Register an Employee
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   You have the ability to enroll a new employee into our system
                 </p>
                 <button
@@ -225,12 +225,12 @@ const HrHome = () => {
                 </button>
               </div>
             </div>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   View Performance
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here, you have access to monitor employee performance.
                 </p>
                 <Link to="/performance">

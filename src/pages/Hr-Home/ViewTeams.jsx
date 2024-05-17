@@ -6,6 +6,7 @@ const ViewTeam = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("HRtoken");
+    console.log(token);
 
     const fetchTeamDetails = async () => {
       try {
@@ -20,9 +21,7 @@ const ViewTeam = () => {
       }
     };
 
-    if (token) {
-      fetchTeamDetails();
-    }
+    fetchTeamDetails();
   }, []);
 
   return (

@@ -136,12 +136,12 @@ const TeamLeadHome = () => {
           {/* Cards container */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-4">
-            {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-white">
                   Task Chart List
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-700 text-gray-400">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
@@ -172,12 +172,12 @@ const TeamLeadHome = () => {
             </div> */}
 
             {/* Card 3 */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm  rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   View Team
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here, You can View your team that You've created
                 </p>
 
@@ -211,12 +211,12 @@ const TeamLeadHome = () => {
               </div>
             </div>
             {/* Add more cards here if needed */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm  rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   View Project Details
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here you can see the project details and assign projects
                 </p>
                 <Link to="/tl-project-details">
@@ -249,12 +249,12 @@ const TeamLeadHome = () => {
               </div>
             </div>
 
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Team Creation
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here you can create team of registered employees.
                 </p>
 

@@ -41,7 +41,7 @@ const AdminHome = () => {
   return (
     <div className="flex flex-row h-screen">
       {/* Toggle button for sidebar */}
-      <button
+      {/* <button
         onClick={toggleSidebar}
         className="text-gray-500 fixed top-4 left-4 z-50"
       >
@@ -59,10 +59,10 @@ const AdminHome = () => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-      </button>
+      </button> */}
 
       {/* Sidebar */}
-      <Card
+      {/* <Card
         className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
@@ -115,7 +115,7 @@ const AdminHome = () => {
             Log Out
           </ListItem>
         </List>
-      </Card>
+      </Card> */}
 
       <div className="flex flex-col flex-grow">
         <div className="flex justify-center items-center h-1/6">
@@ -127,12 +127,12 @@ const AdminHome = () => {
           {/* Cards container */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-4">
-            {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-white">
                   Task Chart List
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-700 text-gray-400">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
@@ -163,12 +163,12 @@ const AdminHome = () => {
             </div> */}
 
             {/* Card 3 */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm  border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Approvals
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here, You can Approve Manager,Team leader and Trainee
                 </p>
 
@@ -202,12 +202,12 @@ const AdminHome = () => {
               </div>
             </div>
             {/* Add more cards here if needed */}
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Attend Meeting/Schedule Meeting
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Scheduling ,attending and effectively conducting meetings
                   within the organization{" "}
                 </p>
@@ -241,12 +241,12 @@ const AdminHome = () => {
               </div>
             </div>
 
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
                   Team Creation
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="font-normal text-gray-400">
                   Here you can create team of registered employees.
                 </p>
 
