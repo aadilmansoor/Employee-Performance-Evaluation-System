@@ -43,6 +43,8 @@ import ScheduleMeeting from "./components/ScheduleMeeting";
 import AdminLayout from "./layout/AdminLayout";
 import TeamLeadLayout from "./layout/TeamLeadLayout";
 import TraineeLayout from "./layout/TraineeLayout";
+import Viewmeeting from "./components/Viewmeeting";
+import Dailytask from "./pages/TL-Home/Dailytask";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
