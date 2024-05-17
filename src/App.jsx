@@ -84,8 +84,11 @@ const App = () => {
               element={<HrInbox updateRequests={updateRequests} />}
             />
           </Route>
+          {/* new */}
+          <Route path="/view-meeting" element={<Viewmeeting/>}/>
           {/* team lead */}
           <Route element={<TeamLeadLayout />}>
+          <Route path="/daily-task" element={<Dailytask/>}/>
             <Route path="/team-lead/login" element={<TeamLeadLogin />} />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/tl-home" element={<TeamLeadHome />} />
