@@ -1,5 +1,5 @@
-import { Button, Dialog, DialogHeader } from "@material-tailwind/react";
-import { DialogContent, DialogTitle } from "@mui/material";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 
 
