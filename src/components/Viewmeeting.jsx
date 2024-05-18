@@ -1,6 +1,40 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 function Viewmeeting() {
+ 
+  const [meeting , setMeeting] = useState({})
+  const [error, setError] = useState(null);
+  const token = localStorage.getItem("HRtoken");
+
+  console.log(meeting);
+
+
+
+  useEffect(() => {
+    const Fetchmeeting = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/teamleadapi/meeting/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
+        setMeeting(response.data);
+      } catch (error) {
+        console.log("Error fetching meeting:", error);
+        setError("Error fetching meeting");
+      }
+    };
+
+    Fetchmeeting();
+  }, []);
+
+  
+
+
   return (
     <>
     <div>
