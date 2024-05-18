@@ -25,7 +25,7 @@ const ViewTeam = () => {
   }, []);
 
   return (
-    <div className="mt-8 h-96 sticky top-0 overflow-y-auto">
+    <div className="wrapper h-96 sticky top-0 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">My Team</h1>
       {teamData.length > 0 ? (
         <div className="relative">

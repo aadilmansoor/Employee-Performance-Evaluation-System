@@ -18,9 +18,9 @@ const EmployeeHome = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
 
-  const handleTechnologies =()=>{
-    navigate("/trainee/technologies")
-  }
+  const handleTechnologies = () => {
+    navigate("/trainee/technologies");
+  };
   const handleRegisterClick = () => {
     navigate("");
   };
@@ -34,8 +34,11 @@ const EmployeeHome = () => {
   };
 
   return (
-    <div className="flex flex-row">
-      <div className={`h-screen ${isSidebarOpen ? "" : "hidden"}`}>
+    <div className="wrapper flex flex-col items-center">
+      <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-8">
+        Welcome
+      </h3>
+      {/* <div className={`h-screen ${isSidebarOpen ? "" : "hidden"}`}>
         <button
           onClick={toggleSidebar}
           className="text-gray-500 fixed top-4 left-4 z-50"
@@ -73,8 +76,8 @@ const EmployeeHome = () => {
                 </ListItemPrefix>
                 My Team
               </ListItem>
-            </Link> */}
-            {/* <Link
+            </Link> 
+      <Link
               to="/project-of-teams"
               className="hover:bg-blue-100 transition-colors"
             >
@@ -97,8 +100,8 @@ const EmployeeHome = () => {
                 </ListItemPrefix>
                 Project of Team
               </ListItem>
-            </Link> */}
-            <Link
+            </Link> 
+       <Link
               to="/task-chart"
               className="hover:bg-blue-100 transition-colors"
             >
@@ -143,37 +146,40 @@ const EmployeeHome = () => {
             </ListItem>
           </List>
         </Card>
-      </div>
-
-      <div className="max-w-sm mt-16 ml-6">
-        <Link to="/emp-team">
-          <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-            <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
-                My Team
-              </Typography>
-              <Typography>View my team created by Team Lead</Typography>
-            </CardBody>
-            <CardFooter className="pt-0">
-              <Button className="bg-white text-blue-500">View</Button>
-            </CardFooter>
-          </Card>
-        </Link>
-      </div>
-      <div className="max-w-sm mt-16 ml-6">
-        <Link to="/project-of-teams">
-          <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-            <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
-                Projects of Team
-              </Typography>
-              <Typography>Here, View the Projects of the team</Typography>
-            </CardBody>
-            <CardFooter className="pt-0">
-              <Button className="bg-white text-blue-500 shadow-lg">View</Button>
-            </CardFooter>
-          </Card>
-        </Link>
+      </div>  */}
+      <div className="flex-center ">
+        <div className="max-w-sm mt-16 ml-6">
+          <Link to="/emp-team">
+            <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+              <CardBody>
+                <Typography variant="h5" color="blue-gray" className="mb-2">
+                  My Team
+                </Typography>
+                <Typography>View my team created by Team Lead</Typography>
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button className="bg-white text-blue-500">View</Button>
+              </CardFooter>
+            </Card>
+          </Link>
+        </div>
+        <div className="max-w-sm mt-16 ml-6">
+          <Link to="/project-of-teams">
+            <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+              <CardBody>
+                <Typography variant="h5" color="blue-gray" className="mb-2">
+                  Projects of Team
+                </Typography>
+                <Typography>Here, View the Projects of the team</Typography>
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button className="bg-white text-blue-500 shadow-lg">
+                  View
+                </Button>
+              </CardFooter>
+            </Card>
+          </Link>
+        </div>
       </div>
     </div>
   );

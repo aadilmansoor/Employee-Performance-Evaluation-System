@@ -25,7 +25,6 @@ const AdminLayout = () => {
 
   return (
     <>
-      <Navbar />
       <button
         onClick={toggleSidebar}
         className="text-gray-500 fixed top-4 left-4 z-50"
@@ -45,62 +44,75 @@ const AdminLayout = () => {
           />
         </svg>
       </button>
+      <Navbar />
+      <div className="flex flex-col h-screen">
+        <Card
+          className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 h-screen overflow-auto  fixed top-0 left-0 mt-16 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="mb-2 p-4">
+            <Typography variant="h5" color="blue-gray">
+              Admin Dashboard
+            </Typography>
+          </div>
+          <List>
+            <Link to="/admin" className="hover:bg-blue-100 transition-colors">
+              <ListItem>
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Dashboard
+              </ListItem>
+            </Link>
+            <Link
+              to="/admin/view-employees"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                View Employees
+              </ListItem>
+            </Link>
 
-      <Card
-        className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 h-screen overflow-auto  fixed top-0 left-0 mt-16 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="mb-2 p-4">
-          <Typography variant="h5" color="blue-gray">
-            Admin Dashboard
-          </Typography>
+            {/* <Link to="/task-chart-list">
+              <ListItem className="hover:bg-blue-100 transition-colors">
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Task Chart Lists
+              </ListItem>
+            </Link> */}
+
+            {/* <Link
+              to="/assigned-project"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Assigned Project
+              </ListItem>
+            </Link> */}
+
+            <ListItem
+              className="hover:bg-blue-100 transition-colors"
+              onClick={handleLogout}
+            >
+              <ListItemPrefix>
+                <PowerIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Log Out
+            </ListItem>
+          </List>
+        </Card>
+        <div className={`${isSidebarOpen ? "ms-[240px]" : ""} transition-all`}>
+          <Outlet />
         </div>
-        <List>
-          <Link
-            to="/view-employees"
-            className="hover:bg-blue-100 transition-colors"
-          >
-            <ListItem>
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              View Employee
-            </ListItem>
-          </Link>
-          <Link to="/task-chart-list">
-            <ListItem className="hover:bg-blue-100 transition-colors">
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Task Chart Lists
-            </ListItem>
-          </Link>
-
-          <Link
-            to="/assigned-project"
-            className="hover:bg-blue-100 transition-colors"
-          >
-            <ListItem>
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Assigned Project
-            </ListItem>
-          </Link>
-
-          <ListItem
-            className="hover:bg-blue-100 transition-colors"
-            onClick={handleLogout}
-          >
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
-        </List>
-      </Card>
-      <Outlet />
+      </div>
     </>
   );
 };

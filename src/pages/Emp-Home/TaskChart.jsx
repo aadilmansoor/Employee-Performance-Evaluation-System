@@ -80,7 +80,7 @@ const TaskChart = () => {
   console.log(taskChart);
 
   return (
-    <div className="mt-8 overflow-y-auto">
+    <div className="wrapper overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">Task chart</h1>
       {error ? (
         <p className="mt-4 text-red-500">{error}</p>

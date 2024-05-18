@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const HrInbox = ({ updateRequests }) => {
@@ -60,7 +60,7 @@ const HrInbox = ({ updateRequests }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="wrapper">
       <h1 className="text-3xl font-bold mb-4">HR Inbox</h1>
       {requests.length > 0 ? (
         <div>
@@ -71,7 +71,7 @@ const HrInbox = ({ updateRequests }) => {
             {requests.map((request, index) => (
               <li
                 key={index}
-                className="py-4  border-gray-300 rounded-md border-2"
+                className="py-4  border-gray-300 rounded-md border-2 wrapper"
               >
                 <div className="flex items-center justify-between">
                   <div>

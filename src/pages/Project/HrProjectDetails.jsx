@@ -27,7 +27,7 @@ const HrProjectDetails = () => {
   console.log(projectData);
 
   return (
-    <div className="mt-8 h-96 overflow-y-auto">
+    <div className="wrapper h-96 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">Registered Projects</h1>
       {projectData.length > 0 ? (
         <div className="overflow-x-auto">

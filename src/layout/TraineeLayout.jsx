@@ -8,7 +8,7 @@ import {
   ListItemPrefix,
   Typography,
 } from "@material-tailwind/react";
-import { PowerIcon } from "@heroicons/react/24/solid";
+import { EyeIcon, PowerIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 const TraineeLayout = () => {
@@ -22,6 +22,10 @@ const TraineeLayout = () => {
   const handleLogout = () => {
     localStorage.removeItem("HRtoken");
     navigate("/hr-login");
+  };
+
+  const handleTechnologies = () => {
+    navigate("/trainee/technologies");
   };
 
   return (
@@ -46,20 +50,20 @@ const TraineeLayout = () => {
           />
         </svg>
       </button>
-
-      <Card
-        className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 h-screen overflow-auto  fixed top-0 left-0 mt-16 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        {" "}
-        <div className="mb-2 p-4">
-          <Typography variant="h5" color="blue-gray">
-            Trainee Dashboard
-          </Typography>
-        </div>
-        <List>
-          {/* <Link
+      <div className="flex-col h-screen">
+        <Card
+          className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 h-screen  fixed top-0 left-0 mt-16 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {" "}
+          <div className="mb-2 p-4">
+            <Typography variant="h5" color="blue-gray">
+              Trainee Dashboard
+            </Typography>
+          </div>
+          <List>
+            {/* <Link
               to="/emp-team"
               className="hover:bg-blue-100 transition-colors"
             >
@@ -70,7 +74,7 @@ const TraineeLayout = () => {
                 My Team
               </ListItem>
             </Link> */}
-          {/* <Link
+            {/* <Link
               to="/project-of-teams"
               className="hover:bg-blue-100 transition-colors"
             >
@@ -94,52 +98,66 @@ const TraineeLayout = () => {
                 Project of Team
               </ListItem>
             </Link> */}
-          <Link
-            to="/task-chart"
-            className="hover:bg-blue-100 transition-colors"
-          >
-            <ListItem>
+            <Link
+              to="/emp-home"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Dashboard
+              </ListItem>
+            </Link>
+            <Link
+              to="/task-chart"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
+                    />
+                  </svg>
+                </ListItemPrefix>
+                Task Chart
+              </ListItem>
+            </Link>
+            <ListItem
+              className="hover:bg-blue-100 transition-colors"
+              onClick={handleTechnologies}
+            >
               <ListItemPrefix>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
-                  />
-                </svg>
+                <LaptopChromebookIcon />
               </ListItemPrefix>
-              Task Chart
+              Technologies
             </ListItem>
-          </Link>
-          <ListItem
-            className="hover:bg-blue-100 transition-colors"
-            onClick={handleLogout}
-          >
-            <ListItemPrefix>
-              <LaptopChromebookIcon />
-            </ListItemPrefix>
-            Technologies
-          </ListItem>
 
-          <ListItem
-            className="hover:bg-blue-100 transition-colors"
-            onClick={handleLogout}
-          >
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
-        </List>
-      </Card>
-      <Outlet />
+            <ListItem
+              className="hover:bg-blue-100 transition-colors"
+              onClick={handleLogout}
+            >
+              <ListItemPrefix>
+                <PowerIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Log Out
+            </ListItem>
+          </List>
+        </Card>
+        <div className={`${isSidebarOpen ? "ms-[240px]" : ""} transition-all`}>
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

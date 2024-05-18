@@ -39,9 +39,9 @@ const TeamLeadHome = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="wrapper">
       {/* Toggle button for sidebar */}
-      <button
+      {/* <button
         onClick={toggleSidebar}
         className="text-gray-500 fixed top-4 left-4 z-50"
       >
@@ -59,10 +59,10 @@ const TeamLeadHome = () => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-      </button>
+      </button> */}
 
       {/* Sidebar */}
-      <Card
+      {/* <Card
         className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
@@ -133,11 +133,11 @@ const TeamLeadHome = () => {
             Log Out
           </ListItem>
         </List>
-      </Card>
+      </Card> */}
 
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col items-center flex-grow">
         <div className="flex justify-center items-center h-1/6">
-          <h3 className="text-3xl font-medium leading-tight text-center text-primary">
+          <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-8">
             Welcome
           </h3>
         </div>

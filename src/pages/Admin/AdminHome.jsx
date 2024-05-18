@@ -39,7 +39,8 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="wrapper">
+      {/* <div className="flex flex-row h-screen"> */}
       {/* Toggle button for sidebar */}
       {/* <button
         onClick={toggleSidebar}
@@ -117,9 +118,9 @@ const AdminHome = () => {
         </List>
       </Card> */}
 
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow items-center w-full">
         <div className="flex justify-center items-center h-1/6">
-          <h3 className="text-3xl font-medium leading-tight text-center text-primary">
+          <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-6">
             Welcome
           </h3>
         </div>
@@ -277,6 +278,7 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
+      {/*  </div> */}
     </div>
   );
 };

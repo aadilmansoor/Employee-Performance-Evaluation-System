@@ -63,41 +63,60 @@ const App = () => {
         <Routes>
           {/* Common */}
           <Route path="/" element={<Login />} />
-          <Route path="/view-employees" element={<ViewEmployees />} />
           <Route path="/schedule-meeting" element={<ScheduleMeeting />} />\
           {/* admin */}
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route element={<AdminLayout />}>
-            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminHome />} />
+            <Route path="/admin/view-employees" element={<ViewEmployees />} />
+
             <Route path="/admin/approval" element={<AdminApproval />} />
           </Route>
           {/* manager */}
+          <Route path="/manager/login" element={<ManagerLogin />} />
+          <Route path="manager/register" element={<ManagerRegister />} />
           <Route element={<ManagerLayout />}>
-            <Route path="/manager/login" element={<ManagerLogin />} />
-            <Route path="manager/register" element={<ManagerRegister />} />
             <Route path="/manager" element={<HrHome />} />
             <Route path="/hr-profile" element={<HrProfile />} />
+            <Route path="/performance-lists" element={<PerformanceLists />} />
+            <Route
+              path="/manager/trainee-register"
+              element={<TraineeRegister />}
+            />
+            <Route
+              path="/manager/assigned-projects"
+              element={<AssignedProjects />}
+            />
+            <Route path="/view-teams" element={<ViewTeams />} />
             <Route path="/hr-project-details" element={<HrProjectDetails />} />
             {/* Pass the updateRequests function to HrInbox */}
             <Route
-              path="/hr-home/hr-inbox"
+              path="/manager/inbox"
               element={<HrInbox updateRequests={updateRequests} />}
             />
           </Route>
           {/* team lead */}
+          <Route path="/team-lead/login" element={<TeamLeadLogin />} />
+          <Route path="/team-lead/register" element={<TeamLeadRegister />} />
           <Route element={<TeamLeadLayout />}>
-            <Route path="/team-lead/login" element={<TeamLeadLogin />} />
-            <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/tl-home" element={<TeamLeadHome />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
             <Route path="/team-create" element={<TeamCreation />} />
+            <Route path="/task-chart-list" element={<TaskChartList />} />
+            <Route
+              path="/team-lead/assigned-projects"
+              element={<AssignedProjects />}
+            />
+            <Route
+              path="/team-lead/view-employees"
+              element={<ViewEmployees />}
+            />
             <Route
               path="/tl-project-details"
               element={<TLProjectDetails updateRequests={updateRequests} />}
             />
             <Route path="/project-of-teams" element={<ProjectOfTeams />} />
             <Route path="/view-team" element={<ViewTeam />} />
-            <Route path="/view-teams" element={<ViewTeams />} />
             <Route
               path="/register-project"
               element={
@@ -109,22 +128,17 @@ const App = () => {
             />
           </Route>
           {/* trainee */}
+          <Route path="/trainee/login" element={<TraineeLogin />} />
           <Route element={<TraineeLayout />}>
-            <Route path="/trainee/login" element={<TraineeLogin />} />
-            <Route path="/trainee/register" element={<TraineeRegister />} />
             <Route path="/emp-home" element={<EmployeeHome />} />
             <Route
               path="/assign-to-emp/:id"
               element={<AssignProjectEmployees />}
             />
-            <Route path="/assigned-projects" element={<AssignedProjects />} />
             <Route path="/emp-team" element={<EmpTeam />} />
             <Route path="/task-chart" element={<TaskChart />} />
             <Route path="/update-tasks/:id" element={<UpdateTask />} />
-            <Route path="/assigned-project" element={<AssignedProject />} />
             <Route path="/performance" element={<Performance />} />
-            <Route path="/performance-lists" element={<PerformanceLists />} />
-            <Route path="/task-chart-list" element={<TaskChartList />} />
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
           </Route>

@@ -31,7 +31,7 @@ const TaskChartList = () => {
   console.log(taskUpdates);
 
   return (
-    <div className="mt-8">
+    <div className="wrapper">
       <h1 className="text-2xl font-semibold mb-4">
         Updated Tasks by Employees
       </h1>

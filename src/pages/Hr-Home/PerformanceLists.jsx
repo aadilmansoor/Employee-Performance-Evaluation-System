@@ -47,7 +47,7 @@ const PerformanceLists = () => {
     }
   };
   return (
-    <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div className="wrapper grid grid-cols-1 gap-6 sm:grid-cols-2">
       {performanceData.length > 0 ? (
         performanceData.map((performance, index) => (
           <Paper key={index} elevation={3} className="relative">
