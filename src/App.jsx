@@ -45,6 +45,8 @@ import TeamLeadLayout from "./layout/TeamLeadLayout";
 import TraineeLayout from "./layout/TraineeLayout";
 import Viewmeeting from "./components/Viewmeeting";
 import Dailytask from "./pages/TL-Home/Dailytask";
+import Review from "./components/Review";
+import ViewStudy from "./pages/ViewStudy";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -90,6 +92,8 @@ const App = () => {
           <Route element={<TeamLeadLayout />}>
           <Route path="/daily-task" element={<Dailytask/>}/>
             <Route path="/team-lead/login" element={<TeamLeadLogin />} />
+            <Route path="/review" element={<Review />} />
+
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/tl-home" element={<TeamLeadHome />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
@@ -130,6 +134,8 @@ const App = () => {
             <Route path="/task-chart-list" element={<TaskChartList />} />
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
+            <Route path="/trainee/study" element={<ViewStudy/>} />
+
           </Route>
           {/* <Route path="/emp-assign" element={<ProjectStatusReport />} /> */}
           {/* <Route path="/project-assign/:projectId" element={<ProjectAssign />} /> */}
