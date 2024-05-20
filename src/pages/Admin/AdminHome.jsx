@@ -1,124 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
-} from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-  EyeDropperIcon,
-  EyeIcon,
-  PlusIcon,
-  CalendarDaysIcon,
-} from "@heroicons/react/24/solid";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Link } from "react-router-dom";
+import { CalendarDaysIcon } from "@heroicons/react/24/solid";
 
 const AdminHome = () => {
-  const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const name = localStorage.getItem("userName");
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    navigate("/");
-  };
-
   return (
     <div className="wrapper">
-      {/* <div className="flex flex-row h-screen"> */}
-      {/* Toggle button for sidebar */}
-      {/* <button
-        onClick={toggleSidebar}
-        className="text-gray-500 fixed top-4 left-4 z-50"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-      </button> */}
-
-      {/* Sidebar */}
-      {/* <Card
-        className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="mb-2 p-4">
-          <Typography variant="h5" color="blue-gray">
-            Admin Dashboard
-          </Typography>
-        </div>
-        <List>
-          <Link
-            to="/view-employees"
-            className="hover:bg-blue-100 transition-colors"
-          >
-            <ListItem>
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              View Employee
-            </ListItem>
-          </Link>
-          <Link to="/task-chart-list">
-            <ListItem className="hover:bg-blue-100 transition-colors">
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Task Chart Lists
-            </ListItem>
-          </Link>
-
-          <Link
-            to="/assigned-project"
-            className="hover:bg-blue-100 transition-colors"
-          >
-            <ListItem>
-              <ListItemPrefix>
-                <EyeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Assigned Project
-            </ListItem>
-          </Link>
-
-          <ListItem
-            className="hover:bg-blue-100 transition-colors"
-            onClick={handleLogout}
-          >
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
-        </List>
-      </Card> */}
-
       <div className="flex flex-col flex-grow items-center w-full">
         <div className="flex justify-center items-center h-1/6">
           <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-6">
@@ -266,7 +151,6 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
-      {/*  </div> */}
     </div>
   );
 };

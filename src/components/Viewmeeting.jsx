@@ -6,7 +6,11 @@ import {
   getMeetingsTraineeAPI,
 } from "@/Services/allAPI";
 import { useEffect, useState } from "react";
-import { filterAndSortMeetings, formatDateForMeeting } from "@/lib/utils";
+import {
+  convertTo12HourFormat,
+  filterAndSortMeetings,
+  formatDateForMeeting,
+} from "@/lib/utils";
 import { UserIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
 
@@ -78,7 +82,7 @@ export default function ViewMeeting({ role }) {
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                     <ClockIcon className="h-4 w-4" />
-                    <span>10:30 AM</span>
+                    <span>{convertTo12HourFormat(meeting.time)}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                     <UserIcon className="w-4 h-4" />

@@ -31,7 +31,7 @@ const AdminLayout = () => {
     <>
       <button
         onClick={toggleSidebar}
-        className="text-gray-500 fixed top-4 left-4 z-50"
+        className="text-gray-500 fixed top-[30px] left-[20px] z-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const AdminLayout = () => {
           />
         </svg>
       </button>
-      <Navbar />
+      <Navbar role="admin" />
       <div className="flex flex-col h-screen">
         <Card
           className={`w-64 p-4 shadow-xl shadow-blue-gray-900/5 transition-width ease-in-out duration-300 h-screen overflow-auto  fixed top-0 left-0 mt-16 ${

@@ -68,9 +68,9 @@ const EmpTeam = () => {
                       </div>
                       <div>
                         <Typography className="font-semibold">
-                          Project:
+                          Project Members:
                         </Typography>
-                        <Typography>{team.members.join(",")}</Typography>
+                        <Typography>{team.members.join(", ")}</Typography>
                       </div>
                       <div>
                         <Typography className="font-semibold">

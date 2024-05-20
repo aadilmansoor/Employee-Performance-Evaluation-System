@@ -66,3 +66,21 @@ export function filterAndSortMeetings(meetings) {
 
   return upcomingMeetings;
 }
+
+export function convertTo12HourFormat(time) {
+  // Split the input time into hours, minutes, and seconds
+  let [hours, minutes, seconds] = time.split(":").map(Number);
+
+  // Determine AM/PM suffix
+  let period = hours >= 12 ? "PM" : "AM";
+
+  // Convert hours from 24-hour to 12-hour format
+  hours = hours % 12 || 12; // Convert '0' or '12' to '12'
+
+  // Format the hours and minutes as a string
+  let formattedTime = `${hours}:${minutes
+    .toString()
+    .padStart(2, "0")} ${period}`;
+
+  return formattedTime;
+}

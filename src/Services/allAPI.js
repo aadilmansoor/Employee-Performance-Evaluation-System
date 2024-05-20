@@ -138,6 +138,12 @@ export const getMeetingsTraineeAPI = async (token) => {
     Authorization: "Token " + token,
   });
 };
+//get daily task
+export const getDailyTaskAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/empapi/dailytask/`, "", {
+    Authorization: "Token " + token,
+  });
+};
 
 // //register user
 // export const registerAPI = async (reqBody) => {

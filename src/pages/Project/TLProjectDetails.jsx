@@ -90,7 +90,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   };
 
   return (
-    <div className="mt-8 h-96 overflow-y-auto">
+    <div className="wrapper mt-8 h-96 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">Registered Projects</h1>
       {projectData.length > 0 ? (
         <div className="overflow-x-auto">
@@ -164,6 +164,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
                         onClick={() => handleAssign(project.id)}
                         type="button"
                         className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-800 shadow-lg  shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        disabled={project.status !== "pending"}
                       >
                         {project.project_status === "pending"
                           ? "Assign"

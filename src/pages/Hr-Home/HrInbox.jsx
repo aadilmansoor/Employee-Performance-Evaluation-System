@@ -15,10 +15,21 @@ const HrInbox = ({ updateRequests }) => {
     setRequests(storedRequests);
   }, []);
 
-  const handleAccept = async () => {
+  const handleAccept = async () => {};
+
+  console.log(formData.id);
+
+  // const handleAccept = (teamId) => {
+  //   console.log(`Request for team ${teamId} accepted`);
+  //   const updatedRequests = requests.filter(request => request.teamId !== teamId);
+  //   setRequests(updatedRequests);
+  //   localStorage.setItem('hrRequests', JSON.stringify(updatedRequests));
+  //   updateRequests(updatedRequests);
+  // };
+  const handleAcceptButtonClick = async (teamId) => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/hrapi/teams/${formData.id}/team_approval/`,
+        `http://127.0.0.1:8000/hrapi/teams/${teamId}/team_approval/`,
         {},
         {
           headers: {
@@ -33,20 +44,6 @@ const HrInbox = ({ updateRequests }) => {
     } catch (error) {
       console.error("Failed to fetch project details:", error);
     }
-  };
-  handleAccept();
-
-  console.log(formData.id);
-
-  // const handleAccept = (teamId) => {
-  //   console.log(`Request for team ${teamId} accepted`);
-  //   const updatedRequests = requests.filter(request => request.teamId !== teamId);
-  //   setRequests(updatedRequests);
-  //   localStorage.setItem('hrRequests', JSON.stringify(updatedRequests));
-  //   updateRequests(updatedRequests);
-  // };
-  const handleAcceptButtonClick = (teamId) => {
-    setFormData({ id: teamId });
   };
 
   const handleDecline = (teamId) => {

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const ViewEmployees = () => {
   const token = localStorage.getItem("TlToken");
@@ -28,19 +27,15 @@ const ViewEmployees = () => {
 
   return (
     <div className="mt-8 h-96 overflow-y-auto wrapper">
-      <h1 className="text-2xl font-semibold mb-4">Employees</h1>
+      <h1 className="text-2xl font-semibold mb-4">Trainees</h1>
       {employeeData.length > 0 ? (
         <div className="relative">
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white rounded-md shadow-md">
               <thead className="bg-gray-200 sticky top-0">
                 <tr>
-                  <th className="py-3 px-4 border-b border-gray-300">
-                    Employee Id
-                  </th>
-                  <th className="py-3 px-4 border-b border-gray-300">
-                    Employee Name
-                  </th>
+                  <th className="py-3 px-4 border-b border-gray-300">Id</th>
+                  <th className="py-3 px-4 border-b border-gray-300">Name</th>
                   <th className="py-3 px-4 border-b border-gray-300">Email</th>
                   <th className="py-3 px-4 border-b border-gray-300">
                     Position

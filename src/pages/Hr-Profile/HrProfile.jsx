@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { editManagerAPI, updateManagerAPI } from "../../Services/allAPI";
 import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const HrProfile = () => {
-
   const [isLoading, setIsLoading] = useState(false);
 
   const [managerDetails, setManagerDetails] = useState({
-    name:"",
-    email_address:"",
-    phoneno:"",
+    name: "",
+    email_address: "",
+    phoneno: "",
   });
-
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,17 +18,15 @@ const HrProfile = () => {
     setIsLoading(true);
 
     try {
-     const token =localStorage.getItem("HRtoken")
-     const result=await editManagerAPI(token,managerDetails);
-     if(result.status===200){
-      Swal.fire({
-        icon:"success",
-        title:"Updated",
-        text:"Profile updated succesfully"
-
-
-      })
-     }
+      const token = localStorage.getItem("HRtoken");
+      const result = await editManagerAPI(token, managerDetails);
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Updated",
+          text: "Profile updated succesfully",
+        });
+      }
     } catch (error) {
       console.error("Error updating profile:", error);
     } finally {
@@ -37,19 +34,16 @@ const HrProfile = () => {
     }
   }
 
-
-  const getManagerDetails=async() =>{
-    const token=localStorage.getItem("HRtoken");
-    const result=await updateManagerAPI(token);
-   if(result.status===200){
-    setManagerDetails(result?.data);
-   }
-
-
-  }
-  useEffect(()=>{
+  const getManagerDetails = async () => {
+    const token = localStorage.getItem("HRtoken");
+    const result = await updateManagerAPI(token);
+    if (result.status === 200) {
+      setManagerDetails(result?.data);
+    }
+  };
+  useEffect(() => {
     getManagerDetails();
-  },[]);
+  }, []);
 
   return (
     <div>
@@ -71,10 +65,10 @@ const HrProfile = () => {
             id="name"
             value={managerDetails.name}
             className="border  p-3 rounded-lg"
-            onChange={(e)=>
+            onChange={(e) =>
               setManagerDetails({
                 ...managerDetails,
-                name:e.target.value
+                name: e.target.value,
               })
             }
           />
@@ -86,15 +80,15 @@ const HrProfile = () => {
             id="email"
             value={managerDetails.email_address}
             className="border p-3 rounded-lg"
-            onChange={(e)=>
+            onChange={(e) =>
               setManagerDetails({
                 ...managerDetails,
-                email_address:e.target.value
+                email_address: e.target.value,
               })
             }
           />
 
-         <label htmlFor="phonenumber">Phonenumber:</label>
+          <label htmlFor="phonenumber">Phonenumber:</label>
 
           <input
             type="number"
@@ -102,24 +96,22 @@ const HrProfile = () => {
             id="phonenumber"
             value={managerDetails.phoneno}
             className="border p-3 rounded-lg"
-            onChange={(e)=>
+            onChange={(e) =>
               setManagerDetails({
                 ...managerDetails,
-                phoneno:e.target.value
-
+                phoneno: e.target.value,
               })
             }
           />
 
-          <button
+          <Button
             type="submit"
-            className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
+            className=" text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
             disabled={isLoading}
           >
             Update
-          </button>
+          </Button>
         </form>
-      
       </div>
     </div>
   );

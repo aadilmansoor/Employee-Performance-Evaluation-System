@@ -2,27 +2,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = ({ role }) => {
   const [userName, setUserName] = useState("");
-  const [role, setRole] = useState("");
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const storedUserName = localStorage.getItem("userName");
-      const storedRole = localStorage.getItem("role");
-      if (storedUserName && storedRole) {
-        setUserName(storedUserName);
-        setRole(storedRole);
-      }
-    } else {
-      setUserName("");
-      setRole("");
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     const storedUserName = localStorage.getItem("userName");
+  //     const storedRole = localStorage.getItem("role");
+  //     if (storedUserName && storedRole) {
+  //       setUserName(storedUserName);
+  //       setRole(storedRole);
+  //     }
+  //   } else {
+  //     setUserName("");
+  //   }
+  // }, [isLoggedIn]);
 
   return (
-    <nav className="sticky top-0 bg-[rgb(17,24,39)] z-20 border-b border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="sticky top-0 bg-[rgb(17,24,39)] z-20 border-b border-gray-600 h-[82px]">
+      <div className="flex flex-wrap items-center justify-between ms-[3rem] p-4 h-full">
         <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
             src="https://cdn3.iconfinder.com/data/icons/gradient-general-pack/512/checkmark-01-1024.png"
@@ -33,7 +31,7 @@ const Navbar = ({ isLoggedIn }) => {
             Talent Trove
           </span>
         </a>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        {/* <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
@@ -58,8 +56,8 @@ const Navbar = ({ isLoggedIn }) => {
               />
             </svg>
           </button>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           className={`items-center justify-between w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
@@ -106,7 +104,20 @@ const Navbar = ({ isLoggedIn }) => {
                 </Link>
               </li>
             )}
-          </ul> */}
+          </ul>
+        </div> */}
+        {console.log({ role })}
+        {console.log(!role)}
+        <div className={`${!role || role === "admin" ? "hidden" : ""}`}>
+          <Link to={`${role}/profile`}>
+            <img
+              src="https://p7.hiclipart.com/preview/184/113/161/user-profile-computer-icons-clip-art-profile.jpg"
+              alt=""
+              width={50}
+              height={50}
+              className="rounded-full me-6"
+            />
+          </Link>
         </div>
       </div>
     </nav>

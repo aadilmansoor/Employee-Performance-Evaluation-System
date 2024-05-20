@@ -1,3 +1,4 @@
+import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -5,10 +6,10 @@ import Swal from "sweetalert2";
 
 const TeamLeadProfile = () => {
   const [TeamleadData, setTeamleadData] = useState({
-    name:"",
+    name: "",
     username: "",
     email_address: "",
-    phoneno: ""
+    phoneno: "",
   });
   console.log(TeamleadData);
 
@@ -42,7 +43,7 @@ const TeamLeadProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name,username, email_address, phoneno } = TeamleadData;
+    const { name, username, email_address, phoneno } = TeamleadData;
     if (!name || !username || !email_address || !phoneno) {
       Swal.fire({
         title: "Incomplete Form!",
@@ -55,7 +56,6 @@ const TeamLeadProfile = () => {
       reqBody.append("email_address", email_address);
       reqBody.append("phoneno", phoneno);
       reqBody.append("name", name);
-
 
       try {
         const result = await axios.put(
@@ -99,49 +99,65 @@ const TeamLeadProfile = () => {
             alt="profile"
             className="rounded-full h-[170px] w-[170px] object-contain cursor-pointer self-center"
           />
-          <Link to={'/tl-home'} className="text-center">/back to home</Link>
 
-          <input
-            type="text"
-            placeholder="name"
-            id="username"
-            className="border p-3 rounded-lg"
-            value={TeamleadData.name}
-            onChange={(e) => setTeamleadData({ ...TeamleadData, name: e.target.value })}
-          />
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             placeholder="Username"
             id="username"
             className="border p-3 rounded-lg"
             value={TeamleadData.username}
-            onChange={(e) => setTeamleadData({ ...TeamleadData, username: e.target.value })}
+            onChange={(e) =>
+              setTeamleadData({ ...TeamleadData, username: e.target.value })
+            }
             disabled
           />
+
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            placeholder="name"
+            id="name"
+            className="border p-3 rounded-lg"
+            value={TeamleadData.name}
+            onChange={(e) =>
+              setTeamleadData({ ...TeamleadData, name: e.target.value })
+            }
+          />
+
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             placeholder="Email"
             id="email"
             value={TeamleadData.email_address}
-            onChange={(e) => setTeamleadData({ ...TeamleadData, email_address: e.target.value })}
+            onChange={(e) =>
+              setTeamleadData({
+                ...TeamleadData,
+                email_address: e.target.value,
+              })
+            }
             className="border p-3 rounded-lg"
           />
+
+          <label htmlFor="phoneno">Phone Number:</label>
           <input
             type="text"
             placeholder="Phonenumber"
             id="phoneno"
             value={TeamleadData.phoneno}
-            onChange={(e) => setTeamleadData({ ...TeamleadData, phoneno: e.target.value })}
+            onChange={(e) =>
+              setTeamleadData({ ...TeamleadData, phoneno: e.target.value })
+            }
             className="border p-3 rounded-lg"
           />
-          <button
+          <Button
             type="submit"
-            className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
+            className="text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
             onClick={handleSubmit}
           >
             Update
-            
-          </button>
+          </Button>
         </form>
       </div>
     </div>

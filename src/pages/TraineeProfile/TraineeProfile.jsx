@@ -4,6 +4,7 @@ import {
   getTraineeDetailsAPI,
 } from "../../Services/allAPI";
 import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const TraineeProfile = () => {
   const [traineeDetails, setTraineeDetails] = useState({
@@ -137,13 +138,13 @@ const TraineeProfile = () => {
             }
           />
 
-          <button
+          <Button
             type="submit"
-            className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
+            className=" text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 relative"
             disabled={isLoading}
           >
             Update
-          </button>
+          </Button>
         </form>
       </div>
     </div>

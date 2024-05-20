@@ -1,60 +1,61 @@
 .navbar {
-    background-color: transparent;
-    color: #fff;
-    position: relative;
-    width: 100%;
-    z-index: 20;
-    top: 0;
-    left: 0;
-  }
-  
-  .profile-section {
-    position: relative;
-  }
-  
-  button {
-    background-color: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border: 1px solid #ddd;
-    padding: 10px;
-    min-width: 150px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .profile-dropdown p {
-    margin: 0 0 10px;
-  }
-  
-  .profile-dropdown a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .profile-dropdown a:hover {
-    background-color: #f0f0f0;
-  }
-  .profile-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-photo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
+  background-color: transparent;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  top: 0;
+  left: 0;
+}
+
+.profile-section {
+  position: relative;
+}
+
+.nav-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-width: 150px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown p {
+  margin: 0 0 10px;
+}
+
+.profile-dropdown a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+  transition: background-color 0.3s;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f0f0f0;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}

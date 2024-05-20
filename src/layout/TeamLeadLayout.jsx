@@ -29,10 +29,10 @@ const TeamLeadLayout = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar role="team-lead" />
       <button
         onClick={toggleSidebar}
-        className="text-gray-500 fixed top-4 left-4 z-50"
+        className="text-gray-500 fixed top-[30px] left-[20px] z-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

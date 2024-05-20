@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Header/Navbar";
 import HrHome from "./pages/Hr-Home/HrHome";
 import TeamLeadHome from "./pages/TL-Home/TeamLeadHome";
 import EmployeeHome from "./pages/Emp-Home/EmployeeHome";
@@ -23,7 +22,6 @@ import EmpTeam from "./pages/Emp-Home/EmpTeam";
 // import TaskUpdateLists from "./pages/Emp-Home/TaskUpdateLists";
 import UpdateTask from "./pages/Emp-Home/UpdateTask";
 import TaskChart from "./pages/Emp-Home/TaskChart";
-import AssignedProject from "./pages/TL-Home/AssignedProject";
 import Performance from "./pages/Hr-Home/Performance";
 import PerformanceLists from "./pages/Hr-Home/PerformanceLists";
 import TaskChartList from "./pages/TL-Home/TaskChartList";
@@ -43,12 +41,13 @@ import ScheduleMeeting from "./components/ScheduleMeeting";
 import AdminLayout from "./layout/AdminLayout";
 import TeamLeadLayout from "./layout/TeamLeadLayout";
 import TraineeLayout from "./layout/TraineeLayout";
-import Dailytask from "./pages/TL-Home/Dailytask";
 import Review from "./components/Review";
 import ViewStudy from "./pages/ViewStudy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ViewMeeting from "./components/Viewmeeting";
+import AddDailyTask from "./pages/TL-Home/AddDailyTask";
+import DailyTask from "./pages/Trainee/DailyTask";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -95,7 +94,7 @@ const App = () => {
               element={<ViewMeeting role="manager" />}
             />
 
-            <Route path="/hr-profile" element={<HrProfile />} />
+            <Route path="/manager/profile" element={<HrProfile />} />
             <Route
               path="/manager/schedule-meeting"
               element={<ScheduleMeeting role="manager" />}
@@ -122,7 +121,10 @@ const App = () => {
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/team-lead/register" element={<TeamLeadRegister />} />
           <Route element={<TeamLeadLayout />}>
-            <Route path="/daily-task" element={<Dailytask />} />
+            <Route
+              path="/team-lead/add-daily-task"
+              element={<AddDailyTask />}
+            />
             <Route path="/team-lead/login" element={<TeamLeadLogin />} />
             <Route
               path="/team-lead/view-meeting"
@@ -177,6 +179,7 @@ const App = () => {
 
             <Route path="/emp-team" element={<EmpTeam />} />
             <Route path="/task-chart" element={<TaskChart />} />
+            <Route path="/trainee/daily-task" element={<DailyTask />} />
             <Route path="/update-tasks/:id" element={<UpdateTask />} />
             <Route path="/performance" element={<Performance />} />
             <Route path="/trainee/technologies" element={<Skills />} />
