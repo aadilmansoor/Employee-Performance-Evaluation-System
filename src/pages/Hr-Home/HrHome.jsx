@@ -76,7 +76,7 @@ const HrHome = () => {
         </div>
         <List>
           <Link
-            to="/hr-project-details"
+            to="/manager/project-details"
             className="hover:bg-blue-100 transition-colors"
           >
             <ListItem>

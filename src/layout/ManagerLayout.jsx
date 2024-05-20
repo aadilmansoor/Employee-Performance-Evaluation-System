@@ -64,8 +64,9 @@ const ManagerLayout = () => {
             </Typography>
           </div>
           <List>
-            <Link to="/manager" className="hover:bg-blue-100 transition-colors">
-              <ListItem className="hover:bg-blue-100">
+            <Link to="/manager" 
+            >
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -73,10 +74,9 @@ const ManagerLayout = () => {
               </ListItem>
             </Link>
             <Link
-              to="/hr-project-details"
-              className="hover:bg-blue-100 transition-colors"
+              to="/manager/project-details"
             >
-              <ListItem className="hover:bg-blue-100">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -85,9 +85,8 @@ const ManagerLayout = () => {
             </Link>
             <Link
               to="/view-teams"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem className="hover:bg-blue-100">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -96,9 +95,8 @@ const ManagerLayout = () => {
             </Link>
             <Link
               to="/manager/assigned-projects"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem className="hover:bg-blue-100">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -107,9 +105,8 @@ const ManagerLayout = () => {
             </Link>
             <Link
               to="/performance-lists"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem className="hover:bg-blue-100">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -118,9 +115,8 @@ const ManagerLayout = () => {
             </Link>
             <Link
               to="/manager/view-meeting"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem>
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <CalendarDaysIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -129,9 +125,8 @@ const ManagerLayout = () => {
             </Link>
             <Link
               to="/manager/inbox"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem>
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <InboxIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -148,7 +143,7 @@ const ManagerLayout = () => {
               </ListItem>
             </Link>
             <ListItem
-              className="hover:bg-blue-100 transition-colors"
+              className="hover:bg-blue-100 transition-colors rounded-lg"
               onClick={handleLogout}
             >
               <ListItemPrefix>

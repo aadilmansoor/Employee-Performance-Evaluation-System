@@ -1,3 +1,4 @@
+import { studyMaterials } from "@/Constants";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -6,36 +7,37 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Link } from "react-router-dom";
 
 export default function ViewStudy() {
   return (
     <div className="wrapper">
+      <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-6">
+            Study materials
+          </h3>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-10 p-4">
-        {[1, 2, 3, 4].map((doc) => (
+        {studyMaterials.map((doc) => (
           <div
-            key={doc}
+            key={doc.title}
             className="relative group overflow-hidden rounded-lg cursor-pointer"
           >
-            <Link className="absolute inset-0 z-10" href="#">
-              <span className="sr-only">View</span>
-            </Link>
             <img
-              alt={`Document ${doc}`}
-              className="object-cover w-full h-60 group-hover:opacity-50 transition-opacity"
+              alt={`no `}
+              className="object-contain w-full h-60 group-hover:opacity-50 transition-opacity"
               height="300"
-              src="/placeholder.svg"
+              src={doc.src}
               style={{
                 aspectRatio: "300/300",
-                objectFit: "cover",
+                objectFit: "contain",
               }}
               width="300"
             />
             <div className="bg-white p-4 dark:bg-gray-950">
-              <h3 className="font-semibold text-lg md:text-xl">{`Document ${doc}`}</h3>
+              <h3 className="font-semibold text-lg md:text-xl">{doc.title}</h3>
+              <a href={doc.doc} className="text-[-webkit-link] underline " download>Download</a>
             </div>
           </div>
-        ))}
+          ))} 
       </div>
       <Dialog>
         <DialogTrigger id="pdf-viewer" />
