@@ -1,14 +1,22 @@
-import { Button, Dialog, DialogHeader } from "@material-tailwind/react";
-import { DialogContent, DialogTitle } from "@mui/material";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
-
 
 export default function ViewStudy() {
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+    <div className="wrapper">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-10 p-4">
         {[1, 2, 3, 4].map((doc) => (
-          <div key={doc} className="relative group overflow-hidden rounded-lg cursor-pointer">
+          <div
+            key={doc}
+            className="relative group overflow-hidden rounded-lg cursor-pointer"
+          >
             <Link className="absolute inset-0 z-10" href="#">
               <span className="sr-only">View</span>
             </Link>
@@ -18,8 +26,8 @@ export default function ViewStudy() {
               height="300"
               src="/placeholder.svg"
               style={{
-                aspectRatio: '300/300',
-                objectFit: 'cover',
+                aspectRatio: "300/300",
+                objectFit: "cover",
               }}
               width="300"
             />
@@ -35,7 +43,11 @@ export default function ViewStudy() {
           <DialogHeader className="bg-gray-900 px-6 py-4 flex items-center justify-between">
             <DialogTitle>PDF Viewer</DialogTitle>
             <div>
-              <Button className="text-gray-400 hover:text-gray-50" size="icon" variant="ghost">
+              <Button
+                className="text-gray-400 hover:text-gray-50"
+                size="icon"
+                variant="ghost"
+              >
                 <XIcon className="h-5 w-5" />
               </Button>
             </div>
@@ -43,7 +55,7 @@ export default function ViewStudy() {
           <div className="h-[80vh] w-full" />
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }
 

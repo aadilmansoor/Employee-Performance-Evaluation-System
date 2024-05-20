@@ -7,7 +7,11 @@ import {
   ListItemPrefix,
   Typography,
 } from "@material-tailwind/react";
-import { EyeIcon, PowerIcon } from "@heroicons/react/24/solid";
+import {
+  CalendarDaysIcon,
+  EyeIcon,
+  PowerIcon,
+} from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 const TeamLeadLayout = () => {
@@ -94,6 +98,17 @@ const TeamLeadLayout = () => {
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Assigned Project
+              </ListItem>
+            </Link>
+            <Link
+              to="/team-lead/view-meeting"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <CalendarDaysIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                View Meetings
               </ListItem>
             </Link>
 

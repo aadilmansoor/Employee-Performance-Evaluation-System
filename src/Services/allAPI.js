@@ -65,34 +65,18 @@ export const assignProject = async (id, token) => {
   );
 };
 
-
-// get manager profile 
+// get manager profile
 export const updateManagerAPI = async (token) => {
-  return await commonAPI(
-    "GET",
-    `${base_URL}/hrapi/profile/`,
-    "",
-    {
-      Authorization: "Token " + token,
-    }
-  );
+  return await commonAPI("GET", `${base_URL}/hrapi/profile/`, "", {
+    Authorization: "Token " + token,
+  });
 };
 
-
-export const editManagerAPI = async (token,body) => {
-  return await commonAPI(
-    "PUT",
-    `${base_URL}/hrapi/profile/`,
-    body,
-    {
-      Authorization: "Token " + token,
-    }
-  );
+export const editManagerAPI = async (token, body) => {
+  return await commonAPI("PUT", `${base_URL}/hrapi/profile/`, body, {
+    Authorization: "Token " + token,
+  });
 };
-
-
-
-
 
 //get trainee details
 export const getTraineeDetailsAPI = async (token) => {
@@ -108,6 +92,52 @@ export const editTraineeDetailsAPI = async (token, body) => {
   });
 };
 
+//schedule meeting by admin
+export const scheduleMeetingAdminAPI = async (token, body) => {
+  return await commonAPI("POST", `${base_URL}/adminapi/meeting/`, body, {
+    Authorization: "Token " + token,
+  });
+};
+
+//schedule meeting by manager
+export const scheduleMeetingManagerAPI = async (token, body) => {
+  return await commonAPI("POST", `${base_URL}/hrapi/meeting/`, body, {
+    Authorization: "Token " + token,
+  });
+};
+
+//schedule meeting by team lead
+export const scheduleMeetingTeamLeadAPI = async (token, body) => {
+  return await commonAPI("POST", `${base_URL}/teamleadapi/meeting/`, body, {
+    Authorization: "Token " + token,
+  });
+};
+
+//get meetings by admin
+export const getMeetingsAdminAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/adminapi/meeting/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+
+//get meetings by manager
+export const getMeetingsManagerAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/hrapi/meeting/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+//get meetings by admin
+export const getMeetingsTeamLeadAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/teamleadapi/meeting/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+//get meetings by admin
+export const getMeetingsTraineeAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/empapi/mymeeting/`, "", {
+    Authorization: "Token " + token,
+  });
+};
 
 // //register user
 // export const registerAPI = async (reqBody) => {

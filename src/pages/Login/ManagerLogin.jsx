@@ -35,7 +35,7 @@ const ManagerLogin = () => {
           title: "Login Successful",
           text: "You have successfully logged in.",
         }).then(() => {
-          navigate("/hr-home");
+          navigate("/manager");
         });
       }
     } catch (error) {

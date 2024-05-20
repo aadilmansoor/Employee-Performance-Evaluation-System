@@ -19,6 +19,7 @@ import {
   EyeDropperIcon,
   EyeIcon,
   PlusIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -166,12 +167,14 @@ const AdminHome = () => {
             {/* Card 3 */}
             <div className="max-w-sm  border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                  Approvals
-                </h5>
-                <p className="font-normal text-gray-400">
-                  Here, You can Approve Manager,Team leader and Trainee
-                </p>
+                <div className="min-h-[100px]">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
+                    Approvals
+                  </h5>
+                  <p className="font-normal text-gray-400">
+                    Here, You can Approve Manager,Team leader and Trainee
+                  </p>
+                </div>
 
                 <Link to="/admin/approval">
                   <button
@@ -205,37 +208,21 @@ const AdminHome = () => {
             {/* Add more cards here if needed */}
             <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                  Attend Meeting/Schedule Meeting
-                </h5>
-                <p className="font-normal text-gray-400">
-                  Scheduling meetings within the organization
-                </p>
+                <div className="min-h-[100px]">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
+                    Schedule Meeting
+                  </h5>
+                  <p className="font-normal text-gray-400">
+                    Scheduling meetings within the organization.
+                  </p>
+                </div>
                 <Link to="/admin/schedule-meeting">
                   <button
                     type="button"
                     className="mt-4 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"
                   >
-                    <span>View</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 ml-2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                      />
-                    </svg>
+                    <span>Schedule</span>
+                    <CalendarDaysIcon className="h-5 w-5 ms-2" />
                   </button>
                 </Link>
               </div>
@@ -243,12 +230,14 @@ const AdminHome = () => {
 
             <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                  Team Creation
-                </h5>
-                <p className="font-normal text-gray-400">
-                  Here you can create team of registered employees.
-                </p>
+                <div className="min-h-[100px]">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
+                    Team Creation
+                  </h5>
+                  <p className="font-normal text-gray-400">
+                    Here you can create team of registered employees.
+                  </p>
+                </div>
 
                 <Link to="/team-create">
                   <button

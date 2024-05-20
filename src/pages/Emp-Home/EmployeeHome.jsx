@@ -147,35 +147,41 @@ const EmployeeHome = () => {
           </List>
         </Card>
       </div>  */}
-      <div className="flex-center ">
+      <div className="flex flex-wrap w-full">
         <div className="max-w-sm mt-16 ml-6">
           <Link to="/emp-team">
-            <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+            <Card
+              color="gray"
+              variant="gradient"
+              className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+            >
               <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
+                <Typography variant="h5" color="white" className="mb-2">
                   My Team
                 </Typography>
                 <Typography>View my team created by Team Lead</Typography>
               </CardBody>
               <CardFooter className="pt-0">
-                <Button className="bg-white text-blue-500">View</Button>
+                <Button color="white">View</Button>
               </CardFooter>
             </Card>
           </Link>
         </div>
         <div className="max-w-sm mt-16 ml-6">
           <Link to="/project-of-teams">
-            <Card className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+            <Card
+              color="gray"
+              variant="gradient"
+              className="border border-gray-300 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+            >
               <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
+                <Typography variant="h5" color="white" className="mb-2">
                   Projects of Team
                 </Typography>
                 <Typography>Here, View the Projects of the team</Typography>
               </CardBody>
               <CardFooter className="pt-0">
-                <Button className="bg-white text-blue-500 shadow-lg">
-                  View
-                </Button>
+                <Button color="white">View</Button>
               </CardFooter>
             </Card>
           </Link>

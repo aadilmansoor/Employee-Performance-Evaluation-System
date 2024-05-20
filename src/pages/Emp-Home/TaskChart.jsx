@@ -13,6 +13,7 @@ import TaskUpdateLists from "./TaskUpdateLists";
 
 const TaskChart = () => {
   const [taskChart, setTaskChart] = useState([]);
+  console.log({ taskChart });
   const [error, setError] = useState(null);
   const token = localStorage.getItem("Emp-token");
 

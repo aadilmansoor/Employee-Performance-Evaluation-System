@@ -1,3 +1,9 @@
+import {
+  scheduleMeetingAdminAPI,
+  scheduleMeetingManagerAPI,
+  scheduleMeetingTeamLeadAPI,
+} from "@/Services/allAPI";
+import { formatDate } from "@/lib/utils";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import {
   Input,
@@ -8,9 +14,77 @@ import {
 import { format } from "date-fns";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
+import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const ScheduleMeeting = () => {
+const ScheduleMeeting = ({ role }) => {
   const [date, setDate] = useState("");
+  const [meetingDetails, setMeetingDetails] = useState({
+    time: "",
+    title: "",
+    link: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !date ||
+      !meetingDetails.time ||
+      !meetingDetails.link ||
+      !meetingDetails.title
+    ) {
+      console.log("Hi");
+      toast.warning("Please fill in all fields.");
+      return;
+    }
+    if (role === "admin") {
+      const token = localStorage.getItem("adminToken");
+      const result = await scheduleMeetingAdminAPI(token, {
+        ...meetingDetails,
+        date: formatDate(date),
+      });
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Meeting Scheduled",
+        }).then(() => {
+          navigate("/admin");
+        });
+      }
+    } else if (role === "manager") {
+      const token = localStorage.getItem("HRtoken");
+      const result = await scheduleMeetingManagerAPI(token, {
+        ...meetingDetails,
+        date: formatDate(date),
+      });
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Meeting Scheduled",
+        }).then(() => {
+          navigate("/manager");
+        });
+      }
+    } else if (role === "team-lead") {
+      const token = localStorage.getItem("adminToken");
+      const result = await scheduleMeetingTeamLeadAPI(token, {
+        ...meetingDetails,
+        date: formatDate(date),
+      });
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Meeting Scheduled",
+        }).then(() => {
+          navigate("/tl-home");
+        });
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
@@ -18,14 +92,15 @@ const ScheduleMeeting = () => {
         <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
           Schedule Meeting
         </h2>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <Popover placement="top">
             <PopoverHandler>
               <Input
                 label="Select a Date"
-                onChange={() => null}
+                onChange={(e) =>
+                  setMeetingDetails({ ...meetingDetails, date: e.target.value })
+                }
                 value={date ? format(date, "PPP") : ""}
-                showTimeSelect
               />
             </PopoverHandler>
             <PopoverContent>
@@ -34,8 +109,6 @@ const ScheduleMeeting = () => {
                 selected={date}
                 onSelect={setDate}
                 showOutsideDays
-                showTimeSelect
-                dateFormat="Pp"
                 className="border-0"
                 classNames={{
                   caption:
@@ -73,13 +146,32 @@ const ScheduleMeeting = () => {
             </PopoverContent>
           </Popover>
           <div>
-            <Input type="time" label="Time" />
+            <Input
+              type="time"
+              label="Time"
+              value={meetingDetails.time}
+              onChange={(e) =>
+                setMeetingDetails({ ...meetingDetails, time: e.target.value })
+              }
+            />
           </div>
           <div>
-            <Input label="Title" />
+            <Input
+              label="Title"
+              value={meetingDetails.title}
+              onChange={(e) =>
+                setMeetingDetails({ ...meetingDetails, title: e.target.value })
+              }
+            />
           </div>
           <div>
-            <Input label="Link" />
+            <Input
+              label="Link"
+              value={meetingDetails.link}
+              onChange={(e) =>
+                setMeetingDetails({ ...meetingDetails, link: e.target.value })
+              }
+            />
           </div>
           <div>
             <button
@@ -94,4 +186,9 @@ const ScheduleMeeting = () => {
     </div>
   );
 };
+
+ScheduleMeeting.propTypes = {
+  role: PropTypes.string,
+};
+
 export default ScheduleMeeting;

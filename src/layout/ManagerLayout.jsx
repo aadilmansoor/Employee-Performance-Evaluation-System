@@ -9,7 +9,12 @@ import {
   ListItemSuffix,
   Typography,
 } from "@material-tailwind/react";
-import { EyeIcon, InboxIcon, PowerIcon } from "@heroicons/react/24/solid";
+import {
+  CalendarDaysIcon,
+  EyeIcon,
+  InboxIcon,
+  PowerIcon,
+} from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 const ManagerLayout = () => {
@@ -109,6 +114,17 @@ const ManagerLayout = () => {
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Performance Lists
+              </ListItem>
+            </Link>
+            <Link
+              to="/manager/view-meeting"
+              className="hover:bg-blue-100 transition-colors"
+            >
+              <ListItem>
+                <ListItemPrefix>
+                  <CalendarDaysIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                View Meetings
               </ListItem>
             </Link>
             <Link

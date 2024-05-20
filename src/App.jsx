@@ -43,10 +43,12 @@ import ScheduleMeeting from "./components/ScheduleMeeting";
 import AdminLayout from "./layout/AdminLayout";
 import TeamLeadLayout from "./layout/TeamLeadLayout";
 import TraineeLayout from "./layout/TraineeLayout";
-import Viewmeeting from "./components/Viewmeeting";
 import Dailytask from "./pages/TL-Home/Dailytask";
 import Review from "./components/Review";
 import ViewStudy from "./pages/ViewStudy";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ViewMeeting from "./components/Viewmeeting";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -70,10 +72,15 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route element={<AdminLayout />}>
             <Route path="/admin" element={<AdminHome />} />
+            <Route
+              path="/admin/view-meeting"
+              element={<ViewMeeting role="admin" />}
+            />
+
             <Route path="/admin/view-employees" element={<ViewEmployees />} />
             <Route
               path="/admin/schedule-meeting"
-              element={<ScheduleMeeting />}
+              element={<ScheduleMeeting role="admin" />}
             />
 
             <Route path="/admin/approval" element={<AdminApproval />} />
@@ -83,7 +90,16 @@ const App = () => {
           <Route path="manager/register" element={<ManagerRegister />} />
           <Route element={<ManagerLayout />}>
             <Route path="/manager" element={<HrHome />} />
+            <Route
+              path="/manager/view-meeting"
+              element={<ViewMeeting role="manager" />}
+            />
+
             <Route path="/hr-profile" element={<HrProfile />} />
+            <Route
+              path="/manager/schedule-meeting"
+              element={<ScheduleMeeting role="manager" />}
+            />
             <Route path="/performance-lists" element={<PerformanceLists />} />
             <Route
               path="/manager/trainee-register"
@@ -102,15 +118,21 @@ const App = () => {
             />
           </Route>
           {/* new */}
-          <Route path="/view-meeting" element={<Viewmeeting />} />
           {/* team lead */}
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/team-lead/register" element={<TeamLeadRegister />} />
           <Route element={<TeamLeadLayout />}>
             <Route path="/daily-task" element={<Dailytask />} />
             <Route path="/team-lead/login" element={<TeamLeadLogin />} />
+            <Route
+              path="/team-lead/view-meeting"
+              element={<ViewMeeting role="team-lead" />}
+            />
             <Route path="/review" element={<Review />} />
-
+            <Route
+              path="/team-lead/schedule-meeting"
+              element={<ScheduleMeeting role="admin" />}
+            />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/tl-home" element={<TeamLeadHome />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
@@ -148,14 +170,18 @@ const App = () => {
               path="/assign-to-emp/:id"
               element={<AssignProjectEmployees />}
             />
+            <Route
+              path="/trainee/view-meeting"
+              element={<ViewMeeting role="trainee" />}
+            />
+
             <Route path="/emp-team" element={<EmpTeam />} />
             <Route path="/task-chart" element={<TaskChart />} />
             <Route path="/update-tasks/:id" element={<UpdateTask />} />
             <Route path="/performance" element={<Performance />} />
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
-            <Route path="/trainee/study" element={<ViewStudy/>} />
-
+            <Route path="/trainee/study" element={<ViewStudy />} />
           </Route>
           {/* <Route path="/emp-assign" element={<ProjectStatusReport />} /> */}
           {/* <Route path="/project-assign/:projectId" element={<ProjectAssign />} /> */}
@@ -163,6 +189,11 @@ const App = () => {
           {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
         </Routes>
       </BrowserRouter>
+      <ToastContainer
+        autoClose={2000}
+        theme="colored"
+        position="bottom-right"
+      />
     </div>
   );
 };
