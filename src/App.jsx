@@ -109,7 +109,7 @@ const App = () => {
               element={<AssignedProjects />}
             />
             <Route path="/view-teams" element={<ViewTeams />} />
-            <Route path="/hr-project-details" element={<HrProjectDetails />} />
+            <Route path="/manager/project-details" element={<HrProjectDetails />} />
             {/* Pass the updateRequests function to HrInbox */}
             <Route
               path="/manager/inbox"

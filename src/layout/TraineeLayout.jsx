@@ -1,6 +1,7 @@
 import Navbar from "../components/Header/Navbar";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import {
   Card,
   List,
@@ -102,22 +103,16 @@ const TraineeLayout = () => {
                 Project of Team
               </ListItem>
             </Link> */}
-            <Link
-              to="/emp-home"
-              className="hover:bg-blue-100 transition-colors"
-            >
-              <ListItem>
+            <Link to="/emp-home">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Dashboard
               </ListItem>
             </Link>
-            <Link
-              to="/task-chart"
-              className="hover:bg-blue-100 transition-colors"
-            >
-              <ListItem>
+            <Link to="/task-chart">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -146,15 +141,22 @@ const TraineeLayout = () => {
               </ListItemPrefix>
               Technologies
             </ListItem>
-            <Link
-              to="/trainee/view-meeting"
-              className="hover:bg-blue-100 transition-colors"
-            >
-              <ListItem>
+            
+            <Link to="/trainee/view-meeting">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <CalendarDaysIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 View Meetings
+              </ListItem>
+            </Link>
+
+            <Link to="/trainee/study">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
+                <ListItemPrefix>
+                  <LibraryBooksIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Study Materails
               </ListItem>
             </Link>
 
