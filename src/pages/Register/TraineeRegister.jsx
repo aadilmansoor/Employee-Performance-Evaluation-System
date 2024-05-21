@@ -63,7 +63,7 @@ const TraineeRegister = () => {
       <div className="flex items-center justify-center min-h-screen">
         <div className="bg-white rounded-lg shadow-md border border-gray-300 p-6 w-96">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-4">
-            Employee Registration
+            Trainee Registration
           </h2>
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="grid grid-cols-1 gap-4">
@@ -143,7 +143,7 @@ const TraineeRegister = () => {
               type="submit"
               className="w-full mt-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Register Employee
+              Register Trainee
             </button>
           </form>
         </div>

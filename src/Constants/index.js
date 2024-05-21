@@ -43,3 +43,27 @@ export const SkillsItem =[
     }
 
 ]
+
+export const studyMaterials=[
+    {
+        title:'Angular',
+        src:'/assets/images/angular.png',
+        doc:'/assets/documents/AngularJS.pdf'
+    },
+    {
+        title:'React',
+        src:'/assets/images/react.png',
+        doc:'/assets/documents/React.pdf'
+    },
+    {
+        title:'Bootstrap',
+        src:'/assets/images/bootstrap.png',
+        doc:'/assets/documents/Bootstrap.pdf'
+    },
+    {
+        title:'Css',
+        src:'/assets/images/CSS.jpeg',
+        doc:'/assets/documents/Css.pdf'
+    }
+
+]

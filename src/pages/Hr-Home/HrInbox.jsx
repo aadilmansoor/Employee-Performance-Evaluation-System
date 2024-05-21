@@ -58,7 +58,7 @@ const HrInbox = ({ updateRequests }) => {
 
   return (
     <div className="wrapper">
-      <h1 className="text-3xl font-bold mb-4">HR Inbox</h1>
+      <h1 className="text-3xl font-bold mb-4">Manager Inbox</h1>
       {requests.length > 0 ? (
         <div>
           <h2 className="text-xl font-semibold mb-2">

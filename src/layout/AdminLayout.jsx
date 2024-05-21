@@ -61,8 +61,9 @@ const AdminLayout = () => {
             </Typography>
           </div>
           <List>
-            <Link to="/admin" className="hover:bg-blue-100 transition-colors">
-              <ListItem>
+            <Link to="/admin" 
+            >
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -71,9 +72,8 @@ const AdminLayout = () => {
             </Link>
             <Link
               to="/admin/view-employees"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem>
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -83,9 +83,8 @@ const AdminLayout = () => {
 
             <Link
               to="/admin/view-meeting"
-              className="hover:bg-blue-100 transition-colors"
             >
-              <ListItem>
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <CalendarDaysIcon className="h-5 w-5" />
                 </ListItemPrefix>
