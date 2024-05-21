@@ -156,7 +156,7 @@ const TraineeLayout = () => {
                 <ListItemPrefix>
                   <LibraryBooksIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                Study Materails
+                Study Materials
               </ListItem>
             </Link>
 

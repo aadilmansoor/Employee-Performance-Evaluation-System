@@ -80,7 +80,7 @@ const ScheduleMeeting = ({ role }) => {
           icon: "success",
           title: "Meeting Scheduled",
         }).then(() => {
-          navigate("/tl-home");
+          navigate("/team-lead");
         });
       }
     }
