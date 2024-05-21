@@ -32,7 +32,7 @@ const TeamLeadLogin = () => {
           title: "Login Successful",
           text: "You have successfully logged in.",
         }).then(() => {
-          navigate("/tl-home");
+          navigate("/team-lead");
           localStorage.setItem("userData", JSON.stringify(response.data));
         });
       }

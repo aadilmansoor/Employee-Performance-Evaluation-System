@@ -142,10 +142,10 @@ const App = () => {
               element={<ScheduleMeeting role="admin" />}
             />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
-            <Route path="/tl-home" element={<TeamLeadHome />} />
+            <Route path="/team-lead" element={<TeamLeadHome />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
-            <Route path="/team-create" element={<TeamCreation />} />
-            <Route path="/task-chart-list" element={<TaskChartList />} />
+            <Route path="/team-lead/team-create" element={<TeamCreation />} />
+            <Route path="/team-lead/task-chart-list" element={<TaskChartList />} />
             <Route
               path="/team-lead/assigned-projects"
               element={<AssignedProjects />}
@@ -155,11 +155,10 @@ const App = () => {
               element={<ViewEmployees />}
             />
             <Route
-              path="/tl-project-details"
+              path="/team-lead/project-details"
               element={<TLProjectDetails updateRequests={updateRequests} />}
             />
-            <Route path="/project-of-teams" element={<ProjectOfTeams />} />
-            <Route path="/view-team" element={<ViewTeam />} />
+            <Route path="team-lead/view-team" element={<ViewTeam />} />
             <Route
               path="/register-project"
               element={
@@ -191,6 +190,8 @@ const App = () => {
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
             <Route path="/trainee/study" element={<ViewStudy />} />
+            <Route path="/trainee/project-of-teams" element={<ProjectOfTeams />} />
+
           </Route>
           {/* <Route path="/emp-assign" element={<ProjectStatusReport />} /> */}
           {/* <Route path="/project-assign/:projectId" element={<ProjectAssign />} /> */}

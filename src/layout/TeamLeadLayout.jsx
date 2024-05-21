@@ -62,8 +62,9 @@ const TeamLeadLayout = () => {
             </Typography>
           </div>
           <List>
-            <Link to="/tl-home">
-              <ListItem className="hover:bg-blue-100 transition-colors">
+
+            <Link to="/team-lead">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -78,7 +79,7 @@ const TeamLeadLayout = () => {
                 View Employees
               </ListItem>
             </Link>
-            <Link to="/task-chart-list">
+            <Link to="/team-lead/task-chart-list">
               <ListItem className="hover:bg-blue-100 transition-colors">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />

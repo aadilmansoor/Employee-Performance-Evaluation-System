@@ -34,7 +34,7 @@ function AssignProjectEmployees() {
           title: "Assignation Successful",
           text: "You have successfully Created.",
         }).then(() => {
-          navigate("/tl-home");
+          navigate("/team-lead");
         });
       } else {
         setErrorMessage("Creation failed");

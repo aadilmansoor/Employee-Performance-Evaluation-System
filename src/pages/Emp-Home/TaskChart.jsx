@@ -61,7 +61,7 @@ const TaskChart = () => {
   //         title: 'Updated Successful',
   //         text: 'You have successfully Updated.',
   //       }).then(() => {
-  //         navigate('/tl-home');
+  //         navigate('/team-lead');
   //       });
   //     } else {
   //       setErrorMessage('Creation failed');

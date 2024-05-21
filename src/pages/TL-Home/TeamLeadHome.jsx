@@ -47,7 +47,7 @@ const TeamLeadHome = () => {
                   Here, You can View your team that You&apos;ve created
                 </p>
 
-                <Link to="/view-team">
+                <Link to="/team-lead/view-team">
                   <button
                     type="button"
                     className="mt-4 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"
@@ -85,7 +85,7 @@ const TeamLeadHome = () => {
                 <p className="font-normal text-gray-400">
                   Here you can see the project details and assign projects
                 </p>
-                <Link to="/tl-project-details">
+                <Link to="/team-lead/project-details">
                   <button
                     type="button"
                     className="mt-4 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"
@@ -124,7 +124,7 @@ const TeamLeadHome = () => {
                   Here you can create team of registered employees.
                 </p>
 
-                <Link to="/team-create">
+                <Link to="/team-lead/team-create">
                   <button
                     type="button"
                     className="mt-4 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"
