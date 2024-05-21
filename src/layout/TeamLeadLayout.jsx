@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import {
   CalendarDaysIcon,
+  ClipboardDocumentIcon,
   EyeIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
@@ -61,6 +62,7 @@ const TeamLeadLayout = () => {
             </Typography>
           </div>
           <List>
+
             <Link to="/team-lead">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
@@ -69,10 +71,8 @@ const TeamLeadLayout = () => {
                 Dashboard
               </ListItem>
             </Link>
-            <Link
-              to="/team-lead/view-employees"
-            >
-              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
+            <Link to="/team-lead/view-employees">
+              <ListItem className="hover:bg-blue-100 transition-colors">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
@@ -88,24 +88,28 @@ const TeamLeadLayout = () => {
               </ListItem>
             </Link>
 
-            <Link
-              to="/team-lead/assigned-projects"
-            >
-              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
+            <Link to="/team-lead/assigned-projects">
+              <ListItem className="hover:bg-blue-100 transition-colors">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Assigned Project
               </ListItem>
             </Link>
-            <Link
-              to="/team-lead/view-meeting"
-            >
-              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
+            <Link to="/team-lead/view-meeting">
+              <ListItem className="hover:bg-blue-100 transition-colors">
                 <ListItemPrefix>
                   <CalendarDaysIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 View Meetings
+              </ListItem>
+            </Link>
+            <Link to="/team-lead/view-daily-task">
+              <ListItem className="hover:bg-blue-100 transition-colors">
+                <ListItemPrefix>
+                  <ClipboardDocumentIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                View Daily Task
               </ListItem>
             </Link>
 

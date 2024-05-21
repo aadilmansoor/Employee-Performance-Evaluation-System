@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -51,9 +52,9 @@ function AddDailyTask() {
     <>
       <div>
         <h1 style={{ fontSize: "30px" }} className="text-center mt-5">
-          Today's Task
+          Today&apos;s Task
         </h1>
-        <div className="max-w-md mx-auto mt-10 p-6 bg-gray rounded-lg shadow-md border border-blue-300">
+        <div className="max-w-md mx-auto mt-10 p-6 bg-gray rounded-lg shadow-md border border-black">
           <form onSubmit={addDailyTask}>
             <div className="mb-4">
               <input
@@ -82,12 +83,7 @@ function AddDailyTask() {
                 }
               ></textarea>
             </div>
-            <button
-              type="submit"
-              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              Submit
-            </button>
+            <Button type="submit">Submit</Button>
           </form>
           {errorMessages && <div className="text-red-500 mt-4"></div>}
         </div>
