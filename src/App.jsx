@@ -49,6 +49,7 @@ import ViewMeeting from "./components/Viewmeeting";
 import AddDailyTask from "./pages/TL-Home/AddDailyTask";
 import DailyTask from "./pages/Trainee/DailyTask";
 import TeamLeadDailyTask from "./pages/TeamLead/TeamLeadDailyTask";
+import AssignedProject from "./pages/TL-Home/AssignedProject";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -110,7 +111,10 @@ const App = () => {
               element={<AssignedProjects />}
             />
             <Route path="/view-teams" element={<ViewTeams />} />
-            <Route path="/manager/project-details" element={<HrProjectDetails />} />
+            <Route
+              path="/manager/project-details"
+              element={<HrProjectDetails />}
+            />
             {/* Pass the updateRequests function to HrInbox */}
             <Route
               path="/manager/inbox"
@@ -145,10 +149,13 @@ const App = () => {
             <Route path="/team-lead" element={<TeamLeadHome />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
             <Route path="/team-lead/team-create" element={<TeamCreation />} />
-            <Route path="/team-lead/task-chart-list" element={<TaskChartList />} />
+            <Route
+              path="/team-lead/task-chart-list"
+              element={<TaskChartList />}
+            />
             <Route
               path="/team-lead/assigned-projects"
-              element={<AssignedProjects />}
+              element={<AssignedProject />}
             />
             <Route
               path="/team-lead/view-employees"
@@ -190,8 +197,10 @@ const App = () => {
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
             <Route path="/trainee/study" element={<ViewStudy />} />
-            <Route path="/trainee/project-of-teams" element={<ProjectOfTeams />} />
-
+            <Route
+              path="/trainee/project-of-teams"
+              element={<ProjectOfTeams />}
+            />
           </Route>
           {/* <Route path="/emp-assign" element={<ProjectStatusReport />} /> */}
           {/* <Route path="/project-assign/:projectId" element={<ProjectAssign />} /> */}

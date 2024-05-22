@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 const AssignedProject = () => {
   const [assignedProject, setAssignedProject] = useState([]);
@@ -62,7 +63,7 @@ const AssignedProject = () => {
   console.log(token);
 
   return (
-    <div className="mt-8 h-96 overflow-y-auto">
+    <div className="wrapper mt-8 h-96 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">Assigned Project</h1>
       {assignedProject.length > 0 ? (
         <div className="overflow-x-auto">
@@ -98,11 +99,11 @@ const AssignedProject = () => {
                   <td className="py-3 px-4 border whitespace-nowrap">
                     {assigned.team}
                   </td>
-                  <td>
+                  <td className="py-3 px-4 border whitespace-nowrap">
                     <Link to={`/assign-to-emp/${assigned.id}`}>
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Assign to Employees
-                      </button>
+                      </Button>
                     </Link>
                   </td>
                   <td className="py-3 px-4 border whitespace-nowrap">

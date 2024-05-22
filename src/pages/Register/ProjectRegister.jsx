@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -29,7 +29,7 @@ const ProjectRegister = ({ projectData, setProjectData }) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate(`/hr-home`);
+      navigate(`/manager`);
     } catch (error) {
       console.error("Project registration failed:", error);
       if (

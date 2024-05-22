@@ -13,6 +13,7 @@ const ProjectOfTeams = () => {
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({ id: "" });
   const token = localStorage.getItem("Emp-token");
+  console.log({ teamProjects });
 
   useEffect(() => {
     const fetchTeamProjects = async () => {
