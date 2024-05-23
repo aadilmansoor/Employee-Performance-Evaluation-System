@@ -98,6 +98,8 @@ const App = () => {
             />
 
             <Route path="/manager/profile" element={<HrProfile />} />
+            <Route path="/performance" element={<Performance />} />
+
             <Route
               path="/manager/schedule-meeting"
               element={<ScheduleMeeting role="manager" />}
@@ -152,7 +154,6 @@ const App = () => {
             />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/team-lead" element={<TeamLeadHome />} />
-            <Route path="/performance" element={<Performance />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
             <Route path="/team-lead/team-create" element={<TeamCreation />} />
             <Route
