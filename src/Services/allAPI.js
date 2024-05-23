@@ -161,3 +161,32 @@ export const getDailyTaskTeamLeadAPI = async (token) => {
     Authorization: "Token " + token,
   });
 };
+//submit review and rating
+export const submitRatingAPI = async (token, id, body) => {
+  console.log({ body });
+  return await commonAPI(
+    "POST",
+    `${base_URL}/teamleadapi/employee/${id}/rate_emp/`,
+    body,
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};
+//get review
+export const getReviewAPI = async (token) => {
+  return await commonAPI("GET", `${base_URL}/empapi/myrating/`, "", {
+    Authorization: "Token " + token,
+  });
+};
+//approve team
+export const approveTeamAPI = async (token, id) => {
+  return await commonAPI(
+    "POST",
+    `${base_URL}/hrapi/teams/${id}/team_approval/`,
+    "",
+    {
+      Authorization: "Token " + token,
+    }
+  );
+};

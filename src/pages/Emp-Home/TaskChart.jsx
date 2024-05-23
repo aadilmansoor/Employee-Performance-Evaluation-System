@@ -1,12 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import UpdateTask from "./UpdateTask";
 import TaskUpdateLists from "./TaskUpdateLists";

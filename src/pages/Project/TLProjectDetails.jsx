@@ -5,6 +5,7 @@ import { assignProject } from "../../Services/allAPI";
 const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   const token = localStorage.getItem("TlToken");
   const [projectData, setProjectData] = useState([]);
+  console.log({ projectData });
   // const [requests, setRequests] = useState([]);
   const [formData, setFormData] = useState([
     {
@@ -56,7 +57,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
       console.error("Failed to fetch project details:", error);
     }
   };
-  handleSubmit();
+  // handleSubmit();
 
   // const handleSelectProject = (projectId) => {
   //   setSelectedProject(projectId);
@@ -82,8 +83,10 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
   // };
 
   const handleAssign = async (projectId) => {
+    console.log({ projectId });
     const token = localStorage.getItem("TlToken");
     const result = await assignProject(projectId, token);
+    console.log({ result });
     if (result.status === 200) {
       fetchProjectDetails();
     }
@@ -164,7 +167,7 @@ const TLProjectDetails = ({ teamLeadName, updateRequests }) => {
                         onClick={() => handleAssign(project.id)}
                         type="button"
                         className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-800 shadow-lg  shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                        disabled={project.status !== "pending"}
+                        disabled={project.project_status !== "pending"}
                       >
                         {project.project_status === "pending"
                           ? "Assign"

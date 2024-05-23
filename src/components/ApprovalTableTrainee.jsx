@@ -49,7 +49,7 @@ const style = {
   p: 4,
 };
 
-const ApprovalTableTrainee = ({ data, getManagerList }) => {
+const ApprovalTableTrainee = ({ data, getTraineeList }) => {
   const [open, setOpen] = useState(false);
   // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -62,7 +62,7 @@ const ApprovalTableTrainee = ({ data, getManagerList }) => {
         title: "Approved",
         text: "You have successfully approved the manager",
       });
-      getManagerList();
+      getTraineeList();
     }
   };
   return (

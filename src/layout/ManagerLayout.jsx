@@ -2,11 +2,9 @@ import Navbar from "../components/Header/Navbar";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   Card,
-  Chip,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
   Typography,
 } from "@material-tailwind/react";
 import {
@@ -64,8 +62,7 @@ const ManagerLayout = () => {
             </Typography>
           </div>
           <List>
-            <Link to="/manager" 
-            >
+            <Link to="/manager">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
@@ -73,9 +70,7 @@ const ManagerLayout = () => {
                 Dashboard
               </ListItem>
             </Link>
-            <Link
-              to="/manager/project-details"
-            >
+            <Link to="/manager/project-details">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
@@ -83,9 +78,7 @@ const ManagerLayout = () => {
                 View Project Details
               </ListItem>
             </Link>
-            <Link
-              to="/view-teams"
-            >
+            <Link to="/view-teams">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
@@ -93,9 +86,7 @@ const ManagerLayout = () => {
                 View Teams
               </ListItem>
             </Link>
-            <Link
-              to="/manager/assigned-projects"
-            >
+            <Link to="/manager/assigned-projects">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
@@ -103,9 +94,7 @@ const ManagerLayout = () => {
                 Assigned Projects
               </ListItem>
             </Link>
-            <Link
-              to="/performance-lists"
-            >
+            <Link to="/performance-lists">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
@@ -113,9 +102,7 @@ const ManagerLayout = () => {
                 Performance Lists
               </ListItem>
             </Link>
-            <Link
-              to="/manager/view-meeting"
-            >
+            <Link to="/manager/view-meeting">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <CalendarDaysIcon className="h-5 w-5" />
@@ -123,15 +110,13 @@ const ManagerLayout = () => {
                 View Meetings
               </ListItem>
             </Link>
-            <Link
-              to="/manager/inbox"
-            >
+            <Link to="/manager/inbox">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <InboxIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Inbox
-                <ListItemSuffix>
+                {/* <ListItemSuffix>
                   <Chip
                     value={0}
                     size="sm"
@@ -139,7 +124,7 @@ const ManagerLayout = () => {
                     color="blue-gray"
                     className="flex items-center justify-center rounded-full w-6 h-6 bg-red-500 text-white text-xs mx-1 "
                   />
-                </ListItemSuffix>
+                </ListItemSuffix> */}
               </ListItem>
             </Link>
             <ListItem

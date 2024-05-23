@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ViewEmployees = () => {
   const token = localStorage.getItem("TlToken");
   const [employeeData, setEmployeeData] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEmployeeDetails = async () => {
@@ -24,6 +27,12 @@ const ViewEmployees = () => {
 
     fetchEmployeeDetails();
   }, []);
+
+  const handleClick = (employee) => {
+    navigate("/team-lead/trainee-profile", {
+      state: employee,
+    });
+  };
 
   return (
     <div className="mt-8 h-96 overflow-y-auto wrapper">
@@ -55,7 +64,12 @@ const ViewEmployees = () => {
                       {employee.id}
                     </td>
                     <td className="py-3 px-4 border whitespace-nowrap">
-                      {employee.Firstname} {employee.lastname}
+                      <span
+                        className="underline cursor-pointer text-[-webkit-link]"
+                        onClick={() => handleClick(employee)}
+                      >
+                        {employee.Firstname} {employee.lastname}
+                      </span>
                     </td>
                     <td className="py-3 px-4 border whitespace-nowrap">
                       {employee.email_address}

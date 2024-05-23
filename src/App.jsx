@@ -50,6 +50,7 @@ import AddDailyTask from "./pages/TL-Home/AddDailyTask";
 import DailyTask from "./pages/Trainee/DailyTask";
 import TeamLeadDailyTask from "./pages/TeamLead/TeamLeadDailyTask";
 import AssignedProject from "./pages/TL-Home/AssignedProject";
+import ShowTraineeProfile from "./pages/TeamLead/ShowTraineeProfile";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -139,6 +140,10 @@ const App = () => {
             <Route
               path="/team-lead/view-meeting"
               element={<ViewMeeting role="team-lead" />}
+            />
+            <Route
+              path="/team-lead/trainee-profile"
+              element={<ShowTraineeProfile />}
             />
             <Route path="/review" element={<Review />} />
             <Route

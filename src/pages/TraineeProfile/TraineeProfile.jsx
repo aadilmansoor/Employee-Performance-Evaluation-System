@@ -5,9 +5,11 @@ import {
 } from "../../Services/allAPI";
 import Swal from "sweetalert2";
 import { Button } from "@material-tailwind/react";
+import ShowReview from "@/components/ShowReview";
 
 const TraineeProfile = () => {
   const [traineeDetails, setTraineeDetails] = useState({
+    id: "",
     Firstname: "",
     email_address: "",
     lastname: "",
@@ -51,7 +53,7 @@ const TraineeProfile = () => {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       {/* Profile */}
       <div className="p-6 max-w-lg mx-auto">
         <h1 className="text-3xl font-semibold text-center my-12">Profile</h1>
@@ -147,6 +149,7 @@ const TraineeProfile = () => {
           </Button>
         </form>
       </div>
+      <ShowReview />
     </div>
   );
 };

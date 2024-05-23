@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function TeamCreation() {
   const [name, setName] = useState("");
@@ -25,7 +26,7 @@ function TeamCreation() {
         }
       );
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         const { id: teamId, teamlead: teamLeadId } = response.data;
 
         const hrRequests = JSON.parse(localStorage.getItem("hrRequests")) || [];
@@ -48,9 +49,11 @@ function TeamCreation() {
           navigate("/team-lead");
         });
       } else {
-        setErrorMessage("Creation failed");
+        toast.error(response?.response?.data?.error);
       }
     } catch (error) {
+      toast.error(error.response.data.error);
+
       console.error("Creation error:", error);
       setErrorMessage(error.message || "Creation failed");
     }

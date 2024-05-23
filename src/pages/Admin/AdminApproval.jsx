@@ -76,31 +76,36 @@ const AdminApproval = () => {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Manager" {...a11yProps(0)} />
-          <Tab label="Team Lead" {...a11yProps(1)} />
-          <Tab label="Trainee" {...a11yProps(2)} />
-        </Tabs>
+    <div className="wrapper">
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Manager" {...a11yProps(0)} />
+            <Tab label="Team Lead" {...a11yProps(1)} />
+            <Tab label="Trainee" {...a11yProps(2)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <ApprovalTable data={managerList} getManagerList={getManagerList} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <ApprovalTable
+            data={teamLeadList}
+            getTeamLeadList={getTeamLeadList}
+          />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <ApprovalTableTrainee
+            data={traineeList}
+            getTraineeList={getTraineeList}
+          />
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <ApprovalTable data={managerList} getManagerList={getManagerList} />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <ApprovalTable data={teamLeadList} getTeamLeadList={getTeamLeadList} />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <ApprovalTableTrainee
-          data={traineeList}
-          getTeamLeadList={getTeamLeadList}
-        />
-      </CustomTabPanel>
-    </Box>
+    </div>
   );
 };
 

@@ -1,65 +1,71 @@
-
-import  { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
-import { Button, Rating, Textarea } from "@material-tailwind/react";
+import { Button, Textarea } from "@material-tailwind/react";
+import { submitRatingAPI } from "@/Services/allAPI";
+import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { Rating } from "@mui/material";
 
-const Review = ({ getReview }) => {
-  const [value, setValue] = useState(0);
+const Review = ({ id }) => {
+  const [rated, setRated] = useState(0);
   const [comment, setComment] = useState("");
-  const location = useLocation();
-  const serviceProvider = location.state;
   const handleSubmit = async () => {
-    if (value === 0 || !comment) {
+    if (rated === 0 || !comment) {
       toast.warning("Please fill in all fields");
       return;
     }
-    const token = localStorage.getItem("maternity-token");
-    const headers = {
-      "Content-type": "application/json",
-      Authorization: `${token}`,
-    };
+    const token = localStorage.getItem("TlToken");
     const body = {
-      serviceProviderId: serviceProvider._id,
-      ratings: value,
-      comments: comment,
+      rating: rated,
+      comment,
     };
-    const result = await addReviewAPI(body, headers);
+    const result = await submitRatingAPI(token, id, body);
+    console.log(result);
     if (result.status === 200) {
-      setValue(0);
+      setRated(0);
       setComment("");
-      toast.success("Review submitted");
-      getReview();
+      Swal.fire({
+        icon: "success",
+        title: "Review Submitted",
+      });
     }
   };
+
+  const handleCancel = () => {
+    setComment("");
+    setRated(0);
+  };
+
   return (
     <div className="wrapper">
       <h4 className="text-2xl text-center my-5">
-        
         Submit Your Rating & Reviews
       </h4>
       <div className="wid">
         <div className="rating">
-          <Rating
-            size="large"
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-          />
+          <Rating value={rated} onChange={(event, value) => setRated(value)} />
         </div>
-
         <Textarea
-         minRows={2} size="lg"
-         placeholder="Leave a comment here" />
-<div className="flex gap-2 justify-end">
-<Button color="red">Cancel</Button>
-<Button color="green">Submit</Button>
-</div>
+          size="lg"
+          placeholder="Leave a comment here"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <div className="flex gap-2 justify-end">
+          <Button color="red" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button color="green" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </div>
       </div>
     </div>
   );
+};
+
+Review.propTypes = {
+  id: PropTypes.number,
 };
 
 export default Review;

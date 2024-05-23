@@ -1,28 +1,41 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { approveTeamAPI } from "@/Services/allAPI";
+import Swal from "sweetalert2";
 
 const ViewTeam = () => {
   const [teamData, setTeamData] = useState([]);
+  const token = localStorage.getItem("HRtoken");
+
+  const fetchTeamDetails = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/hrapi/teams/", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setTeamData(response.data);
+    } catch (error) {
+      console.error("Failed to fetch team details:", error);
+    }
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("HRtoken");
-    console.log(token);
-
-    const fetchTeamDetails = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/hrapi/teams/", {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-        setTeamData(response.data);
-      } catch (error) {
-        console.error("Failed to fetch team details:", error);
-      }
-    };
-
     fetchTeamDetails();
   }, []);
+
+  const handleApprove = async (id) => {
+    const token = localStorage.getItem("HRtoken");
+    const result = await approveTeamAPI(token, id);
+    if (result.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Approved",
+      });
+    }
+    fetchTeamDetails();
+  };
 
   return (
     <div className="wrapper h-96 sticky top-0 overflow-y-auto">
@@ -35,13 +48,13 @@ const ViewTeam = () => {
                 <tr>
                   <th className="py-3 px-4 border-b border-gray-300">Id</th>
                   <th className="py-3 px-4 border-b border-gray-300">
-                    Team Lead{" "}
+                    Team Lead
                   </th>
                   <th className="py-3 px-4 border-b border-gray-300">
                     Team Name
                   </th>
                   <th className="py-3 px-4 border-b border-gray-300">
-                    Is Approved
+                    Approve
                   </th>
                   <th className="py-3 px-4 border-b border-gray-300">
                     Members
@@ -61,7 +74,13 @@ const ViewTeam = () => {
                       {team.name}
                     </td>
                     <td className="py-3 px-4 border whitespace-nowrap">
-                      {team.is_approved ? "Yes" : "No"}
+                      {team.is_approved ? (
+                        <span className="text-green-500">Approved</span>
+                      ) : (
+                        <Button onClick={() => handleApprove(team.id)}>
+                          Approve
+                        </Button>
+                      )}
                     </td>
                     <td className="py-3 px-4 border whitespace-nowrap">
                       {team.members.join(", ")}
