@@ -152,6 +152,7 @@ const App = () => {
             />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/team-lead" element={<TeamLeadHome />} />
+            <Route path="/performance" element={<Performance />} />
             <Route path="/team-lead/profile" element={<TeamLeadProfile />} />
             <Route path="/team-lead/team-create" element={<TeamCreation />} />
             <Route
@@ -198,7 +199,6 @@ const App = () => {
             <Route path="/task-chart" element={<TaskChart />} />
             <Route path="/trainee/daily-task" element={<DailyTask />} />
             <Route path="/update-tasks/:id" element={<UpdateTask />} />
-            <Route path="/performance" element={<Performance />} />
             <Route path="/trainee/technologies" element={<Skills />} />
             <Route path="/trainee/profile" element={<TraineeProfile />} />
             <Route path="/trainee/study" element={<ViewStudy />} />
