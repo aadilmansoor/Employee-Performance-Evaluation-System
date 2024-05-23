@@ -34,7 +34,7 @@ const TraineeLogin = () => {
           title: "Login Successful",
           text: "You have successfully logged in.",
         }).then(() => {
-          navigate("/emp-home");
+          navigate("/trainee");
           localStorage.setItem("userData", JSON.stringify(response.data));
         });
       }

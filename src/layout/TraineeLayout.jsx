@@ -103,7 +103,7 @@ const TraineeLayout = () => {
                 Project of Team
               </ListItem>
             </Link> */}
-            <Link to="/emp-home">
+            <Link to="/trainee">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
