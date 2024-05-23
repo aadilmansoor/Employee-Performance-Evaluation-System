@@ -113,7 +113,7 @@ const AdminHome = () => {
               </div>
             </div>
 
-            <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
+            {/* <div className="max-w-sm border rounded-lg shadow bg-[rgb(31,41,55)] border-gray-700">
               <div className="p-6">
                 <div className="min-h-[100px]">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
@@ -147,7 +147,7 @@ const AdminHome = () => {
                   </button>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
