@@ -166,7 +166,7 @@ const App = () => {
           {/* trainee */}
           <Route path="/trainee/login" element={<TraineeLogin />} />
           <Route element={<TraineeLayout />}>
-            <Route path="/emp-home" element={<EmployeeHome />} />
+            <Route path="/trainee" element={<EmployeeHome />} />
             <Route
               path="/assign-to-emp/:id"
               element={<AssignProjectEmployees />}
