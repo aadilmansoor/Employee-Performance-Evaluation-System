@@ -48,6 +48,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ViewMeeting from "./components/Viewmeeting";
 import AddDailyTask from "./pages/TL-Home/AddDailyTask";
 import DailyTask from "./pages/Trainee/DailyTask";
+import TeamLeadDailyTask from "./pages/TeamLead/TeamLeadDailyTask";
 // import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
@@ -125,7 +126,12 @@ const App = () => {
               path="/team-lead/add-daily-task"
               element={<AddDailyTask />}
             />
+
             <Route path="/team-lead/login" element={<TeamLeadLogin />} />
+            <Route
+              path="/team-lead/view-daily-task"
+              element={<TeamLeadDailyTask />}
+            />
             <Route
               path="/team-lead/view-meeting"
               element={<ViewMeeting role="team-lead" />}

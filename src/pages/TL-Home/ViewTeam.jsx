@@ -30,7 +30,7 @@ const ViewTeam = () => {
   console.log(teamData);
 
   return (
-    <div className="mt-8 h-96 overflow-y-auto">
+    <div className="wrapper mt-8 h-96 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">My Team</h1>
       {error ? (
         <p className="mt-4 text-red-500">{error}</p>

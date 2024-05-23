@@ -106,8 +106,6 @@ const Navbar = ({ role }) => {
             )}
           </ul>
         </div> */}
-        {console.log({ role })}
-        {console.log(!role)}
         <div className={`${!role || role === "admin" ? "hidden" : ""}`}>
           <Link to={`${role}/profile`}>
             <img

@@ -84,3 +84,16 @@ export function convertTo12HourFormat(time) {
 
   return formattedTime;
 }
+
+export function separateByEmp(data) {
+  return data.reduce((acc, item) => {
+    // Check if the emp property exists in the accumulator
+    if (!acc[item.emp]) {
+      // If not, create a new array for this emp
+      acc[item.emp] = [];
+    }
+    // Add the current item to the emp's array
+    acc[item.emp].push(item);
+    return acc;
+  }, {});
+}
