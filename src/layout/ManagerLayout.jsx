@@ -110,13 +110,13 @@ const ManagerLayout = () => {
                 View Meetings
               </ListItem>
             </Link>
-            <Link to="/manager/inbox">
+            {/* <Link to="/manager/inbox">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <InboxIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Inbox
-                {/* <ListItemSuffix>
+                 <ListItemSuffix>
                   <Chip
                     value={0}
                     size="sm"
@@ -124,9 +124,9 @@ const ManagerLayout = () => {
                     color="blue-gray"
                     className="flex items-center justify-center rounded-full w-6 h-6 bg-red-500 text-white text-xs mx-1 "
                   />
-                </ListItemSuffix> */}
+                </ListItemSuffix>
               </ListItem>
-            </Link>
+            </Link> */}
             <ListItem
               className="hover:bg-blue-100 transition-colors rounded-lg"
               onClick={handleLogout}

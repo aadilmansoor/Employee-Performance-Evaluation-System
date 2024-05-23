@@ -99,7 +99,6 @@ const App = () => {
 
             <Route path="/manager/profile" element={<HrProfile />} />
             <Route path="/performance" element={<Performance />} />
-
             <Route
               path="/manager/schedule-meeting"
               element={<ScheduleMeeting role="manager" />}
