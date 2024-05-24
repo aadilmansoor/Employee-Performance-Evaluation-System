@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 function TeamCreation() {
   const [name, setName] = useState("");
   const [members, setMembers] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("TlToken");
 
@@ -55,13 +54,11 @@ function TeamCreation() {
       toast.error(error.response.data.error);
 
       console.error("Creation error:", error);
-      setErrorMessage(error.message || "Creation failed");
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
     await createTeam();
   };
 
@@ -92,7 +89,7 @@ function TeamCreation() {
               htmlFor="employees"
               className="block text-sm font-medium text-gray-900"
             >
-              Employees Id
+              Trainees Id
             </label>
             <input
               value={members.join(",")}

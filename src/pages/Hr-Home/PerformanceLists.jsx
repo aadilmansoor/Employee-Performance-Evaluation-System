@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell } from "recharts";
 import { Paper, Typography, IconButton } from "@mui/material";
@@ -61,24 +61,30 @@ const PerformanceLists = () => {
               <Typography variant="h6" gutterBottom>
                 Performance Details
               </Typography>
-              <Typography variant="body1" gutterBottom>
+              {/* <Typography variant="body1" gutterBottom>
                 Employee ID: {performance.id}
+              </Typography> */}
+              <Typography variant="body1" gutterBottom>
+                Manager: {performance.hr}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                HR: {performance.hr}
+                Trainee: {performance.employee}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Employee: {performance.employee}
+                Performance: {performance.performance.toFixed()}
               </Typography>
-              <Typography variant="body1" gutterBottom>
-                Performance: {performance.performance}
-              </Typography>
-              <div className="mt-4">
+              <div className="mt-4 flex-center">
                 <PieChart width={400} height={400}>
                   <Pie
                     data={[
-                      { name: "Performance", value: performance.performance },
-                      { name: "Other", value: 100 - performance.performance },
+                      {
+                        name: "Performance",
+                        value: performance.performance,
+                      },
+                      {
+                        name: "Other",
+                        value: 100 - performance.performance,
+                      },
                     ]}
                     dataKey="value"
                     cx="50%"

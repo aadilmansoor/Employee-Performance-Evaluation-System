@@ -24,7 +24,6 @@ const TaskUpdateLists = () => {
 
     fetchTaskUpdate();
   }, []);
-  console.log(taskUpdate);
 
   return (
     <div className="mt-8 h-96 overflow-y-auto relative">

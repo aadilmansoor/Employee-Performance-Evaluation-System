@@ -6,7 +6,7 @@ const EmployeeHome = () => {
       <h3 className="text-3xl font-medium text-center text-primary mb-6">
         Welcome
       </h3>
-      <div className="flex flex-col items-start flex-grow w-full mt-10">
+      <div className="flex flex-col  flex-grow w-full mt-10">
         <div className="flex justify-start items-start h-5/6">
           {/* Cards container */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full px-4">

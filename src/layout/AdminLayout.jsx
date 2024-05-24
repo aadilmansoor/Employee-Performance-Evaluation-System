@@ -23,8 +23,8 @@ const AdminLayout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("HRtoken");
-    navigate("/hr-login");
+    localStorage.removeItem("adminToken");
+    navigate("/");
   };
 
   return (

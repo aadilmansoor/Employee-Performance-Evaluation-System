@@ -13,13 +13,11 @@ import TeamCreation from "./pages/TL-Home/TeamCreation";
 import ViewEmployees from "./pages/TL-Home/ViewEmployees";
 import ViewTeam from "./pages/TL-Home/ViewTeam";
 import ViewTeams from "./pages/Hr-Home/ViewTeams";
-// import ProjectAssign from "./pages/TL-Home/ProjectAssign";
 import AssignProjectEmployees from "./pages/TL-Home/AssignProjectEmployees";
 import HrInbox from "./pages/Hr-Home/HrInbox";
 import AssignedProjects from "./pages/Hr-Home/AssignedProjects";
 import ProjectOfTeams from "./pages/Emp-Home/ProjectOfTeams";
 import EmpTeam from "./pages/Emp-Home/EmpTeam";
-// import TaskUpdateLists from "./pages/Emp-Home/TaskUpdateLists";
 import UpdateTask from "./pages/Emp-Home/UpdateTask";
 import TaskChart from "./pages/Emp-Home/TaskChart";
 import Performance from "./pages/Hr-Home/Performance";
@@ -51,16 +49,9 @@ import DailyTask from "./pages/Trainee/DailyTask";
 import TeamLeadDailyTask from "./pages/TeamLead/TeamLeadDailyTask";
 import AssignedProject from "./pages/TL-Home/AssignedProject";
 import ShowTraineeProfile from "./pages/TeamLead/ShowTraineeProfile";
-// import UpdatedTasks from "./pages/TL-Home/UpdatedTasks";
 
 const App = () => {
   const [projectData, setProjectData] = useState([]);
-  const [requests, setRequests] = useState([]);
-
-  // Define the updateRequests function
-  const updateRequests = (updatedRequests) => {
-    setRequests(updatedRequests);
-  };
 
   return (
     <div>
@@ -98,12 +89,15 @@ const App = () => {
             />
 
             <Route path="/manager/profile" element={<HrProfile />} />
-            <Route path="/performance" element={<Performance />} />
+            <Route path="/manager/performance" element={<Performance />} />
             <Route
               path="/manager/schedule-meeting"
               element={<ScheduleMeeting role="manager" />}
             />
-            <Route path="/performance-lists" element={<PerformanceLists />} />
+            <Route
+              path="/manager/performance-lists"
+              element={<PerformanceLists />}
+            />
             <Route
               path="/manager/trainee-register"
               element={<TraineeRegister />}
@@ -118,16 +112,16 @@ const App = () => {
               element={<HrProjectDetails />}
             />
             {/* Pass the updateRequests function to HrInbox */}
-            <Route
-              path="/manager/inbox"
-              element={<HrInbox updateRequests={updateRequests} />}
-            />
+            <Route path="/manager/inbox" element={<HrInbox />} />
           </Route>
-          {/* new */}
           {/* team lead */}
           <Route path="/team-lead/login" element={<TeamLeadLogin />} />
           <Route path="/team-lead/register" element={<TeamLeadRegister />} />
           <Route element={<TeamLeadLayout />}>
+            <Route
+              path="/assign-to-emp/:id"
+              element={<AssignProjectEmployees />}
+            />
             <Route
               path="/team-lead/add-daily-task"
               element={<AddDailyTask />}
@@ -169,7 +163,7 @@ const App = () => {
             />
             <Route
               path="/team-lead/project-details"
-              element={<TLProjectDetails updateRequests={updateRequests} />}
+              element={<TLProjectDetails />}
             />
             <Route path="team-lead/view-team" element={<ViewTeam />} />
             <Route
@@ -186,10 +180,7 @@ const App = () => {
           <Route path="/trainee/login" element={<TraineeLogin />} />
           <Route element={<TraineeLayout />}>
             <Route path="/trainee" element={<EmployeeHome />} />
-            <Route
-              path="/assign-to-emp/:id"
-              element={<AssignProjectEmployees />}
-            />
+
             <Route
               path="/trainee/view-meeting"
               element={<ViewMeeting role="trainee" />}
@@ -207,10 +198,6 @@ const App = () => {
               element={<ProjectOfTeams />}
             />
           </Route>
-          {/* <Route path="/emp-assign" element={<ProjectStatusReport />} /> */}
-          {/* <Route path="/project-assign/:projectId" element={<ProjectAssign />} /> */}
-          {/* <Route path="/task-update-lists" element={<TaskUpdateLists />} /> */}
-          {/* <Route path="/updated-tasks" element={<UpdatedTasks />} /> */}
         </Routes>
       </BrowserRouter>
       <ToastContainer

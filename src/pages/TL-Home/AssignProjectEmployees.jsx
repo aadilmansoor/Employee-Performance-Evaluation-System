@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function AssignProjectEmployees() {
   const [assigned_part, setAssignedPart] = useState("");
   const [assigned_person, setAssignedPerson] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("TlToken");
   const { id } = useParams();
@@ -36,18 +36,21 @@ function AssignProjectEmployees() {
         }).then(() => {
           navigate("/team-lead");
         });
-      } else {
-        setErrorMessage("Creation failed");
       }
     } catch (error) {
+      let message = "";
+      if (error?.response?.data?.assigned_person) {
+        message = error?.response?.data?.assigned_person[0];
+      } else {
+        message = error?.response?.data?.detail;
+      }
+      toast.warning(message || "Please enter valid trainee id");
       console.error("Creation error:", error);
-      setErrorMessage(error.message || "Creation failed");
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
     await AssignToEmp();
   };
 
@@ -55,7 +58,7 @@ function AssignProjectEmployees() {
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
-          Assign Project Employees
+          Assign Project Trainees
         </h2>
         <form onSubmit={handleRegister} className="space-y-6">
           <div>

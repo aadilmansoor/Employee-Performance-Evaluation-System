@@ -24,8 +24,8 @@ const TeamLeadLayout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("HRtoken");
-    navigate("/hr-login");
+    localStorage.removeItem("TlToken");
+    navigate("/");
   };
 
   return (
@@ -62,7 +62,6 @@ const TeamLeadLayout = () => {
             </Typography>
           </div>
           <List>
-
             <Link to="/team-lead">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
@@ -76,7 +75,7 @@ const TeamLeadLayout = () => {
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                View Employees
+                View Trainees
               </ListItem>
             </Link>
             <Link to="/team-lead/task-chart-list">

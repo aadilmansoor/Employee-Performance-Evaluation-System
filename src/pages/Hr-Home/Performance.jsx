@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,13 +8,12 @@ import {
   DialogContentText,
   TextField,
 } from "@mui/material";
-import Swal from "sweetalert2";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Performance = () => {
   const [employee, setEmployee] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
   const [performanceData, setPerformanceData] = useState(null);
   const token = localStorage.getItem("HRtoken");
@@ -35,12 +34,10 @@ const Performance = () => {
         console.log("API Response:", response.data);
         setPerformanceData(response.data);
         handleOpen();
-      } else {
-        setErrorMessage("Creation failed");
       }
     } catch (error) {
       console.error("Creation error:", error);
-      setErrorMessage(error.message || "Creation failed");
+      toast.warning(error?.response?.data?.employee[0] || "Creation failed");
     } finally {
       setIsLoading(false);
     }
@@ -48,7 +45,6 @@ const Performance = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
     setIsLoading(true);
     await PerformanceAnalyze();
   };
@@ -65,7 +61,7 @@ const Performance = () => {
               htmlFor="employees"
               className="block text-sm font-medium text-gray-900"
             >
-              Employee Id
+              Trainee Id
             </label>
             <TextField
               value={employee}
@@ -108,13 +104,11 @@ const Performance = () => {
             <DialogContent>
               {performanceData && (
                 <DialogContentText>
-                  ID: {performanceData.id}
-                  <br />
-                  HR: {performanceData.hr}
+                  Manager: {performanceData.hr}
                   <br />
                   Performance: {performanceData.performance}
                   <br />
-                  Employee: {performanceData.employee}
+                  Trainee: {performanceData.employee}
                   <br />
                 </DialogContentText>
               )}

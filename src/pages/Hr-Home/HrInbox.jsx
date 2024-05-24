@@ -1,31 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const HrInbox = ({ updateRequests }) => {
+const HrInbox = () => {
   const [requests, setRequests] = useState([]);
-  const [formData, setFormData] = useState([
-    {
-      id: "",
-    },
-  ]);
   const token = localStorage.getItem("TlToken");
 
-  useEffect(() => {
-    const storedRequests = JSON.parse(localStorage.getItem("hrRequests")) || [];
-    setRequests(storedRequests);
-  }, []);
-
-  const handleAccept = async () => {};
-
-  console.log(formData.id);
-
-  // const handleAccept = (teamId) => {
-  //   console.log(`Request for team ${teamId} accepted`);
-  //   const updatedRequests = requests.filter(request => request.teamId !== teamId);
-  //   setRequests(updatedRequests);
-  //   localStorage.setItem('hrRequests', JSON.stringify(updatedRequests));
-  //   updateRequests(updatedRequests);
-  // };
   const handleAcceptButtonClick = async (teamId) => {
     try {
       const response = await axios.post(
@@ -53,7 +32,6 @@ const HrInbox = ({ updateRequests }) => {
     );
     setRequests(updatedRequests);
     localStorage.setItem("hrRequests", JSON.stringify(updatedRequests));
-    updateRequests(updatedRequests);
   };
 
   return (

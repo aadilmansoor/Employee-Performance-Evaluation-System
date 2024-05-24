@@ -68,11 +68,10 @@ const HrHome = () => {
               <div className="p-6">
                 <div className="min-h-[100px]">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                    Register an Employee
+                    Register an Trainee
                   </h5>
                   <p className="font-normal text-gray-400">
-                    You have the ability to enroll a new employee into our
-                    system
+                    You have the ability to enroll a new trainee into our system
                   </p>
                 </div>
                 <button
@@ -145,10 +144,10 @@ const HrHome = () => {
                     View Performance
                   </h5>
                   <p className="font-normal text-gray-400">
-                    Here, you have access to monitor employee performance.
+                    Here, you have access to monitor trainee performance.
                   </p>
                 </div>
-                <Link to="/performance">
+                <Link to="/manager/performance">
                   <button
                     type="button"
                     className="mt-8 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 text-white font-medium rounded-lg text-sm flex items-center px-6 py-2.5"

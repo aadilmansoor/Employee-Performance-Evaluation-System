@@ -25,8 +25,8 @@ const TraineeLayout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("HRtoken");
-    navigate("/hr-login");
+    localStorage.removeItem("Emp-token");
+    navigate("/");
   };
 
   const handleTechnologies = () => {
@@ -141,7 +141,7 @@ const TraineeLayout = () => {
               </ListItemPrefix>
               Technologies
             </ListItem>
-            
+
             <Link to="/trainee/view-meeting">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>

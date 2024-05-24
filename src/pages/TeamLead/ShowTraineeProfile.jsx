@@ -5,8 +5,6 @@ const ShowTraineeProfile = () => {
   const location = useLocation();
   const { state } = location;
 
-  console.log({ state });
-
   return (
     <div>
       {/* Profile */}
@@ -25,7 +23,7 @@ const ShowTraineeProfile = () => {
             className="rounded-full h-[170px] w-[170px] object-contain cursor-pointer self-center"
           />
 
-          <label htmlFor="id">Employee Id:</label>
+          <label htmlFor="id">Trainee Id:</label>
           <input
             type="text"
             placeholder="Username"

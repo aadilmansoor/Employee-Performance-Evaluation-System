@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const TaskChartList = () => {
   const [taskUpdates, setTaskUpdates] = useState([]);
-  const [error, setError] = useState(null);
   const token = localStorage.getItem("TlToken");
 
   useEffect(() => {
@@ -17,10 +16,8 @@ const TaskChartList = () => {
             },
           }
         );
-        console.log(response);
         setTaskUpdates(response.data);
       } catch (error) {
-        setError(error);
         console.log("error to fetch teams");
       }
     };
@@ -28,13 +25,9 @@ const TaskChartList = () => {
     fetchTaskUpdates();
   }, []);
 
-  console.log(taskUpdates);
-
   return (
     <div className="wrapper">
-      <h1 className="text-2xl font-semibold mb-4">
-        Updated Tasks by Employees
-      </h1>
+      <h1 className="text-2xl font-semibold mb-4">Updated Tasks by Trainees</h1>
       {taskUpdates.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-md shadow-md">

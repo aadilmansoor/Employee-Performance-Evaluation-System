@@ -164,7 +164,7 @@ ApprovalTableTrainee.propTypes = {
       user_type: PropTypes.string,
     })
   ),
-  getTeamLeadList: PropTypes.func,
+  getTraineeList: PropTypes.func,
 };
 
 export default ApprovalTableTrainee;

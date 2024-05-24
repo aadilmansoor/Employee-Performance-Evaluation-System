@@ -1,23 +1,8 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import PropTypes from "prop-types";
 
 const Navbar = ({ role }) => {
-  const [userName, setUserName] = useState("");
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     const storedUserName = localStorage.getItem("userName");
-  //     const storedRole = localStorage.getItem("role");
-  //     if (storedUserName && storedRole) {
-  //       setUserName(storedUserName);
-  //       setRole(storedRole);
-  //     }
-  //   } else {
-  //     setUserName("");
-  //   }
-  // }, [isLoggedIn]);
-
   return (
     <nav className="sticky top-0 bg-[rgb(17,24,39)] z-20 border-b border-gray-600 h-[82px]">
       <div className="flex flex-wrap items-center justify-between ms-[3rem] p-4 h-full">
@@ -120,6 +105,10 @@ const Navbar = ({ role }) => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  role: PropTypes.string,
 };
 
 export default Navbar;

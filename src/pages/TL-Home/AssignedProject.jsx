@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
@@ -79,7 +79,7 @@ const AssignedProject = () => {
                   Team Name
                 </th>
                 <th className="py-3 px-4 border-b border-gray-300">
-                  Assigned to Employees
+                  Assigned to Trainees
                 </th>
                 <th className="py-3 px-4 border-b border-gray-300">Status</th>
               </tr>
@@ -102,7 +102,7 @@ const AssignedProject = () => {
                   <td className="py-3 px-4 border whitespace-nowrap">
                     <Link to={`/assign-to-emp/${assigned.id}`}>
                       <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Assign to Employees
+                        Assign to Trainees
                       </Button>
                     </Link>
                   </td>

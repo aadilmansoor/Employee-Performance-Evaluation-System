@@ -1,16 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { toast } from "react-toastify";
 
 const ProjectOfTeams = () => {
   const [teamProjects, setTeamProjects] = useState([]);
-  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({ id: "" });
   const token = localStorage.getItem("Emp-token");
   console.log({ teamProjects });
@@ -29,7 +23,6 @@ const ProjectOfTeams = () => {
         setTeamProjects(response.data);
       } catch (error) {
         console.log("Error fetching team projects:", error);
-        setError("Error fetching team projects");
       }
     };
 
@@ -57,10 +50,10 @@ const ProjectOfTeams = () => {
       alert("Task Chart Created");
       console.log("API Response:", response.data);
     } catch (error) {
+      toast.warning("Task chart already created.");
       console.error("Error creating project task:", error);
     }
   };
-  console.log(formData.id);
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -96,35 +89,46 @@ const ProjectOfTeams = () => {
                     <span className="font-semibold">Team Name:</span>{" "}
                     {project.team}
                   </Typography>
-                  <hr className="my-4" />
-                  <h1 className="text-2xl font-semibold mb-4 text-center">
-                    Project Details
-                  </h1>
-                  {project.project_details.map((detail, detailIndex) => (
-                    <div key={detailIndex}>
-                      <Typography className="mt-4">
-                        <span className="font-semibold">Id:</span> {detail.id}
-                      </Typography>
-                      <Typography>
-                        <span className="font-semibold">Assigned Person:</span>{" "}
-                        {detail.assigned_person}
-                      </Typography>
-                      <Typography>
-                        <span className="font-semibold">Assigned Part:</span>{" "}
-                        {detail.assigned_part}
-                      </Typography>
-                      <Typography>
-                        <span className="font-semibold">Status:</span>{" "}
-                        {detail.status}
-                      </Typography>
-                      <button
-                        onClick={() => handleCreateButtonClick(detail.id)}
-                        className="w-40 h-12 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                      >
-                        Create Chart
-                      </button>
-                    </div>
-                  ))}
+                  {project.project_details.length === 0 ? (
+                    ""
+                  ) : (
+                    <>
+                      <hr className="my-4" />
+                      <h1 className="text-2xl font-semibold mb-4 text-center">
+                        Project Details
+                      </h1>
+                      {project.project_details.map((detail, detailIndex) => (
+                        <div key={detailIndex}>
+                          <Typography className="mt-4">
+                            <span className="font-semibold">Id:</span>{" "}
+                            {detail.id}
+                          </Typography>
+                          <Typography>
+                            <span className="font-semibold">
+                              Assigned Person:
+                            </span>{" "}
+                            {detail.assigned_person}
+                          </Typography>
+                          <Typography>
+                            <span className="font-semibold">
+                              Assigned Part:
+                            </span>{" "}
+                            {detail.assigned_part}
+                          </Typography>
+                          <Typography>
+                            <span className="font-semibold">Status:</span>{" "}
+                            {detail.status}
+                          </Typography>
+                          <button
+                            onClick={() => handleCreateButtonClick(detail.id)}
+                            className="w-40 h-12 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                          >
+                            Create Chart
+                          </button>
+                        </div>
+                      ))}
+                    </>
+                  )}
                 </CardBody>
               </Card>
             ))

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Navbar from "../../components/Header/Navbar";
+import { toast } from "react-toastify";
 
 const TeamLeadLogin = () => {
   const [username, setUserName] = useState("");
@@ -41,9 +42,9 @@ const TeamLeadLogin = () => {
       if (error.response) {
         const { data } = error.response;
         if (data && data.non_field_errors && data.non_field_errors.length > 0) {
-          alert(data.non_field_errors[0]);
+          toast.warning(data.non_field_errors[0]);
         } else {
-          alert("Invalid username or password. Please try again.");
+          toast.warning("Invalid username or password. Please try again.");
         }
       } else if (error.request) {
         console.error("No response received:", error.request);

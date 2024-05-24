@@ -1,28 +1,4 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
-} from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-  EyeDropperIcon,
-  EyeIcon,
-  PlusIcon,
-} from "@heroicons/react/24/solid";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const TeamLeadHome = () => {
   return (
@@ -121,7 +97,7 @@ const TeamLeadHome = () => {
                   Team Creation
                 </h5>
                 <p className="font-normal text-gray-400">
-                  Here you can create team of registered employees.
+                  Here you can create team of registered trainees.
                 </p>
 
                 <Link to="/team-lead/team-create">

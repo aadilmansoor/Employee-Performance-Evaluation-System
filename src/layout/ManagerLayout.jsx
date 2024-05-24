@@ -10,7 +10,6 @@ import {
 import {
   CalendarDaysIcon,
   EyeIcon,
-  InboxIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
@@ -25,7 +24,7 @@ const ManagerLayout = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("HRtoken");
-    navigate("/hr-login");
+    navigate("/");
   };
 
   return (
@@ -94,7 +93,7 @@ const ManagerLayout = () => {
                 Assigned Projects
               </ListItem>
             </Link>
-            <Link to="/performance-lists">
+            <Link to="/manager/performance-lists">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>
                   <EyeIcon className="h-5 w-5" />

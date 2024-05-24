@@ -46,8 +46,8 @@ const Review = ({ id }) => {
           <Rating value={rated} onChange={(event, value) => setRated(value)} />
         </div>
         <Textarea
+          label="Type Here"
           size="lg"
-          placeholder="Leave a comment here"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
