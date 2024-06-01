@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { PieChart, Pie, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 import { Paper, Typography, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -46,6 +46,7 @@ const PerformanceLists = () => {
       console.error("Failed to delete performance:", error);
     }
   };
+
   return (
     <div className="wrapper grid grid-cols-1 gap-6 sm:grid-cols-2">
       {performanceData.length > 0 ? (
@@ -61,9 +62,6 @@ const PerformanceLists = () => {
               <Typography variant="h6" gutterBottom>
                 Performance Details
               </Typography>
-              {/* <Typography variant="body1" gutterBottom>
-                Employee ID: {performance.id}
-              </Typography> */}
               <Typography variant="body1" gutterBottom>
                 Manager: {performance.hr}
               </Typography>
@@ -74,32 +72,13 @@ const PerformanceLists = () => {
                 Performance: {performance.performance.toFixed()}
               </Typography>
               <div className="mt-4 flex-center">
-                <PieChart width={400} height={400}>
-                  <Pie
-                    data={[
-                      {
-                        name: "Performance",
-                        value: performance.performance,
-                      },
-                      {
-                        name: "Other",
-                        value: 100 - performance.performance,
-                      },
-                    ]}
-                    dataKey="value"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    fill="#8884d8"
-                    label
-                  >
-                    {[{ fill: "#FF6384" }, { fill: "#36A2EB" }].map(
-                      (entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.fill} />
-                      )
-                    )}
-                  </Pie>
-                </PieChart>
+                <BarChart width={400} height={300} data={[performance]}>
+                  <XAxis dataKey="employee" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="performance" fill="#8884d8" />
+                </BarChart>
               </div>
             </div>
           </Paper>

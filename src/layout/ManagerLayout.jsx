@@ -109,6 +109,14 @@ const ManagerLayout = () => {
                 View Meetings
               </ListItem>
             </Link>
+            <Link to="/manager/review">
+              <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                View Reviews
+              </ListItem>
+            </Link>
             {/* <Link to="/manager/inbox">
               <ListItem className="hover:bg-blue-100 transition-colors rounded-lg">
                 <ListItemPrefix>

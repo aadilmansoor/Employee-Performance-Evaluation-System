@@ -49,6 +49,8 @@ import DailyTask from "./pages/Trainee/DailyTask";
 import TeamLeadDailyTask from "./pages/TeamLead/TeamLeadDailyTask";
 import AssignedProject from "./pages/TL-Home/AssignedProject";
 import ShowTraineeProfile from "./pages/TeamLead/ShowTraineeProfile";
+import ViewReviews from "./pages/Hr-Home/ViewReviews";
+import PerformanceEmp from "./pages/TL-Home/PerformanceEmp";
 
 const App = () => {
   const [projectData, setProjectData] = useState([]);
@@ -106,6 +108,8 @@ const App = () => {
               path="/manager/assigned-projects"
               element={<AssignedProjects />}
             />
+            <Route path="/manager/review" element={<ViewReviews />} />
+
             <Route path="/view-teams" element={<ViewTeams />} />
             <Route
               path="/manager/project-details"
@@ -136,6 +140,8 @@ const App = () => {
               path="/team-lead/view-meeting"
               element={<ViewMeeting role="team-lead" />}
             />
+                        <Route path="/team-lead/Performance" element={<PerformanceEmp />} />
+
             <Route
               path="/team-lead/trainee-profile"
               element={<ShowTraineeProfile />}

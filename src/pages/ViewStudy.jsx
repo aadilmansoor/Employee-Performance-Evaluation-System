@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 
 export default function ViewStudy() {
+
   return (
     <div className="wrapper">
       <h3 className="text-3xl font-medium leading-tight text-center text-primary mb-6">

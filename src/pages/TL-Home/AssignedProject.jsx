@@ -59,9 +59,6 @@ const AssignedProject = () => {
     return project && project.status === "completed";
   };
 
-  console.log(assignedProject);
-  console.log(token);
-
   return (
     <div className="wrapper mt-8 h-96 overflow-y-auto">
       <h1 className="text-2xl font-semibold mb-4">Assigned Project</h1>

@@ -95,6 +95,14 @@ const TeamLeadLayout = () => {
                 Assigned Project
               </ListItem>
             </Link>
+            <Link to="/team-lead/Performance">
+              <ListItem className="hover:bg-blue-100 transition-colors">
+                <ListItemPrefix>
+                  <EyeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Performance
+              </ListItem>
+            </Link>
             <Link to="/team-lead/view-meeting">
               <ListItem className="hover:bg-blue-100 transition-colors">
                 <ListItemPrefix>
