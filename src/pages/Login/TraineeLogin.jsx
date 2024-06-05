@@ -60,7 +60,7 @@ const TraineeLogin = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex justify-center items-center bg-gray-100">
+      <div className="min-h-screen flex justify-center items-center bg-primary">
         <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg overflow-hidden">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-4">
             Sign in to your account
