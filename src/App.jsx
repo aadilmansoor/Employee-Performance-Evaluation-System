@@ -140,7 +140,7 @@ const App = () => {
               path="/team-lead/view-meeting"
               element={<ViewMeeting role="team-lead" />}
             />
-                        <Route path="/team-lead/Performance" element={<PerformanceEmp />} />
+            <Route path="/team-lead/Performance" element={<PerformanceEmp />} />
 
             <Route
               path="/team-lead/trainee-profile"
@@ -149,7 +149,7 @@ const App = () => {
             <Route path="/review" element={<Review />} />
             <Route
               path="/team-lead/schedule-meeting"
-              element={<ScheduleMeeting role="admin" />}
+              element={<ScheduleMeeting role="team-lead" />}
             />
             <Route path="/team-lead/register" element={<TeamLeadRegister />} />
             <Route path="/team-lead" element={<TeamLeadHome />} />

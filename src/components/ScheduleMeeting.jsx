@@ -70,7 +70,7 @@ const ScheduleMeeting = ({ role }) => {
         });
       }
     } else if (role === "team-lead") {
-      const token = localStorage.getItem("adminToken");
+      const token = localStorage.getItem("TlToken");
       const result = await scheduleMeetingTeamLeadAPI(token, {
         ...meetingDetails,
         date: formatDate(date),
