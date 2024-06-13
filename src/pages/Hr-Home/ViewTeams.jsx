@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { DeleteIcon } from "lucide-react";
+import { IconButton } from "@mui/material";
 import { Button } from "@/components/ui/button";
 import { approveTeamAPI } from "@/Services/allAPI";
-import Swal from "sweetalert2";
 
 const ViewTeam = () => {
   const [teamData, setTeamData] = useState([]);
@@ -26,16 +28,58 @@ const ViewTeam = () => {
   }, []);
 
   const handleApprove = async (id) => {
-    const token = localStorage.getItem("HRtoken");
-    const result = await approveTeamAPI(token, id);
-    if (result.status === 200) {
-      Swal.fire({
-        icon: "success",
-        title: "Approved",
-      });
+    try {
+      const result = await approveTeamAPI(token, id);
+      if (result.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Approved",
+        });
+        fetchTeamDetails();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Approval Failed",
+        });
+      }
+    } catch (error) {
+      console.error("Failed to approve team:", error);
     }
-    fetchTeamDetails();
   };
+
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`http://127.0.0.1:8000/hrapi/teams/${id}/`, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        Swal.fire({
+          icon: "success",
+          title: "Team Deleted",
+        });
+        setTeamData(teamData.filter((team) => team.id !== id));
+      } catch (error) {
+        console.error("Failed to delete team:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed to delete team.",
+        });
+      }
+    }
+  };
+  
 
   return (
     <div className="wrapper h-96 sticky top-0 overflow-y-auto">
@@ -59,6 +103,7 @@ const ViewTeam = () => {
                   <th className="py-3 px-4 border-b border-gray-300">
                     Members
                   </th>
+                  <th className="py-3 px-4 border-b border-gray-300">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -85,6 +130,11 @@ const ViewTeam = () => {
                     <td className="py-3 px-4 border whitespace-nowrap">
                       {team.members.join(", ")}
                     </td>
+                    <td className="py-3 px-4 border whitespace-nowrap">
+                      <IconButton onClick={() => handleDelete(team.id)}>
+                        <DeleteIcon style={{ color: "red" }} />
+                      </IconButton>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -94,7 +144,6 @@ const ViewTeam = () => {
       ) : (
         <p className="mt-4">No Teams.</p>
       )}
-      {/* Pass the team lead name as a prop to ProjectDetails component */}
     </div>
   );
 };
