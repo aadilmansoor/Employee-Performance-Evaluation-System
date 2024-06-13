@@ -85,3 +85,10 @@
     @apply max-w-[90rem] xl:mx-auto p-5 md:px-10 lg:px-11 w-full;
   }
 }
+
+body {
+  background-image: url("https://media.istockphoto.com/id/1198545511/photo/abstract-blurred-interior-modern-office-space-with-business-people-working-banner-background.jpg?s=612x612&w=0&k=20&c=X5h5BhDAr4IuP1Sxl-21TmQrzp0OpRrfq6UP-Y37WoE=");
+  background-size: cover;
+  margin: 0; 
+  padding: 0; 
+}
